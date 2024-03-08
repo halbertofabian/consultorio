@@ -1,5 +1,5 @@
 <?php
-require(__DIR__ . '/../app/conexion.php');
+require_once(__DIR__ . '/../app/conexion.php');
 
 class SuscripcionesModelo
 {
