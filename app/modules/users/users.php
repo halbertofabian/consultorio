@@ -1,6 +1,5 @@
 <?php
 
-// var_dump($rutas);
 if (!isset($rutas[1])) {
     include_once 'app/modules/users/users-list-view.php';
 } else if (isset($rutas[1]) && $rutas[1] == 'list') {

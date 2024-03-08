@@ -16,7 +16,7 @@ $app->setBasePath("/" . FOLDER . "api/v1"); // /myapp/api es la carpeta api (htt
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 // Rutas
-require __DIR__ . '/routes.php';
+require __DIR__ . '/usuarios.php';
 
 // Ejecutar la aplicación
 $app->run();
