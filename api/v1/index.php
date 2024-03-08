@@ -3,7 +3,8 @@
 require(__DIR__ . '/../../config.php');
 require(__DIR__ . '/../vendor/autoload.php');
 
-require(__DIR__ . '/../../app/modules/users/userscontroller.php');
+require(__DIR__ . '/../../app/modules/users/usersController.php');
+require(__DIR__ . '/../../app/modules/suscripciones/suscripcionesController.php');
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -17,6 +18,7 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 // Rutas
 require __DIR__ . '/usuarios.php';
+require __DIR__ . '/suscripciones.php';
 
 // Ejecutar la aplicación
 $app->run();

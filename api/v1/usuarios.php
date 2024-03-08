@@ -8,4 +8,4 @@ $app->get('/blog', function (Request $request, Response $response, $args) {
     return $response;
 });
 
-$app->get('/users', UserController::class . ':list');
+$app->get('/users', UsersController::class . ':list');

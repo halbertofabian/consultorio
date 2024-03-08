@@ -35,6 +35,9 @@
     <link href="<?= HTTP_HOST ?>app/assets/css/theme.min.css" rel="stylesheet" id="style-default">
     <link href="<?= HTTP_HOST ?>app/assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
     <link href="<?= HTTP_HOST ?>app/assets/css/user.min.css" rel="stylesheet" id="user-style-default">
+
+    <script src="<?= HTTP_HOST ?>app/vendors/jquery/jquery.min.js"></script>
+
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {

@@ -1,6 +1,6 @@
 <?php
 
-class UserController
+class UsersController
 {
     // public function list($request,  $response, $args)
     // {

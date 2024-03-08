@@ -1,4 +1,5 @@
 <main class="main" id="top">
+    <div class="urlApp" urlApp="<?= HTTP_HOST ?>"></div>
     <div class="container" data-layout="container">
         <?php include_once 'app/components/navbar.php'; ?>
         <div class="content">
@@ -9,6 +10,8 @@
                 'users' => 'app/modules/users/users.php',
                 'home' => 'app/modules/app/home-view.php',
                 '404' => 'app/modules/app/404-view.php',
+
+                'suscripciones' => 'app/modules/suscripciones/suscripciones.php',
                 // Agrega más rutas y archivos según sea necesario
             ];
             // Aquí irá todo el contenido
