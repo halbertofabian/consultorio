@@ -46,8 +46,17 @@ ComponentesControlador::getBreadCrumb('suscripciones', 'Suscripciones', 'Nuevo s
             processData: false,
             contentType: false,
             success: function(res) {
-                if(res.status){
-                    alert(res.mensaje)
+                if (res.status) {
+                    swal({
+                        title: '¡Bien!',
+                        text: res.mensaje,
+                        type: 'success',
+                        icon: 'success'
+                    }).then(function() {
+                        location.href = '<?= HTTP_HOST ?>' + 'suscripciones/list';
+                    });
+                } else {
+                    swal('Oops', res.mensaje, 'error');
                 }
             }
         });

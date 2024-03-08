@@ -3,7 +3,7 @@
 require(__DIR__ . '/../../config.php');
 require(__DIR__ . '/../vendor/autoload.php');
 
-require(__DIR__ . '/../../app/modules/users/usersController.php');
+require(__DIR__ . '/../../app/modules/usuarios/usuariosController.php');
 require(__DIR__ . '/../../app/modules/suscripciones/suscripcionesController.php');
 
 use Psr\Http\Message\ResponseInterface as Response;
