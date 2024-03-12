@@ -38,7 +38,7 @@ function showOptionMenu($tipo, $ruta)
             <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
                 <li class="nav-item">
                     <a class="nav-link dropdown-indicator" href="#suscripciones" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="suscripciones">
-                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-user"></span></span><span class="nav-link-text ps-1">Suscripciones</span>
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-filter"></span></span><span class="nav-link-text ps-1">Suscripciones</span>
                         </div>
                     </a>
                     <ul class="nav collapse <?= showOptionMenu(0, 'suscripciones') ?> " id="suscripciones">
