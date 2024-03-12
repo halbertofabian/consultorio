@@ -27,16 +27,22 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                                 <input type="password" class="form-control" name="usr_clave2" id="" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Perfil</label>
-                                    <select class="form-select" name="usr_perfil" id="" required>
-                                        <option value="">-Seleccionar-</option>
-                                        <option value="Super Administrador">Super Administrador</option>
-                                        <option value="Doctor">Doctor</option>
-                                        <option value="Secretaria">Secretaria</option>
-                                    </select>
+                                <label for="" class="form-label">Perfil</label>
+                                <select class="form-select" name="usr_perfil" id="" required>
+                                    <option value="">-Seleccionar-</option>
+                                    <option value="Super Administrador">Super Administrador</option>
+                                    <option value="Doctor">Doctor</option>
+                                    <option value="Secretaria">Secretaria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label for="">Foto de perfil</label>
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-3xl">
+                                        <img class="rounded-circle usr_foto" src="<?= HTTP_HOST ?>app/assets/img/team/4.jpg" alt="" />
+                                    </div>
+                                    <div class="ms-2 w-100"><input type="file" class="form-control" name="usr_foto" id="usr_foto"></div>
                                 </div>
-
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary float-end">
@@ -52,6 +58,22 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
 </div>
 
 <script>
+    $('#usr_foto').on('change', function() {
+        var archivo = $(this).val();
+        var extensiones = archivo.substring(archivo.lastIndexOf("."));
+        if (extensiones != ".jpeg" && extensiones != ".jpg" && extensiones != ".png" && extensiones != ".webp" && extensiones != ".svg") {
+            toastr.error("El archivo de tipo <strong>" + extensiones + "</strong> no es válido", 'ERROR')
+            $(this).val("");
+        } else {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.usr_foto').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        }
+    });
     $('#formAgregarUsuario').on('submit', function(e) {
         e.preventDefault();
         var datos = new FormData(this)

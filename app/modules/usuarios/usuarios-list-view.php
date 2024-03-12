@@ -14,7 +14,7 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios
                                 <th scope="col">NOMBRE</th>
                                 <th scope="col">CORREO</th>
                                 <th scope="col">PERFIL</th>
-                                <th scope="col">FECHA</th>
+                                <th scope="col">FECHA REGISTRO</th>
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>

@@ -1,0 +1,21 @@
+<?php
+class LoginController
+{
+    public static function ctrIngresoUsuario()
+    {
+        if (isset($_POST['btnLogin'])) {
+            $encriptar = crypt($_POST["usr_clave"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+            $usr = UsuariosModelo::mdlMostrarUsuarioByCorreo(trim($_POST['usr_correo']));
+            if ($usr && $usr['usr_correo'] == trim($_POST['usr_correo']) && $encriptar == $usr['usr_clave']) {
+                $_SESSION['usr'] = $usr;
+                echo '<script>
+
+            window.location = "' . HTTP_HOST . '";
+
+        </script>';
+            } else {
+                echo '<script> toastr.error("Usuario o contraseña incorrecto, intente de nuevo", "Error")</script>';
+            }
+        }
+    }
+}

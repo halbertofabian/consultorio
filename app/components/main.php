@@ -12,6 +12,8 @@
                 
                 'usuarios' => 'app/modules/usuarios/usuarios.php',
                 'suscripciones' => 'app/modules/suscripciones/suscripciones.php',
+                'consultorios' => 'app/modules/consultorios/consultorios.php',
+                'login' => 'app/modules/login/login.php',
                 // Agrega más rutas y archivos según sea necesario
             ];
             // Aquí irá todo el contenido

@@ -42,6 +42,8 @@
     </link>
 
     <script src="<?= HTTP_HOST ?>app/vendors/jquery/jquery.min.js"></script>
+    <script src="<?= HTTP_HOST ?>app/assets/js/toastr.min.js"></script>
+
 
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));

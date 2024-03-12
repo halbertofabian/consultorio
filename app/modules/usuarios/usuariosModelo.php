@@ -7,15 +7,16 @@ class UsuariosModelo
     {
         try {
             //code...
-            $sql = "INSERT INTO tbl_usuarios_usr (usr_nombre, usr_correo, usr_clave, usr_perfil, usr_fecha_registro, tenantid) VALUES(?,?,?,?,?,?)";
+            $sql = "INSERT INTO tbl_usuarios_usr (usr_nombre, usr_correo, usr_clave, usr_perfil, usr_foto, usr_fecha_registro, tenantid) VALUES(?,?,?,?,?,?,?)";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
             $pps->bindValue(1, $usr['usr_nombre']);
             $pps->bindValue(2, $usr['usr_correo']);
             $pps->bindValue(3, $usr['usr_clave']);
             $pps->bindValue(4, $usr['usr_perfil']);
-            $pps->bindValue(5, $usr['usr_fecha_registro']);
-            $pps->bindValue(6, $usr['tenantid']);
+            $pps->bindValue(5, $usr['usr_foto']);
+            $pps->bindValue(6, $usr['usr_fecha_registro']);
+            $pps->bindValue(7, $usr['tenantid']);
             $pps->execute();
             return $pps->rowCount() > 0;
             // return $pps->errorInfo();
@@ -27,17 +28,19 @@ class UsuariosModelo
         }
     }
 
-    public static function mdlActualizarUsuarios($scs)
+    public static function mdlActualizarUsuarios($usr)
     {
         try {
             //code...
-            $sql = "UPDATE tbl_usuarios_usr SET scs_correo = ?, scs_telefono = ?, scs_nombre = ? WHERE scs_id = ?";
+            $sql = "UPDATE tbl_usuarios_usr SET usr_nombre = ?, usr_correo = ?, usr_clave = ?, usr_perfil = ?, usr_foto = ? WHERE usr_id = ?";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-            $pps->bindValue(1, $scs['scs_correo']);
-            $pps->bindValue(2, $scs['scs_telefono']);
-            $pps->bindValue(3, $scs['scs_nombre']);
-            $pps->bindValue(4, $scs['scs_id']);
+            $pps->bindValue(1, $usr['usr_nombre']);
+            $pps->bindValue(2, $usr['usr_correo']);
+            $pps->bindValue(3, $usr['usr_clave']);
+            $pps->bindValue(4, $usr['usr_perfil']);
+            $pps->bindValue(5, $usr['usr_foto']);
+            $pps->bindValue(6, $usr['usr_id']);
             $pps->execute();
             return $pps->rowCount() > 0;
         } catch (PDOException $th) {
