@@ -95,8 +95,9 @@ class UsuariosModelo
             $pps->bindValue(1, $usr_correo);
             $pps->execute();
             return $pps->fetch(PDO::FETCH_ASSOC);
+            // return $pps->errorInfo();
         } catch (PDOException $th) {
-            //throw $th;
+            throw $th;
         } finally {
             $pps = null;
             $con = null;

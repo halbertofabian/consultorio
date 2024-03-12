@@ -11,7 +11,7 @@
     if (!isset($_SESSION['usr'])) {
         // header('Location:' . URL_SOFTMOR);
         // header('Location: ' . HTTP_HOST);
-        include 'app/modules/app/login.php';
+        include_once 'app/modules/app/login.php';
         die();
     } else {
         include_once 'app/components/main.php';

@@ -1,5 +1,5 @@
 <?php session_start();
-include 'config.php';
+include_once 'config.php';
 
 //CONTROLADORES
 require_once 'app/modules/app/componentescontrolador.php';
