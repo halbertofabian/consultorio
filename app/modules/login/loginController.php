@@ -1,4 +1,7 @@
 <?php
+require_once(__DIR__ . '../../login/loginModelo.php');
+require_once(__DIR__ . '../../usuarios/usuariosModelo.php');
+require_once(__DIR__ . '../../consultorios/consultoriosModelo.php');
 class LoginController
 {
     public static function ctrIngresoUsuario()
