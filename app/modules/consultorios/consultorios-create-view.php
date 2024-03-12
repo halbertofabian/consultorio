@@ -76,11 +76,11 @@ $ctr_id = ($ctr) ? base64_encode($ctr['ctr_id']) : "";
                             <label for="ctr_calle">Calle </label>
                             <input type="text" name="ctr_calle" id="ctr_calle" class="form-control" placeholder="" required>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="ctr_no_exterior">Nº exterior </label>
                             <input type="text" name="ctr_no_exterior" id="ctr_no_exterior" class="form-control" placeholder="" required>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="ctr_no_interior">Nº interior / Depto </label>
                             <input type="text" name="ctr_no_interior" id="ctr_no_interior" class="form-control" placeholder="Opcional">
                         </div>

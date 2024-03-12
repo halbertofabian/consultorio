@@ -29,13 +29,33 @@ function showOptionMenu($tipo, $ruta)
 
         </div>
         <a class="navbar-brand" href="<?= HTTP_HOST ?>">
-            <div class="d-flex align-items-center py-3"><img class="me-2" src="<?= isset($_SESSION['scl']['ctr_logo']) ? $_SESSION['scl']['ctr_logo'] : "" ?>" alt="" width="40" /><span class="font-sans-serif">App</span>
+            <div class="d-flex align-items-center py-3"><img class="me-2" src="<?= isset($_SESSION['scl']['ctr_logo']) ? $_SESSION['scl']['ctr_logo'] : "" ?>" alt="" width="40" /><span class="font-sans-serif"></span>
             </div>
         </a>
     </div>
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
         <div class="navbar-vertical-content scrollbar">
             <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+                <li class="nav-item">
+                    <a class="nav-link dropdown-indicator" href="#suscripciones" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="suscripciones">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-user"></span></span><span class="nav-link-text ps-1">Suscripciones</span>
+                        </div>
+                    </a>
+                    <ul class="nav collapse <?= showOptionMenu(0, 'suscripciones') ?> " id="suscripciones">
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'suscripciones/create') ?> " href="<?= HTTP_HOST . 'suscripciones/create' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Crear suscriptor</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'suscripciones/list') ?>  " href="<?= HTTP_HOST . 'suscripciones/list' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Listar</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link dropdown-indicator" href="#usuarios" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="usuarios">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-user"></span></span><span class="nav-link-text ps-1">Usuarios</span>

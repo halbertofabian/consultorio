@@ -18,6 +18,10 @@ ComponentesControlador::getBreadCrumb('suscripciones', 'Suscripciones', 'Nuevo s
                                 <input type="email" class="form-control" name="scs_correo" id="" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
+                                <label for="" class="form-label">Clave</label>
+                                <input type="password" class="form-control" name="scs_clave" id="" placeholder="" required />
+                            </div>
+                            <div class="col-md-6 col-12">
                                 <label for="" class="form-label">Telefono</label>
                                 <input type="number" class="form-control" name="scs_telefono" id="" placeholder="" required />
                             </div>

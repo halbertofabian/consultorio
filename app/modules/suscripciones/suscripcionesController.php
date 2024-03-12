@@ -3,8 +3,6 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-require_once(__DIR__ . '../../suscripciones/suscripcionesModelo.php');
-
 class SuscripcionesController
 {
     public function create(Request $request, Response $response, $args)
@@ -13,14 +11,32 @@ class SuscripcionesController
         $data = $request->getParsedBody();
 
         $data['scs_nombre'] = strtoupper($data['scs_nombre']);
+        $data['scs_clave'] = crypt($data['scs_clave'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
         $data['tenantid'] = uniqid();
 
         $res = SuscripcionesModelo::mdlGuardarSuscripciones($data);
         if ($res) {
-            $response->getBody()->write(json_encode(array(
-                'status' => true,
-                'mensaje' => 'El suscriptor se guardo correctamente',
-            )));
+            $datos = array(
+                'usr_nombre' => $data['scs_nombre'],
+                'usr_correo' => $data['scs_correo'],
+                'usr_clave' => $data['scs_clave'],
+                'usr_perfil' => 'Doctor',
+                'usr_foto' => '',
+                'usr_fecha_registro' => FECHA,
+                'tenantid' => $data['tenantid'],
+            );
+            $res2 = UsuariosModelo::mdlGuardarUsuarios($datos);
+            if ($res2) {
+                $response->getBody()->write(json_encode(array(
+                    'status' => true,
+                    'mensaje' => 'El suscriptor se guardo correctamente',
+                )));
+            } else {
+                $response->getBody()->write(json_encode(array(
+                    'status' => false,
+                    'mensaje' => 'Hubo un error',
+                )));
+            }
         } else {
             $response->getBody()->write(json_encode(array(
                 'status' => false,
@@ -65,7 +81,7 @@ class SuscripcionesController
     public function get(Request $request, Response $response, $args)
     {
         $queryParams = $request->getQueryParams();
-        
+
         $scs_id = base64_decode($queryParams['scs_id']) ?? null;
 
         $scs = SuscripcionesModelo::mdlMostrarSuscriptoresById($scs_id);

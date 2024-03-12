@@ -30,7 +30,6 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                                 <label for="" class="form-label">Perfil</label>
                                 <select class="form-select" name="usr_perfil" id="" required>
                                     <option value="">-Seleccionar-</option>
-                                    <option value="Super Administrador">Super Administrador</option>
                                     <option value="Doctor">Doctor</option>
                                     <option value="Secretaria">Secretaria</option>
                                 </select>
@@ -39,7 +38,7 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                                 <label for="">Foto de perfil</label>
                                 <div class="d-flex align-items-center">
                                     <div class="avatar avatar-3xl">
-                                        <img class="rounded-circle usr_foto" src="<?= HTTP_HOST ?>app/assets/img/team/4.jpg" alt="" />
+                                        <img class="rounded-circle usr_foto" src="<?= HTTP_HOST ?>app/assets/img/team/4.jpg" alt="FOTO" />
                                     </div>
                                     <div class="ms-2 w-100"><input type="file" class="form-control" name="usr_foto" id="usr_foto"></div>
                                 </div>

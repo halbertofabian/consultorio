@@ -3,11 +3,6 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-require_once(__DIR__ . '/../app/componentescontrolador.php');
-
-require_once(__DIR__ . '../../app/zona-horaria.php');
-require_once(__DIR__ . '../../usuarios/usuariosModelo.php');
-
 class UsuariosController
 {
     public function create(Request $request, Response $response, $args)

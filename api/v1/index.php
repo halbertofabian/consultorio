@@ -1,11 +1,20 @@
 <?php session_start();
 
-require(__DIR__ . '/../../config.php');
-require(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../config.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../app/modules/app/zona-horaria.php');
+require_once(__DIR__ . '/../../app/modules/app/componentescontrolador.php');
 
-require(__DIR__ . '/../../app/modules/usuarios/usuariosController.php');
-require(__DIR__ . '/../../app/modules/suscripciones/suscripcionesController.php');
-require(__DIR__ . '/../../app/modules/consultorios/consultoriosController.php');
+
+require_once(__DIR__ . '/../../app/modules/usuarios/usuariosController.php');
+require_once(__DIR__ . '/../../app/modules/suscripciones/suscripcionesController.php');
+require_once(__DIR__ . '/../../app/modules/consultorios/consultoriosController.php');
+
+require_once(__DIR__ . '/../../app/modules/usuarios/usuariosModelo.php');
+require_once(__DIR__ . '/../../app/modules/suscripciones/suscripcionesModelo.php');
+require_once(__DIR__ . '/../../app/modules/consultorios/consultoriosModelo.php');
+require_once(__DIR__ . '/../../app/modules/login/loginModelo.php');
+
 
 
 use Psr\Http\Message\ResponseInterface as Response;
