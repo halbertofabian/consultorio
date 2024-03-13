@@ -51,14 +51,14 @@ class UsuariosModelo
         }
     }
 
-    public static function mdlMostrarUsuarios()
+    public static function mdlMostrarUsuarios($tenantid)
     {
         try {
             //code...
-            $sql = "SELECT * FROM tbl_usuarios_usr WHERE usr_estado_borrado = 1 ORDER BY usr_id DESC";
+            $sql = "SELECT * FROM tbl_usuarios_usr WHERE tenantid = ? AND usr_estado_borrado = 1 ORDER BY usr_id DESC";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-
+            $pps->bindValue(1, $tenantid);
             $pps->execute();
             return $pps->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $th) {

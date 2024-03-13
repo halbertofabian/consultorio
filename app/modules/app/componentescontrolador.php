@@ -57,4 +57,184 @@ class ComponentesControlador
 
         return $url_file;
     }
+
+    public static function getPaises()
+    {
+        return [
+            "México",
+            // Aquí puedes agregar más países según sea necesario
+        ];
+    }
+
+    public static function getEstados()
+    {
+        return [
+            "Aguascalientes",
+            "Baja California",
+            "Baja California Sur",
+            "Campeche",
+            "Chiapas",
+            "Chihuahua",
+            "Coahuila",
+            "Colima",
+            "Durango",
+            "Guanajuato",
+            "Guerrero",
+            "Hidalgo",
+            "Jalisco",
+            "México",
+            "Michoacán",
+            "Morelos",
+            "Nayarit",
+            "Nuevo León",
+            "Oaxaca",
+            "Puebla",
+            "Querétaro",
+            "Quintana Roo",
+            "San Luis Potosí",
+            "Sinaloa",
+            "Sonora",
+            "Tabasco",
+            "Tamaulipas",
+            "Tlaxcala",
+            "Veracruz",
+            "Yucatán",
+            "Zacatecas"
+        ];
+    }
+
+    public static function getNacionalidad()
+    {
+        return [
+            "Mexicana",
+            // Aquí puedes agregar más países según sea necesario
+        ];
+    }
+
+    public static function generarCURP($nombre, $fecha_nacimiento, $sexo, $estado)
+    {
+        $nombreCompleto = strtoupper($nombre);
+
+        $apellidos = explode(" ", $nombreCompleto);
+        $primerApellido = $apellidos[0];
+        $segundoApellido = $apellidos[1];
+        $primerNombre = $apellidos[2];
+
+        // Encontrar primera letra del primer apellido seguido de la primera vocal
+        $primerVocal = "";
+        for ($i = 1; $i < strlen($primerApellido); $i++) { // Empezar desde la segunda letra del apellido
+            if (in_array($primerApellido[$i], ["A", "E", "I", "O", "U"]) && $primerApellido[$i] !== $primerApellido[0]) {
+                $primerVocal = $primerApellido[$i];
+                break;
+            }
+        }
+
+        // Encontrar primera letra del apellido materno
+        $primeraLetraApellidoMaterno = $segundoApellido[0];
+
+        // Encontrar primera letra del primer nombre
+        $primeraLetraPrimerNombre = $primerNombre[0];
+
+        // Imprimir resultado
+
+        $fecha = $fecha_nacimiento;
+        $nuevaFecha = date("ymd", strtotime($fecha));
+
+        $genero = $sexo; // Suponiendo que tienes esta información
+        $genero = ($genero === "Masculino") ? "H" : "M";
+
+        $entidadNacimiento = $estado;
+
+        $entidades = ComponentesControlador::obtenerClavesEntidadesFederativas();
+        $clave = $entidades[$entidadNacimiento];
+
+        $consonantePrimerApellido = ComponentesControlador::obtenerConsonante($primerApellido, $primerApellido[0]);
+        $consonanteSegundoApellido = ComponentesControlador::obtenerConsonante($segundoApellido, $segundoApellido[0]);
+        $consonantePrimerNombre = ComponentesControlador::obtenerConsonante($primerNombre, $primerNombre[0]);
+
+        $curp = $primerApellido[0] . $primerVocal . $primeraLetraApellidoMaterno . $primeraLetraPrimerNombre . $nuevaFecha . $genero . $clave . $consonantePrimerApellido . $consonanteSegundoApellido . $consonantePrimerNombre;
+        return $curp;
+    }
+
+    public static function obtenerClavesEntidadesFederativas()
+    {
+        $claves = array(
+            "Aguascalientes" => "AS",
+            "Baja California" => "BC",
+            "Baja California Sur" => "BS",
+            "Campeche" => "CC",
+            "Coahuila" => "CL",
+            "Colima" => "CM",
+            "Chiapas" => "CS",
+            "Chihuahua" => "CH",
+            "Ciudad de México" => "DF",
+            "Durango" => "DG",
+            "Guanajuato" => "GT",
+            "Guerrero" => "GR",
+            "Hidalgo" => "HG",
+            "Jalisco" => "JC",
+            "México" => "MC",
+            "Michoacán" => "MN",
+            "Morelos" => "MS",
+            "Nayarit" => "NT",
+            "Nuevo León" => "NL",
+            "Oaxaca" => "OC",
+            "Puebla" => "PL",
+            "Querétaro" => "QT",
+            "Quintana Roo" => "QR",
+            "San Luis Potosí" => "SP",
+            "Sinaloa" => "SL",
+            "Sonora" => "SR",
+            "Tabasco" => "TC",
+            "Tamaulipas" => "TS",
+            "Tlaxcala" => "TL",
+            "Veracruz" => "VZ",
+            "Yucatán" => "YN",
+            "Zacatecas" => "ZS"
+        );
+
+        return $claves;
+    }
+
+    public static function obtenerConsonante($palabra, $excluir)
+    {
+        $vocales = ["A", "E", "I", "O", "U"];
+        $consonante = "";
+        for ($i = 0; $i < strlen($palabra); $i++) {
+            if ($palabra[$i] != $excluir && !in_array($palabra[$i], $vocales)) {
+                $consonante = $palabra[$i];
+                break;
+            }
+        }
+        return $consonante;
+    }
+
+    public static function getTiposSangre()
+    {
+        $tipos_sangre = array(
+            'A+' => 'A positivo',
+            'A-' => 'A negativo',
+            'B+' => 'B positivo',
+            'B-' => 'B negativo',
+            'AB+' => 'AB positivo',
+            'AB-' => 'AB negativo',
+            'O+' => 'O positivo',
+            'O-' => 'O negativo'
+        );
+
+        return $tipos_sangre;
+    }
+
+    public static function getEstadosCiviles()
+    {
+        $estados_civiles = array(
+            'Soltero/a',
+            'Casado/a',
+            'Unión libre',
+            'Divorciado/a',
+            'Viudo/a'
+        );
+
+        return $estados_civiles;
+    }
 }

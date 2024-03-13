@@ -57,6 +57,26 @@ function showOptionMenu($tipo, $ruta)
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link dropdown-indicator" href="#pacientes" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="pacientes">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-user-injured"></span></span><span class="nav-link-text ps-1">Pacientes</span>
+                        </div>
+                    </a>
+                    <ul class="nav collapse <?= showOptionMenu(0, 'pacientes') ?> " id="pacientes">
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'pacientes/create') ?> " href="<?= HTTP_HOST . 'pacientes/create' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Nuevo paciente</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'pacientes/list') ?>  " href="<?= HTTP_HOST . 'pacientes/list' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Listar</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link dropdown-indicator" href="#usuarios" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="usuarios">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-user"></span></span><span class="nav-link-text ps-1">Usuarios</span>
                         </div>

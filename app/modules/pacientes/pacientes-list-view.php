@@ -1,5 +1,5 @@
 <?php
-ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios');
+ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacientes');
 ?>
 
 <div class="row">
@@ -8,13 +8,15 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios
             <div class="card-body">
                 <h4 class="card-title">Lista</h4>
                 <div class="table-responsive scrollbar">
-                    <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_usuarios">
+                    <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_pacientes">
                         <thead class="bg-200">
                             <tr>
                                 <th scope="col">NOMBRE</th>
-                                <th scope="col">CORREO</th>
-                                <th scope="col">PERFIL</th>
+                                <th scope="col">FECHA NACIMIENTO</th>
+                                <th scope="col">SEXO</th>
+                                <th scope="col">CURP</th>
                                 <th scope="col">FECHA REGISTRO</th>
+                                <th scope="col">USUARIO REGISTRO</th>
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
@@ -27,18 +29,18 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios
 
 <script>
     $(document).ready(function() {
-        listarUsuarios();
+        listarPacientes();
     })
 
-    function listarUsuarios() {
-        datatable_usuarios = $('#datatable_usuarios').DataTable({
+    function listarPacientes() {
+        datatable_pacientes = $('#datatable_pacientes').DataTable({
             // dom: 'Bfrtip',
             responsive: true,
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],
             'ajax': {
-                'url': '<?= HTTP_HOST ?>' + 'api/v1/usuarios/list',
+                'url': '<?= HTTP_HOST ?>' + 'api/v1/pacientes/list',
                 'method': 'POST', //usamos el metodo POST
                 'data': {
                     tenantid: '<?= $_SESSION['usr']['tenantid'] ?>',
@@ -50,16 +52,22 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios
             'ordering': false,
             order: false,
             'columns': [{
-                    'data': 'usr_nombre'
+                    'data': 'pte_nombres'
                 },
                 {
-                    'data': 'usr_correo'
+                    'data': 'pte_fecha_nacimiento'
                 },
                 {
-                    'data': 'usr_perfil'
+                    'data': 'pte_sexo'
                 },
                 {
-                    'data': 'usr_fecha_registro'
+                    'data': 'pte_curp'
+                },
+                {
+                    'data': 'pte_fecha_registro'
+                },
+                {
+                    'data': 'pte_usuario_registro'
                 },
                 {
                     'data': 'acciones'
@@ -67,30 +75,30 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios
             ],
             'initComplete': function(settings, json) {
                 // Esta función se llama después de que se han cargado y dibujado los datos iniciales
-                $('#datatable_usuarios tbody tr').addClass('btn-reveal-trigger');
+                $('#datatable_pacientes tbody tr').addClass('btn-reveal-trigger');
             },
             'drawCallback': function(settings) {
                 // Esta función se llama cada vez que se redibuja la tabla
-                $('#datatable_usuarios tbody tr').addClass('btn-reveal-trigger');
+                $('#datatable_pacientes tbody tr').addClass('btn-reveal-trigger');
             }
         });
     }
 
-    $(document).on('click', '.btnEliminarUsuario', function() {
-        var usr_id = $(this).attr('usr_id');
+    $(document).on('click', '.btnEliminarPaciente', function() {
+        var pte_id = $(this).attr('pte_id');
         swal({
-            title: '¿Esta seguro de eliminar este usuario?',
+            title: '¿Esta seguro de eliminar este paciente?',
             text: 'Esta accion no es reversible',
             icon: 'warning',
-            buttons: ['No', 'Si, eliminar usuario'],
+            buttons: ['No', 'Si, eliminar paciente'],
             dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
                 var datos = new FormData();
-                datos.append('usr_id', usr_id);
+                datos.append('pte_id', pte_id);
                 $.ajax({
                     type: 'POST',
-                    url: '<?= HTTP_HOST ?>' + 'api/v1/usuarios/delete',
+                    url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/delete',
                     data: datos,
                     dataType: 'json',
                     processData: false,

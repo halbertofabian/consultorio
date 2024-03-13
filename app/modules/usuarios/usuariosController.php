@@ -144,7 +144,7 @@ class UsuariosController
     {
         $data = $request->getParsedBody();
 
-        $usuarios = UsuariosModelo::mdlMostrarUsuarios();
+        $usuarios = UsuariosModelo::mdlMostrarUsuarios($data['tenantid']);
         $array = array();
         foreach ($usuarios as $key => $usr) {
             array_push($array, array(
