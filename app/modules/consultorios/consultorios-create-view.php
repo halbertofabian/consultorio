@@ -18,8 +18,8 @@ $ctr_id = ($ctr) ? base64_encode($ctr['ctr_id']) : "";
                     <input type="hidden" name="ctr_id" class="ctr_id">
                     <div class="col-12">
                         <label for="">Logotipo</label>
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-4xl">
+                        <div class="align-items-center text-center">
+                            <div class="avatar avatar-4xl w-100">
                                 <img class="ctr_logo img-thumbnail" src="" alt="LOGO" />
                             </div>
                             <div class="ms-2 w-100"><input type="file" class="form-control" name="ctr_logo" id="ctr_logo"></div>

@@ -200,7 +200,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
     $('.generar-curp').change(function() {
         var nombre = $('#pte_ap_paterno').val() + ' ' + $('#pte_ap_materno').val() + ' ' + $('#pte_nombres').val();
         var datos = new FormData();
-        datos.append('nombre', nombre.replace(/\s+/g, " "));
+        datos.append('nombre', nombre.replace(/\s+/g, " ").toUpperCase());
         datos.append('fecha_nacimiento', $('#pte_fecha_nacimiento').val());
         datos.append('sexo', $("input[name='pte_sexo']:checked").val());
         datos.append('estado', $('#pte_estado_nacimiento').val());

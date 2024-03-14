@@ -113,7 +113,8 @@ class ComponentesControlador
 
     public static function generarCURP($nombre, $fecha_nacimiento, $sexo, $estado)
     {
-        $nombreCompleto = strtoupper($nombre);
+        $nombre_limpio = ComponentesControlador::quitarAcentos($nombre);
+        $nombreCompleto = mb_strtoupper($nombre_limpio, 'UTF-8');
 
         $apellidos = explode(" ", $nombreCompleto);
         $primerApellido = $apellidos[0];
@@ -154,6 +155,15 @@ class ComponentesControlador
 
         $curp = $primerApellido[0] . $primerVocal . $primeraLetraApellidoMaterno . $primeraLetraPrimerNombre . $nuevaFecha . $genero . $clave . $consonantePrimerApellido . $consonanteSegundoApellido . $consonantePrimerNombre;
         return $curp;
+    }
+
+    public static function quitarAcentos($cadena)
+    {
+        $acentos = array(
+            'á' => 'a', 'é' => 'e', 'í' => 'i', 'ó' => 'o', 'ú' => 'u',
+            'Á' => 'A', 'É' => 'E', 'Í' => 'I', 'Ó' => 'O', 'Ú' => 'U'
+        );
+        return strtr($cadena, $acentos);
     }
 
     public static function obtenerClavesEntidadesFederativas()
@@ -255,4 +265,5 @@ class ComponentesControlador
         $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
         return $nombredia . " " . $numeroDia . " de " . $nombreMes . " de " . $anio . ' - ' . $hora;
     }
+    
 }

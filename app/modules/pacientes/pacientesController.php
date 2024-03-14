@@ -80,7 +80,7 @@ class PacientesController
                 'pte_fecha_nacimiento' => $pte['pte_fecha_nacimiento'],
                 'pte_sexo' => $pte['pte_sexo'],
                 'pte_curp' => $pte['pte_curp'],
-                'pte_fecha_registro' => $pte['pte_fecha_registro'],
+                'pte_fecha_registro' => ComponentesControlador::fechaCastellano($pte['pte_fecha_registro']),
                 'pte_usuario_registro' => $pte['usr_nombre'],
                 'acciones' => '
                 <div class="dropdown font-sans-serif position-static">
