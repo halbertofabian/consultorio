@@ -7,6 +7,7 @@
 <script src="<?= HTTP_HOST ?>app/vendors/is/is.min.js"></script>
 <script src="<?= HTTP_HOST ?>app/vendors/echarts/echarts.min.js"></script>
 <script src="<?= HTTP_HOST ?>app/vendors/fontawesome/all.min.js"></script>
+<script src="<?= HTTP_HOST ?>app/vendors/tinymce/tinymce.min.js"></script>
 <script src="<?= HTTP_HOST ?>app/vendors/lodash/lodash.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
 <script src="<?= HTTP_HOST ?>app/vendors/list.js/list.min.js"></script>

@@ -1,40 +1,43 @@
 <?php
-ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente');
+ComponentesControlador::getBreadCrumb('consultas', 'Consultas', 'Editar consulta');
+$cta_id = $rutas[2];
 ?>
+
 <style>
     input[readonly] {
         background-color: #f8f9fa;
         /* Color gris por defecto de Bootstrap */
     }
 </style>
-<div class="row">
-    <div class="col-12">
+<div class="row g-3">
+    <div class="col-xl-6 col-md-12 col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Nuevo paciente</h4>
-                <form id="formGuardarPaciente">
+                <h4 class="card-title">Datos del paciente</h4>
+                <form id="formActualizarPaciente">
                     <div class="row g-3">
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_nombres" class="form-label"><?= OBL ?> Nombre(s)</label>
+                            <input type="hidden" name="pte_id" id="pte_id">
                             <input type="text" class="form-control text-uppercase generar-curp" name="pte_nombres" id="pte_nombres" placeholder="" required required />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_ap_paterno" class="form-label"><?= OBL ?> Apellido paterno</label>
                             <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_paterno" id="pte_ap_paterno" placeholder="" required required />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_ap_materno" class="form-label"><?= OBL ?> Apellido materno</label>
                             <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_materno" id="pte_ap_materno" placeholder="" required />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_fecha_nacimiento" class="form-label"><?= OBL ?> Fecha de nacimiento</label>
                             <input type="date" class="form-control generar-curp" name="pte_fecha_nacimiento" id="pte_fecha_nacimiento" placeholder="" required />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_edad" class="form-label"><?= OBL ?> Edad</label>
                             <input type="text" class="form-control" name="pte_edad" id="pte_edad" placeholder="" required />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="" class="form-label"><?= OBL ?> Sexo</label><br>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="pte_sexo" id="masculino" value="Masculino" required>
@@ -49,9 +52,9 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                                 <label class="form-check-label" for="otro">Otro</label>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_pais_nacimiento" class="form-label"><?= OBL ?> País de nacimiento</label>
-                            <select class="form-select" name="pte_pais_nacimiento" id="" required>
+                            <select class="form-select" name="pte_pais_nacimiento" id="pte_pais_nacimiento" required>
                                 <option value="">-Seleccionar-</option>
                                 <?php
                                 $paises = ComponentesControlador::getPaises();
@@ -60,7 +63,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_estado_nacimiento" class="form-label"><?= OBL ?> Estado de nacimiento</label>
                             <select class="form-select generar-curp" name="pte_estado_nacimiento" id="pte_estado_nacimiento" required>
                                 <option value="">-Seleccionar-</option>
@@ -71,9 +74,9 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_nacionalidad" class="form-label"><?= OBL ?> Nacionalidad</label>
-                            <select class="form-select" name="pte_nacionalidad" id="" required>
+                            <select class="form-select" name="pte_nacionalidad" id="pte_nacionalidad" required>
                                 <option value="">-Seleccionar-</option>
                                 <?php
                                 $nacionalidades = ComponentesControlador::getNacionalidad();
@@ -82,11 +85,11 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_rfc" class="form-label"><?= OBL ?> RFC</label>
                             <input type="text" class="form-control text-uppercase" name="pte_rfc" id="pte_rfc" placeholder="" required />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_curp" class="form-label"><?= OBL ?> CURP</label>
                             <input type="text" class="form-control text-uppercase" name="pte_curp" id="pte_curp" placeholder="" required />
                         </div>
@@ -95,7 +98,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                     <div class="row g-3">
                         <div class="col-xl-12 col-md-6 col-12">
                             <label for="pte_codigo_postal">Código postal</label>
-                            <input type="text" name="pte_codigo_postal" id="pte_codigo_postal" class="form-control w-lg-25" placeholder="" aria-describedby="helpId" required>
+                            <input type="text" name="pte_codigo_postal" id="pte_codigo_postal" class="form-control w-lg-50" placeholder="" aria-describedby="helpId" required>
                             <small id="helpId" class="text-muted"> <a class="float-right" target="_blank" href="https://www.correosdemexico.gob.mx/SSLServicios/ConsultaCP/Descarga.aspx">No sé mi código</a> </small>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
@@ -128,19 +131,19 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                     </div>
                     <hr>
                     <div class="row g-3">
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_telefono_fijo" class="form-label">Telefono fijo</label>
                             <input type="number" class="form-control" name="pte_telefono_fijo" id="pte_telefono_fijo" aria-describedby="helpId" placeholder="" />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_telefono_celular" class="form-label">Telefono celular</label>
                             <input type="number" class="form-control" name="pte_telefono_celular" id="pte_telefono_celular" aria-describedby="helpId" placeholder="" />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_correo" class="form-label">Correo electronico</label>
                             <input type="email" class="form-control" name="pte_correo" id="pte_correo" placeholder="" />
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_tipo_sangre" class="form-label">Tipo de sangre</label>
                             <select class="form-select" name="pte_tipo_sangre" id="pte_tipo_sangre">
                                 <option value="">-Seleccionar-</option>
@@ -151,7 +154,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_estado_civil" class="form-label">Estado civil</label>
                             <select class="form-select" name="pte_estado_civil" id="pte_estado_civil">
                                 <option value="">-Seleccionar-</option>
@@ -162,19 +165,51 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-xl-4 col-md-6 col-12">
+                        <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_imss" class="form-label">IMSS</label>
                             <input type="text" class="form-control" name="pte_imss" id="pte_imss" placeholder="" />
                         </div>
-                        <div class="col-xl-6 col-md-6 col-12">
+                        <div class="col-xl-12 col-md-6 col-12">
                             <label for="pte_alergias" class="form-label">Alergias</label>
                             <input type="text" class="form-control" name="pte_alergias" id="pte_alergias" placeholder="" />
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                            <button type="submit" class="btn btn-primary float-end">Actualizar</button>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xl-6 col-md-12 col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Datos de la consulta médica</h4>
+                <form id="formActualizarConsulta" class="row g-3">
+                    <div class="col-xl-12 col-md-12 col-12">
+                        <label for="cta_subjetivo" class="form-label">Subjetivo</label>
+                        <input type="hidden" name="cta_id" id="cta_id">
+                        <textarea class="form-control tinymce border-1" name="cta_subjetivo" id="cta_subjetivo" rows="3"></textarea>
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-12">
+                        <label for="cta_objetivo" class="form-label">Objetivo</label>
+                        <textarea class="form-control tinymce border-1" name="cta_objetivo" id="cta_objetivo" rows="3"></textarea>
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-12">
+                        <label for="cta_analisis" class="form-label">Analisis</label>
+                        <textarea class="form-control tinymce border-1" name="cta_analisis" id="cta_analisis" rows="3"></textarea>
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-12">
+                        <label for="cta_plan" class="form-label">Plan</label>
+                        <textarea class="form-control tinymce" name="cta_plan" id="cta_plan" rows="3"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary float-end">
+                            Actualizar
+                        </button>
                     </div>
                 </form>
             </div>
@@ -184,6 +219,78 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
 </div>
 
 <script>
+    $(document).ready(function() {
+        cargarDatosConsulta();
+        setTimeout(() => {
+            cargarDatos();
+        }, 500);
+    })
+
+    function cargarDatos() {
+        var pte_id = $("#pte_id").val();
+        $.ajax({
+            type: 'GET',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/get?pte_id=' + btoa(pte_id),
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                $("#pte_id").val(res.pte_id);
+                $("#pte_nombres").val(res.pte_nombres);
+                $("#pte_ap_paterno").val(res.pte_ap_paterno);
+                $("#pte_ap_materno").val(res.pte_ap_materno);
+                $("#pte_fecha_nacimiento").val(res.pte_fecha_nacimiento);
+                // $("#pte_fecha_nacimiento").change();
+                $('#pte_edad').val(res.pte_edad)
+
+                $("input[name='pte_sexo'][value='" + res.pte_sexo + "']").prop('checked', true);
+                $("#pte_pais_nacimiento").val(res.pte_pais_nacimiento);
+                $("#pte_estado_nacimiento").val(res.pte_estado_nacimiento);
+                $("#pte_nacionalidad").val(res.pte_nacionalidad);
+                $("#pte_rfc").val(res.pte_rfc);
+                $("#pte_curp").val(res.pte_curp);
+                $("#pte_codigo_postal").val(res.pte_codigo_postal);
+                $("#pte_estado").val(res.pte_estado);
+                $("#pte_delegacion_municipio").val(res.pte_delegacion_municipio);
+                if (res.pte_codigo_postal !== null && res.pte_codigo_postal != "") {
+                    $("#pte_codigo_postal").change();
+                    setTimeout(() => {
+                        $("#pte_colonia").val(res.pte_colonia);
+                    }, 1000);
+                }
+                $("#pte_calle").val(res.pte_calle);
+                $("#pte_no_exterior").val(res.pte_no_exterior);
+                $("#pte_no_interior").val(res.pte_no_interior);
+                $("#pte_telefono_fijo").val(res.pte_telefono_fijo);
+                $("#pte_telefono_celular").val(res.pte_telefono_celular);
+                $("#pte_correo").val(res.pte_correo);
+                $("#pte_tipo_sangre").val(res.pte_tipo_sangre);
+                $("#pte_estado_civil").val(res.pte_estado_civil);
+                $("#pte_imss").val(res.pte_imss);
+                $("#pte_alergias").val(res.pte_alergias);
+            }
+        });
+    }
+
+    function cargarDatosConsulta(){
+        $.ajax({
+            type: 'GET',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/consultas/get?cta_id=<?= $cta_id ?>',
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                $("#cta_id").val(res.cta_id);
+                $("#pte_id").val(res.cta_pte_id);
+                $("#cta_subjetivo").html(res.cta_subjetivo);
+                $("#cta_objetivo").html(res.cta_objetivo);
+                $("#cta_analisis").html(res.cta_analisis);
+                $("#cta_plan").html(res.cta_plan);
+                $("#mdlVerConsulta").modal('show');
+            }
+        });
+    }
+
     $('#pte_fecha_nacimiento').change(function() {
         var fechaNacimiento = new Date($(this).val());
         var hoy = new Date();
@@ -195,28 +302,6 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
         }
 
         $('#pte_edad').val(edad + ' años');
-    });
-
-    $('.generar-curp').change(function() {
-        var nombre = $('#pte_ap_paterno').val() + ' ' + $('#pte_ap_materno').val() + ' ' + $('#pte_nombres').val();
-        var datos = new FormData();
-        datos.append('nombre', nombre.replace(/\s+/g, " "));
-        datos.append('fecha_nacimiento', $('#pte_fecha_nacimiento').val());
-        datos.append('sexo', $("input[name='pte_sexo']:checked").val());
-        datos.append('estado', $('#pte_estado_nacimiento').val());
-        $.ajax({
-            type: 'POST',
-            url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/get-curp',
-            data: datos,
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: function(res) {
-                console.log(res);
-
-                $("#pte_curp").val(res)
-            }
-        });
     });
 
     $("#pte_codigo_postal").on("change", function() {
@@ -243,12 +328,34 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
         });
     });
 
-    $('#formGuardarPaciente').on('submit', function(e) {
+    $('.generar-curp').change(function() {
+        var nombre = $('#pte_ap_paterno').val() + ' ' + $('#pte_ap_materno').val() + ' ' + $('#pte_nombres').val();
+        var datos = new FormData();
+        datos.append('nombre', nombre.replace(/\s+/g, " "));
+        datos.append('fecha_nacimiento', $('#pte_fecha_nacimiento').val());
+        datos.append('sexo', $("input[name='pte_sexo']:checked").val());
+        datos.append('estado', $('#pte_estado_nacimiento').val());
+        $.ajax({
+            type: 'POST',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/get-curp',
+            data: datos,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                console.log(res);
+
+                $("#pte_curp").val(res)
+            }
+        });
+    });
+
+    $('#formActualizarPaciente').on('submit', function(e) {
         e.preventDefault();
         var datos = new FormData(this)
         $.ajax({
             type: 'POST',
-            url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/create',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/update',
             data: datos,
             dataType: 'json',
             processData: false,
@@ -261,12 +368,34 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                         type: 'success',
                         icon: 'success'
                     }).then(function() {
-                        // $(".ctr_id").val(res.ctr_id);
-                        if ('<?= $_SESSION['usr']['usr_perfil'] ?>' === 'Doctor') {
-                            window.location.href = '<?= HTTP_HOST ?>' + 'consultas/create/' + btoa(res.pte_id);
-                        } else {
-                            window.location.href = '<?= HTTP_HOST ?>' + 'pacientes/list';
-                        }
+                        // window.location.href = '<?= HTTP_HOST ?>' + 'pacientes/list';
+                    });
+                } else {
+                    swal('Oops', res.mensaje, 'error');
+                }
+            }
+        });
+    });
+
+    $('#formActualizarConsulta').on('submit', function(e) {
+        e.preventDefault();
+        var datos = new FormData(this)
+        $.ajax({
+            type: 'POST',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/consultas/update',
+            data: datos,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                if (res.status) {
+                    swal({
+                        title: '¡Bien!',
+                        text: res.mensaje,
+                        type: 'success',
+                        icon: 'success'
+                    }).then(function() {
+                        window.location.href = '<?= HTTP_HOST ?>' + 'consultas/list';
                     });
                 } else {
                     swal('Oops', res.mensaje, 'error');

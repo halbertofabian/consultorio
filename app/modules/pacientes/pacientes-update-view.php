@@ -253,7 +253,7 @@ $pte_id = $rutas[2];
         if (codigo == "") {
             return;
         }
-        $('#ctr_colonia option').remove();
+        $('#pte_colonia option').remove();
         $.ajax({
             type: "GET",
             url: 'https://app.tallercontrol.com/api/public/codigos_postales/codigo/' + codigo,

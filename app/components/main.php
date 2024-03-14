@@ -14,6 +14,7 @@
                 'suscripciones' => 'app/modules/suscripciones/suscripciones.php',
                 'consultorios' => 'app/modules/consultorios/consultorios.php',
                 'pacientes' => 'app/modules/pacientes/pacientes.php',
+                'consultas' => 'app/modules/consultas/consultas.php',
                 'login' => 'app/modules/login/login.php',
                 // Agrega más rutas y archivos según sea necesario
             ];

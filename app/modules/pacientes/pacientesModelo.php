@@ -43,7 +43,7 @@ class PacientesModelo
             $pps->bindValue(27, $pte['pte_usuario_registro']);
             $pps->bindValue(28, $pte['tenantid']);
             $pps->execute();
-            return $pps->rowCount() > 0;
+            return $con->lastInsertId();
         } catch (PDOException $th) {
             //throw $th;
         } finally {

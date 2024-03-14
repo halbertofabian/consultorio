@@ -24,6 +24,7 @@ class PacientesController
             $response->getBody()->write(json_encode(array(
                 'status' => true,
                 'mensaje' => 'El paciente se guardo correctamente',
+                'pte_id' => $res
             )));
         } else {
             $response->getBody()->write(json_encode(array(
@@ -57,7 +58,7 @@ class PacientesController
         } else {
             $response->getBody()->write(json_encode(array(
                 'status' => false,
-                'mensaje' => 'Hubo un error',
+                'mensaje' => 'Tienes los ultimos datos actualizados',
             )));
         }
 
@@ -72,6 +73,8 @@ class PacientesController
         $pacientes = PacientesModelo::mdlMostrarPacientes($data['tenantid']);
         $array = array();
         foreach ($pacientes as $key => $pte) {
+            $consulta = $_SESSION['usr']['usr_perfil'] === 'Doctor' ? '<a class="dropdown-item" href="' . HTTP_HOST . 'consultas/create/' . base64_encode($pte['pte_id']) . '">Agregar a consulta</a>' : "";
+
             array_push($array, array(
                 'pte_nombres' => $pte['pte_nombres'] . ' ' . $pte['pte_ap_paterno'] . ' ' . $pte['pte_ap_materno'],
                 'pte_fecha_nacimiento' => $pte['pte_fecha_nacimiento'],
@@ -85,6 +88,7 @@ class PacientesController
                     <div class="dropdown-menu dropdown-menu-end border py-0">
                         <div class="py-2">
                             <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
+                            ' . $consulta . '
                             <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
                         </div>
                     </div>
