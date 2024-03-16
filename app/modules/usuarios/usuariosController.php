@@ -10,7 +10,7 @@ class UsuariosController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
 
-        $correo = UsuariosModelo::mdlMostrarUsuarioByCorreo($data['usr_correo']);
+        $correo = UsuariosModelo::mdlMostrarUsuarioByCorreo($data['usr_correo'], $_SESSION['usr']['tenantid']);
         if ($correo) {
             $response->getBody()->write(json_encode(array(
                 'status' => false,
@@ -71,7 +71,7 @@ class UsuariosController
 
         $usr_res = UsuariosModelo::mdlMostrarUsuariosById($data['usr_id']);
         if ($usr_res['usr_correo'] !== $data['usr_correo']) {
-            $correo = UsuariosModelo::mdlMostrarUsuarioByCorreo($data['usr_correo']);
+            $correo = UsuariosModelo::mdlMostrarUsuarioByCorreo($data['usr_correo'], $_SESSION['usr']['tenantid']);
             if ($correo) {
                 $response->getBody()->write(json_encode(array(
                     'status' => false,

@@ -85,7 +85,26 @@ class UsuariosModelo
             $con = null;
         }
     }
-    public static function mdlMostrarUsuarioByCorreo($usr_correo)
+    public static function mdlMostrarUsuarioByCorreo($usr_correo, $tenantid)
+    {
+        try {
+            //code...
+            $sql = "SELECT * FROM tbl_usuarios_usr WHERE usr_correo = ? AND usr_estado_borrado = 1 AND tenantid = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $usr_correo);
+            $pps->bindValue(2, $tenantid);
+            $pps->execute();
+            return $pps->fetch(PDO::FETCH_ASSOC);
+            // return $pps->errorInfo();
+        } catch (PDOException $th) {
+            throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+    public static function mdlMostrarUsuarioByCorreoLogin($usr_correo)
     {
         try {
             //code...
