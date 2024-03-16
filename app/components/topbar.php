@@ -21,7 +21,7 @@
             </a>
             <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                    <a class="dropdown-item fw-bold text-warning" href="#!"><span><?= $_SESSION['usr']['usr_perfil'] ?></span></a>
+                    <a class="dropdown-item fw-bold text-warning" href="<?= HTTP_HOST ?>usuarios/update/<?= base64_encode($_SESSION['usr']['usr_id']) ?>"><span><?= $_SESSION['usr']['usr_perfil'] ?></span></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?= HTTP_HOST ?>consultorios/create">Ajustes</a>
                     <a class="dropdown-item" href="<?= HTTP_HOST ?>login/salir">Cerrar sesión</a>
