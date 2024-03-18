@@ -161,7 +161,8 @@ class ComponentesControlador
     {
         $acentos = array(
             'á' => 'a', 'é' => 'e', 'í' => 'i', 'ó' => 'o', 'ú' => 'u',
-            'Á' => 'A', 'É' => 'E', 'Í' => 'I', 'Ó' => 'O', 'Ú' => 'U'
+            'Á' => 'A', 'É' => 'E', 'Í' => 'I', 'Ó' => 'O', 'Ú' => 'U',
+            'ñ' => 'x', 'Ñ' => 'X'
         );
         return strtr($cadena, $acentos);
     }
