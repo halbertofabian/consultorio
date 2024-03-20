@@ -77,6 +77,26 @@ function showOptionMenu($tipo, $ruta)
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link dropdown-indicator" href="#citas" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="citas">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-calendar-alt"></span></span><span class="nav-link-text ps-1">Citas</span>
+                        </div>
+                    </a>
+                    <ul class="nav collapse <?= showOptionMenu(0, 'citas') ?> " id="citas">
+                        <!-- <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'citas/create') ?> " href="<?= HTTP_HOST . 'citas/create' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Nuevo paciente</span>
+                                </div>
+                            </a>
+                        </li> -->
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'citas/list') ?>  " href="<?= HTTP_HOST . 'citas/list' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Listar</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link dropdown-indicator" href="#consultas" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="consultas">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-notes-medical"></span></span><span class="nav-link-text ps-1">Consultas</span>
                         </div>
@@ -89,6 +109,26 @@ function showOptionMenu($tipo, $ruta)
                             </a>
                         </li> -->
                         <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'consultas/list') ?>  " href="<?= HTTP_HOST . 'consultas/list' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Listar</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-indicator" href="#consultorios" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="consultorios">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-stethoscope"></span></span><span class="nav-link-text ps-1">Consultorios</span>
+                        </div>
+                    </a>
+                    <ul class="nav collapse <?= showOptionMenu(0, 'consultorios') ?> " id="consultorios">
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'consultorios/create') ?> " href="<?= HTTP_HOST . 'consultorios/create' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Nuevo consultorio</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'consultorios/list') ?>  " href="<?= HTTP_HOST . 'consultorios/list' ?>">
                                 <div class="d-flex align-items-center">
                                     <span class="nav-link-text ps-1">Listar</span>
                                 </div>

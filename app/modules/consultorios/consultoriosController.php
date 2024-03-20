@@ -88,6 +88,39 @@ class ConsultoriosController
         return $response->withHeader('Content-Type', 'application/json');
     }
 
+    public function list(Request $request, Response $response, $args)
+    {
+        $data = $request->getParsedBody();
+
+        $consultorios = ConsultoriosModelo::mdlMostrarConsultorios($data['tenantid']);
+        $array = array();
+        foreach ($consultorios as $key => $ctr) {
+            // $consulta = $_SESSION['usr']['usr_perfil'] === 'Doctor' ? '<a class="dropdown-item" href="' . HTTP_HOST . 'consultas/create/' . base64_encode($pte['pte_id']) . '">Agregar a consulta</a>' : "";
+
+            array_push($array, array(
+                'ctr_logo' => '<img src="'.$ctr['ctr_logo'].'" width="100px">',
+                'ctr_nombre' => $ctr['ctr_nombre'],
+                'ctr_telefono_fijo' => $ctr['ctr_telefono_fijo'],
+                'ctr_telefono_celular' => $ctr['ctr_telefono_celular'],
+                'acciones' => '
+                <div class="dropdown font-sans-serif position-static">
+                    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                    <div class="dropdown-menu dropdown-menu-end border py-0">
+                        <div class="py-2">
+                            <a class="dropdown-item" href="' . HTTP_HOST . 'consultorios/update/' . base64_encode($ctr['ctr_id']) . '">Editar</a>
+                            <a class="dropdown-item text-danger btnEliminarConsulta" ctr_id="' . $ctr['ctr_id'] . '" href="javascript:void(0);">Eliminar</a>
+                        </div>
+                    </div>
+                </div>',
+            ));
+        }
+
+        // // Se convierte la lista de usuarios a formato JSON y se envía como respuesta
+        $response->getBody()->write(json_encode($array, true));
+
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
     public function get(Request $request, Response $response, $args)
     {
         $queryParams = $request->getQueryParams();

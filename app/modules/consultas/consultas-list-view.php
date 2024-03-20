@@ -67,10 +67,10 @@ ComponentesControlador::getBreadCrumb('consultas', 'Consultas', 'Lista de consul
 
 <script>
     $(document).ready(function() {
-        listarPacientes();
+        listarConsultas();
     })
 
-    function listarPacientes() {
+    function listarConsultas() {
         datatable_consultas = $('#datatable_consultas').DataTable({
             // dom: 'Bfrtip',
             responsive: true,

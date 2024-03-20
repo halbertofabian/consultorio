@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/../pacientes/pacientesModelo.php');
+
 class ComponentesControlador
 {
     public static function getBreadCrumb($ruta, $modulo, $vista)
@@ -265,6 +267,25 @@ class ComponentesControlador
         $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
         $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
         return $nombredia . " " . $numeroDia . " de " . $nombreMes . " de " . $anio . ' - ' . $hora;
+    }
+
+    public static function obtenerNombrePaciente($pte_id)
+    {
+        $pte = PacientesModelo::mdlMostrarPacientesById($pte_id);
+        if($pte){
+            return $pte['pte_nombres'] . ' ' . $pte['pte_ap_paterno'] . ' ' . $pte['pte_ap_materno'];
+        }else{
+            return "";
+        }
+    }
+    public static function obtenerNombreConsultorio($ctr_id)
+    {
+        $ctr = ConsultoriosModelo::mdlMostrarConsultoriosById($ctr_id);
+        if($ctr){
+            return $ctr['ctr_nombre'];
+        }else{
+            return "";
+        }
     }
     
 }

@@ -15,3 +15,7 @@
 <script src="<?= HTTP_HOST ?>app/assets/js/sweetalert.min.js"></script>
 <script src="<?= HTTP_HOST ?>app/vendors/datatables.net/jquery.dataTables.min.js"></script>
 <script src="<?= HTTP_HOST ?>app/vendors/datatables.net-bs5/dataTables.bootstrap5.min.js"></script>
+<script src="<?= HTTP_HOST ?>app/vendors/fullcalendar/main.min.js"></script>
+<script src="<?= HTTP_HOST ?>app/vendors/fullcalendar/index.global.min.js"></script>
+<script src="<?= HTTP_HOST ?>app/assets/js/flatpickr.js"></script>
+

@@ -15,6 +15,7 @@
                 'consultorios' => 'app/modules/consultorios/consultorios.php',
                 'pacientes' => 'app/modules/pacientes/pacientes.php',
                 'consultas' => 'app/modules/consultas/consultas.php',
+                'citas' => 'app/modules/citas/citas.php',
                 'login' => 'app/modules/login/login.php',
                 // Agrega más rutas y archivos según sea necesario
             ];

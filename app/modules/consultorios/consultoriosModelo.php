@@ -104,14 +104,14 @@ class ConsultoriosModelo
         }
     }
 
-    public static function mdlMostrarConsultorios()
+    public static function mdlMostrarConsultorios($tenantid)
     {
         try {
             //code...
-            $sql = "SELECT * FROM tbl_consultorios_ctr WHERE scs_estado = 1 ORDER BY scs_id DESC";
+            $sql = "SELECT * FROM tbl_consultorios_ctr WHERE tenantid = ? ORDER BY ctr_id DESC";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-
+            $pps->bindValue(1, $tenantid);
             $pps->execute();
             return $pps->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $th) {

@@ -1,7 +1,5 @@
 <?php
-// ComponentesControlador::getBreadCrumb('consultorios', 'Consultorios', 'Nuevo consultorio');
-$ctr = ConsultoriosModelo::mdlMostrarConsultoriosByTenantId($_SESSION['usr']['tenantid']);
-$ctr_id = ($ctr) ? base64_encode($ctr['ctr_id']) : "";
+ComponentesControlador::getBreadCrumb('consultorios', 'Consultorios', 'Nuevo consultorio');
 ?>
 <style>
     input[readonly] {
@@ -105,46 +103,6 @@ $ctr_id = ($ctr) ? base64_encode($ctr['ctr_id']) : "";
 </div>
 
 <script>
-    $(document).ready(function() {
-        cargarDatos();
-    })
-
-    function cargarDatos() {
-        $.ajax({
-            type: 'GET',
-            url: '<?= HTTP_HOST ?>' + 'api/v1/consultorios/get?ctr_id=<?= $ctr_id ?>',
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: function(res) {
-                $(".ctr_id").val(res.ctr_id);
-                $(".ctr_logo").attr('src', res.ctr_logo);
-                $("#ctr_nombre").val(res.ctr_nombre);
-                $("#ctr_telefono_fijo").val(res.ctr_telefono_fijo);
-                $("#ctr_telefono_celular").val(res.ctr_telefono_celular);
-
-                //Direccion
-
-                $("#ctr_codigo_postal").val(res.ctr_codigo_postal);
-                $("#ctr_estado").val(res.ctr_estado);
-                $("#ctr_delegacion_municipio").val(res.ctr_delegacion_municipio);
-
-                if (res.ctr_codigo_postal !== null && res.ctr_codigo_postal != "") {
-                    $("#ctr_codigo_postal").change();
-                    setTimeout(() => {
-                        $("#ctr_colonia").val(res.ctr_colonia);
-                    }, 1000);
-                }
-
-                $("#ctr_calle").val(res.ctr_calle);
-                $("#ctr_no_exterior").val(res.ctr_no_exterior);
-                $("#ctr_no_interior").val(res.ctr_no_interior);
-                $("#ctr_entre_calle_1").val(res.ctr_entre_calle_1);
-                $("#ctr_entre_calle_2").val(res.ctr_entre_calle_2);
-
-            }
-        });
-    }
     $("#ctr_codigo_postal").on("change", function() {
         var codigo = $(this).val();
         if (codigo == "") {
@@ -205,7 +163,7 @@ $ctr_id = ($ctr) ? base64_encode($ctr['ctr_id']) : "";
                         icon: 'success'
                     }).then(function() {
                         // $(".ctr_id").val(res.ctr_id);
-                        window.location.reload();
+                        window.location.href = '<?= HTTP_HOST ?>' + 'consultorios/list';
                     });
                 } else {
                     swal('Oops', res.mensaje, 'error');
@@ -234,7 +192,7 @@ $ctr_id = ($ctr) ? base64_encode($ctr['ctr_id']) : "";
                         icon: 'success'
                     }).then(function() {
                         // $(".ctr_id").val(res.ctr_id);
-                        window.location.reload();
+                        window.location.href = '<?= HTTP_HOST ?>' + 'consultorios/list';
                     });
                 } else {
                     swal('Oops', res.mensaje, 'error');

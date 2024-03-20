@@ -45,6 +45,26 @@ $usr_id = $rutas[2];
                                     <div class="ms-2 w-100"><input type="file" class="form-control" name="usr_foto" id="usr_foto"></div>
                                 </div>
                             </div>
+                            <div class="col-md-6 col-12">
+                                <label for="usr_ctr_id" class="form-label">Consultorio</label>
+                                <select class="form-select" name="usr_ctr_id" id="usr_ctr_id" required>
+                                    <option value="">-Seleccionar-</option>
+                                    <?php
+                                    $consultorios = ConsultoriosModelo::mdlMostrarConsultorios($_SESSION['usr']['tenantid']);
+                                    foreach ($consultorios as $ctr) :
+                                    ?>
+                                        <option value="<?= $ctr['ctr_id'] ?>"><?= $ctr['ctr_nombre'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label for="usr_turno" class="form-label">Turno</label>
+                                <select class="form-select" name="usr_turno" id="usr_turno" required>
+                                    <option value="">-Seleccionar-</option>
+                                    <option value="Matutino">Matutino</option>
+                                    <option value="Vespertino">Vespertino</option>
+                                </select>
+                            </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary float-end">
                                     Actualizar
@@ -76,6 +96,8 @@ $usr_id = $rutas[2];
                 $("#usr_correo").val(res.usr_correo);
                 $("#usr_perfil").val(res.usr_perfil);
                 $(".usr_foto").attr('src', res.usr_foto);
+                $("#usr_ctr_id").val(res.usr_ctr_id);
+                $("#usr_turno").val(res.usr_turno);
             }
         });
     }

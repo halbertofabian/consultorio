@@ -36,10 +36,11 @@
     <link href="<?= HTTP_HOST ?>app/assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
     <link href="<?= HTTP_HOST ?>app/assets/css/user.min.css" rel="stylesheet" id="user-style-default">
     <link href="<?= HTTP_HOST ?>app/assets/css/toastr.min.css" rel="stylesheet">
-    </link>
+    <link href="<?= HTTP_HOST ?>app/vendors/fullcalendar/main.min.css" rel="stylesheet">
+    <link href="<?= HTTP_HOST ?>app/vendors/flatpickr/flatpickr.min.css" rel="stylesheet">
+
 
     <link href="<?= HTTP_HOST ?>app/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css" rel="stylesheet">
-    </link>
 
     <script src="<?= HTTP_HOST ?>app/vendors/jquery/jquery.min.js"></script>
     <script src="<?= HTTP_HOST ?>app/assets/js/toastr.min.js"></script>

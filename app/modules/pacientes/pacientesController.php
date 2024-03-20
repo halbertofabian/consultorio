@@ -87,8 +87,9 @@ class PacientesController
                     <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs-10"></span></button>
                     <div class="dropdown-menu dropdown-menu-end border py-0">
                         <div class="py-2">
-                            <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
                             ' . $consulta . '
+                            <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
+                            <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
                             <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
                         </div>
                     </div>

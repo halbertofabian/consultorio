@@ -10,33 +10,6 @@
         <button class="btn-close btn-close-white z-index-1 mt-0" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body scrollbar-overlay px-x1 h-100" id="themeController">
-        <h5 class="fs-0">Color Scheme</h5>
-        <p class="fs--1">Choose the perfect color mode for your app.</p>
-        <div class="btn-group d-block w-100 btn-group-navbar-style">
-            <div class="row gx-2">
-                <div class="col-6">
-                    <input class="btn-check" id="themeSwitcherLight" name="theme-color" type="radio" value="light" data-theme-control="theme" />
-                    <label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherLight"> <span class="hover-overlay mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0" src="<?= HTTP_HOST ?>app/assets/img/generic/app-mode-default.jpg" alt="" /></span><span class="label-text">Light</span></label>
-                </div>
-                <div class="col-6">
-                    <input class="btn-check" id="themeSwitcherDark" name="theme-color" type="radio" value="dark" data-theme-control="theme" />
-                    <label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherDark"> <span class="hover-overlay mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0" src="<?= HTTP_HOST ?>app/assets/img/generic/app-mode-dark.jpg" alt="" /></span><span class="label-text"> Dark</span></label>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-start"><img class="me-2" src="<?= HTTP_HOST ?>app/assets/img/icons/left-arrow-from-left.svg" width="20" alt="" />
-                <div class="flex-1">
-                    <h5 class="fs-0">RTL Mode</h5>
-                    <p class="fs--1 mb-0">Switch your language direction </p><a class="fs--1" href="documentation/customization/configuration.html">RTL Documentation</a>
-                </div>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input ms-0" id="mode-rtl" type="checkbox" data-theme-control="isRTL" />
-            </div>
-        </div>
-        <hr />
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-start"><img class="me-2" src="<?= HTTP_HOST ?>app/assets/img/icons/arrows-h.svg" width="20" alt="" />
                 <div class="flex-1">
@@ -46,21 +19,6 @@
             </div>
             <div class="form-check form-switch">
                 <input class="form-check-input ms-0" id="mode-fluid" type="checkbox" data-theme-control="isFluid" />
-            </div>
-        </div>
-        <hr />
-        <div class="d-flex align-items-start"><img class="me-2" src="<?= HTTP_HOST ?>app/assets/img/icons/paragraph.svg" width="20" alt="" />
-            <div class="flex-1">
-                <h5 class="fs-0 d-flex align-items-center">Navigation Position</h5>
-                <p class="fs--1 mb-2">Select a suitable navigation system for your web application </p>
-                <div>
-                    <select class="form-select form-select-sm" aria-label="Navbar position" data-theme-control="navbarPosition">
-                        <option value="vertical" data-page-url="modules/components/navs-and-tabs/vertical-navbar.html">Vertical</option>
-                        <option value="top" data-page-url="modules/components/navs-and-tabs/top-navbar.html">Top</option>
-                        <option value="combo" data-page-url="modules/components/navs-and-tabs/combo-navbar.html">Combo</option>
-                        <option value="double-top" data-page-url="modules/components/navs-and-tabs/double-top-navbar.html">Double Top</option>
-                    </select>
-                </div>
             </div>
         </div>
         <hr />
@@ -86,10 +44,6 @@
                     <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-vibrant"> <img class="img-fluid img-prototype" src="<?= HTTP_HOST ?>app/assets/img/generic/vibrant.png" alt="" /><span class="label-text"> Vibrant</span></label>
                 </div>
             </div>
-        </div>
-        <div class="text-center mt-5"><img class="mb-4" src="<?= HTTP_HOST ?>app/assets/img/icons/spot-illustrations/47.png" alt="" width="120" />
-            <h5>Like What You See?</h5>
-            <p class="fs--1">Get app now and create beautiful dashboards with hundreds of widgets.</p><a class="mb-3 btn btn-primary" href="https://themes.getbootstrap.com/product/app-admin-dashboard-webapp-template/" target="_blank">Purchase</a>
         </div>
     </div>
 </div><a class="card setting-toggle" href="#settings-offcanvas" data-bs-toggle="offcanvas">

@@ -43,6 +43,26 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                                     <div class="ms-2 w-100"><input type="file" class="form-control" name="usr_foto" id="usr_foto"></div>
                                 </div>
                             </div>
+                            <div class="col-md-6 col-12">
+                                <label for="" class="form-label">Consultorio</label>
+                                <select class="form-select" name="usr_ctr_id" id="" required>
+                                    <option value="">-Seleccionar-</option>
+                                    <?php
+                                    $consultorios = ConsultoriosModelo::mdlMostrarConsultorios($_SESSION['usr']['tenantid']);
+                                    foreach ($consultorios as $ctr) :
+                                    ?>
+                                        <option value="<?= $ctr['ctr_id'] ?>"><?= $ctr['ctr_nombre'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label for="" class="form-label">Turno</label>
+                                <select class="form-select" name="usr_turno" id="" required>
+                                    <option value="">-Seleccionar-</option>
+                                    <option value="Matutino">Matutino</option>
+                                    <option value="Vespertino">Vespertino</option>
+                                </select>
+                            </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary float-end">
                                     Agregar

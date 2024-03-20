@@ -204,4 +204,12 @@ class UsuariosController
 
         return $response->withHeader('Content-Type', 'application/json');
     }
+    public function consultorios(Request $request, Response $response, $args)
+    {
+        $data = $request->getParsedBody();
+        $res = UsuariosModelo::mdlMostrarUsuariosByConsultorios($data['usr_ctr_id'], $data['tenantid']);
+        $response->getBody()->write(json_encode($res, true));
+
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 }
