@@ -34,15 +34,17 @@ class CitasModelo
     {
         try {
             //code...
-            $sql = "UPDATE tbl_citas_cts SET cta_subjetivo = ?, cta_objetivo = ?, cta_analisis = ?, cta_plan = ?, cta_fecha = ? WHERE cta_id = ?";
+            $sql = "UPDATE tbl_citas_cts SET cts_ctr_id = ?, cts_usr_id = ?,
+            cts_fecha_inicio = ?, cts_fecha_fin = ?, cts_usuario_registro = ?, cts_descripcion = ? WHERE cts_id = ?";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-            $pps->bindValue(1, $cts['cta_subjetivo']);
-            $pps->bindValue(2, $cts['cta_objetivo']);
-            $pps->bindValue(3, $cts['cta_analisis']);
-            $pps->bindValue(4, $cts['cta_plan']);
-            $pps->bindValue(5, $cts['cta_fecha']);
-            $pps->bindValue(6, $cts['cta_id']);
+            $pps->bindValue(1, $cts['cts_ctr_id']);
+            $pps->bindValue(2, $cts['cts_usr_id']);
+            $pps->bindValue(3, $cts['cts_fecha_inicio']);
+            $pps->bindValue(4, $cts['cts_fecha_fin']);
+            $pps->bindValue(5, $cts['cts_usuario_registro']);
+            $pps->bindValue(6, $cts['cts_descripcion']);
+            $pps->bindValue(7, $cts['cts_id']);
             $pps->execute();
             return $pps->rowCount() > 0;
         } catch (PDOException $th) {
@@ -59,7 +61,7 @@ class CitasModelo
     {
         try {
             //code...
-            $sql = "SELECT * FROM tbl_citas_cts cts WHERE cts.cts_usr_id = ? AND cts.tenantid = ? ORDER BY cts.cts_id DESC";
+            $sql = "SELECT * FROM tbl_citas_cts WHERE cts_usr_id = ? AND tenantid = ? AND cts_estado IN ('Pendiente', 'Asistió') ORDER BY cts_id DESC";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
             $pps->bindValue(1, $cts_usr_id);
@@ -78,7 +80,7 @@ class CitasModelo
     {
         try {
             //code...
-            $sql = "SELECT * FROM tbl_citas_cts WHERE cta_id = ? AND cta_estado_borrado = 1";
+            $sql = "SELECT * FROM tbl_citas_cts WHERE cts_id = ?";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
             $pps->bindValue(1, $cts_id);
@@ -116,14 +118,15 @@ class CitasModelo
         }
     }
 
-    public static function mdlEliminarCitas($cts_id)
+    public static function mdlActualuzarEstadoCitas($cts_estado, $cts_id)
     {
         try {
             //code...
-            $sql = "UPDATE tbl_citas_cts SET cta_estado_borrado = 0 WHERE cta_id = ?";
+            $sql = "UPDATE tbl_citas_cts SET cts_estado = ? WHERE cts_id = ?";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-            $pps->bindValue(1, $cts_id);
+            $pps->bindValue(1, $cts_estado);
+            $pps->bindValue(2, $cts_id);
             $pps->execute();
             return $pps->rowCount() > 0;
         } catch (PDOException $th) {

@@ -11,26 +11,17 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
 <div class="card overflow-hidden">
     <div class="card-header">
         <div class="row gx-0 align-items-center">
-            <div class="col-auto d-flex justify-content-end order-md-1">
-                <button class="btn icon-item icon-item-sm shadow-none p-0 me-1 ms-md-2" type="button" data-event="prev" data-bs-toggle="tooltip" title="Previous"><span class="fas fa-arrow-left"></span></button>
-                <button class="btn icon-item icon-item-sm shadow-none p-0 me-1 me-lg-2" type="button" data-event="next" data-bs-toggle="tooltip" title="Next"><span class="fas fa-arrow-right"></span></button>
-            </div>
-            <div class="col-auto col-md-auto order-md-2">
-                <h4 class="mb-0 fs-9 fs-sm-8 fs-lg-7 calendar-title"></h4>
-            </div>
-            <div class="col col-md-auto d-flex justify-content-end order-md-3">
-                <button class="btn btn-falcon-primary btn-sm" type="button" data-event="today">Today</button>
-            </div>
-            <div class="col-md-auto d-md-none">
-                <hr />
-            </div>
-            <!-- <div class="col-auto d-flex order-md-0">
-                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#addEventModal"> <span class="fas fa-plus me-2"></span>Add Schedule</button>
-            </div> -->
             <div class="col d-flex justify-content-end order-md-2">
-                <div class="dropdown font-sans-serif me-md-2">
-                    <button class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none" type="button" id="email-filter" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false"><span data-view-title="data-view-title">Month View</span><span class="fas fa-sort ms-2 fs-10"></span></button>
-                    <div class="dropdown-menu dropdown-menu-end border py-2" aria-labelledby="email-filter"><a class="active dropdown-item d-flex justify-content-between" href="#!" data-fc-view="dayGridMonth">Month View<span class="icon-check"><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span></span></a><a class="dropdown-item d-flex justify-content-between" href="#!" data-fc-view="timeGridWeek">Week View<span class="icon-check"><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span></span></a><a class="dropdown-item d-flex justify-content-between" href="#!" data-fc-view="timeGridDay">Day View<span class="icon-check"><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span></span></a><a class="dropdown-item d-flex justify-content-between" href="#!" data-fc-view="listWeek">List View<span class="icon-check"><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span></span></a><a class="dropdown-item d-flex justify-content-between" href="#!" data-fc-view="listYear">Year View<span class="icon-check"><span class="fas fa-check" data-fa-transform="down-4 shrink-4"></span></span></a>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tiempo
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="triggerId">
+                        <a class="dropdown-item btnCalendario active" data-fc-view="dayGridMonth" href="javascript:void(0)">Mes</a>
+                        <a class="dropdown-item btnCalendario" data-fc-view="timeGridWeek" href="javascript:void(0)">Semana</a>
+                        <a class="dropdown-item btnCalendario" data-fc-view="timeGridDay" href="javascript:void(0)">Día</a>
+                        <a class="dropdown-item btnCalendario" data-fc-view="listWeek" href="javascript:void(0)">Lista</a>
+                        <a class="dropdown-item btnCalendario" data-fc-view="listYear" href="javascript:void(0)">Año</a>
                     </div>
                 </div>
             </div>
@@ -68,6 +59,19 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
                 <div class="d-flex mt-3">
                     <span class="fa-stack ms-n1 me-3">
                         <i class="fas fa-circle fa-stack-2x text-200"></i>
+                        <i class="fas fa-align-left fa-stack-1x text-primary"></i>
+                    </span>
+
+                    <div class="flex-1">
+                        <h6>Descripción</h6>
+                        <p class="mb-1" id="descripcion">
+
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex mt-3">
+                    <span class="fa-stack ms-n1 me-3">
+                        <i class="fas fa-circle fa-stack-2x text-200"></i>
                         <i class="fas fa-calendar fa-stack-1x text-primary"></i>
                     </span>
 
@@ -75,14 +79,32 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
                         <h6>Fecha y hora</h6>
                         <p class="mb-1">
                             <span id="eventoInicio"></span><br>
-                            <span id="eventoFin"></span>
+                            <span id="eventoFin"></span><br>
+                            <span class="badge rounded-pill" id="estado"></span>
 
                         </p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <div class="btn-group" role="group" aria-label="Button group name">
+                    <button type="button" class="btn btn-danger btn-sm btn-attr btnCancelarCita">
+                        <i class="fa fa-times"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-light btn-sm btn-attr btnReagendarConsulta">
+                        <i class="fa fa-calendar-alt"></i> Reagendar
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm btn-attr btnAgregarConsulta">
+                        <i class="fa fa-notes-medical"></i> Consulta
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+
+                <!-- <button type="button" class="btn btn-danger">Cancelar</button>
+                <button type="button" class="btn btn-primary">Agregar a consulta</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
             </div>
         </div>
     </div>
@@ -91,12 +113,11 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
 
 <script>
     $(document).ready(function() {
-        listarCitas();
-
+        listarCitas('dayGridMonth');
     });
 
 
-    function listarCitas() {
+    function listarCitas(tipo) {
         var datos = new FormData()
         datos.append('cts_usr_id', '<?= $_SESSION['usr']['usr_id'] ?>');
         datos.append('tenantid', '<?= $_SESSION['usr']['tenantid'] ?>');
@@ -113,16 +134,27 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
                 var calendarEl = document.getElementById('appCalendar');
 
                 var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
-                    headerToolbar: false,
+                    initialView: tipo,
+                    // headerToolbar: true,
                     locale: 'es',
                     events: citas,
                     eventClick: function(info) {
                         console.log(info.event);
+                        $('.btn-attr').attr('cts_id', info.event.id);
+                        $('.btn-attr').attr('cts_pte_id', info.event.extendedProps.cts_pte_id);
                         $('#eventoTitulo').text(info.event.title);
                         $('#eventoInicio').text('Inicio: ' + info.event.start.toLocaleString());
                         $('#eventoFin').text('Fin: ' + info.event.end.toLocaleString());
                         $('#consultorio').text(info.event.extendedProps.consultorio);
+                        $('#descripcion').text(info.event.extendedProps.descripcion);
+                        if (info.event.extendedProps.estado == 'Pendiente') {
+                            $('#estado').addClass('bg-warning');
+                            $('#estado').removeClass('bg-success');
+                        } else if (info.event.extendedProps.estado == 'Asistió') {
+                            $('#estado').addClass('bg-success');
+                            $('#estado').removeClass('bg-warning');
+                        }
+                        $('#estado').text(info.event.extendedProps.estado);
                         $('#eventoModal').modal('show');
                     }
                 });
@@ -133,4 +165,96 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
             }
         });
     }
+
+    $(document).on('click', '.btnCalendario', function() {
+        $('.btnCalendario').removeClass('active');
+        $(this).addClass('active');
+        var data = $(this).attr('data-fc-view');
+        listarCitas(data);
+    });
+
+    $(document).on('click', '.btnAgregarConsulta', function() {
+        var cts_id = $(this).attr('cts_id');
+        var cts_pte_id = $(this).attr('cts_pte_id');
+        swal({
+            title: 'El estado de la cita cambiara al estado "Asistió "¿Deseas continuar?',
+            text: 'Esta accion no es reversible',
+            icon: 'warning',
+            buttons: ['No', 'Si, continuar'],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                var datos = new FormData();
+                datos.append('cts_id', cts_id);
+                datos.append('cts_pte_id', cts_pte_id);
+                datos.append('cts_estado', 'Asistió');
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= HTTP_HOST ?>' + 'api/v1/citas/cambiar-estado',
+                    data: datos,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function(res) {
+                        if (res.status) {
+                            window.location.href = '<?= HTTP_HOST ?>' + 'consultas/create/' + btoa(cts_pte_id);
+                        } else {
+                            swal('Oops', res.mensaje, 'error');
+                        }
+                    }
+                });
+            } else {}
+        });
+
+    });
+
+    $(document).on('click', '.btnCancelarCita', function() {
+        var cts_id = $(this).attr('cts_id');
+        var cts_pte_id = $(this).attr('cts_pte_id');
+        swal({
+            title: '¿Estas seguro de cancelar esta cita?',
+            text: 'Esta accion no es reversible',
+            icon: 'warning',
+            buttons: ['No', 'Si, cancelar'],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                var datos = new FormData();
+                datos.append('cts_id', cts_id);
+                datos.append('cts_pte_id', cts_pte_id);
+                datos.append('cts_estado', 'Cancelada');
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= HTTP_HOST ?>' + 'api/v1/citas/cambiar-estado',
+                    data: datos,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+                    success: function(res) {
+                        if (res.status) {
+                            swal({
+                                title: '¡Bien!',
+                                text: res.mensaje,
+                                type: 'success',
+                                icon: 'success'
+                            }).then(function() {
+                                $('#eventoModal').modal('hide');
+                                listarCitas('dayGridMonth');
+                            });
+                        } else {
+                            swal('Oops', res.mensaje, 'error');
+                        }
+                    }
+                });
+            } else {}
+        });
+
+    });
+
+    $(document).on('click', '.btnReagendarConsulta', function() {
+        var cts_id = $(this).attr('cts_id');
+        // var cts_pte_id = $(this).attr('cts_pte_id');
+
+        window.location.href = '<?= HTTP_HOST ?>' + 'citas/update/' + btoa(cts_id);
+    });
 </script>
