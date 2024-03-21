@@ -88,13 +88,13 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
             </div>
             <div class="modal-footer">
                 <div class="btn-group" role="group" aria-label="Button group name">
-                    <button type="button" class="btn btn-danger btn-sm btn-attr btnCancelarCita">
+                    <button type="button" class="btn btn-danger btn-sm btn-attr btnCancelarCita statusPendiente">
                         <i class="fa fa-times"></i> Cancelar
                     </button>
-                    <button type="button" class="btn btn-light btn-sm btn-attr btnReagendarConsulta">
+                    <button type="button" class="btn btn-light btn-sm btn-attr btnReagendarConsulta statusPendiente">
                         <i class="fa fa-calendar-alt"></i> Reagendar
                     </button>
-                    <button type="button" class="btn btn-primary btn-sm btn-attr btnAgregarConsulta">
+                    <button type="button" class="btn btn-primary btn-sm btn-attr btnAgregarConsulta statusPendiente">
                         <i class="fa fa-notes-medical"></i> Consulta
                     </button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
@@ -150,9 +150,11 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
                         if (info.event.extendedProps.estado == 'Pendiente') {
                             $('#estado').addClass('bg-warning');
                             $('#estado').removeClass('bg-success');
+                            $(".statusPendiente").removeClass('d-none');
                         } else if (info.event.extendedProps.estado == 'Asistió') {
                             $('#estado').addClass('bg-success');
                             $('#estado').removeClass('bg-warning');
+                            $(".statusPendiente").addClass('d-none');
                         }
                         $('#estado').text(info.event.extendedProps.estado);
                         $('#eventoModal').modal('show');
