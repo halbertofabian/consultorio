@@ -1,5 +1,5 @@
 <?php
-ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacientes');
+ComponentesControlador::getBreadCrumb('ultrasonidos', 'Ultrasonidos', 'Lista de ultrasonidos');
 ?>
 
 <div class="row">
@@ -8,15 +8,13 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
             <div class="card-body">
                 <h4 class="card-title">Lista</h4>
                 <div class="table-responsive scrollbar">
-                    <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_pacientes">
+                    <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_ultrasonidos">
                         <thead class="bg-200">
                             <tr>
                                 <th scope="col">NOMBRE</th>
-                                <th scope="col">FECHA NACIMIENTO</th>
-                                <th scope="col">SEXO</th>
-                                <th scope="col">CURP</th>
-                                <th scope="col">FECHA REGISTRO</th>
-                                <th scope="col">USUARIO REGISTRO</th>
+                                <th scope="col">FECHA</th>
+                                <th scope="col">MOTIVO</th>
+                                <th scope="col">CONCLUSIÓN</th>
                                 <th scope="col">ACCIONES</th>
                             </tr>
                         </thead>
@@ -34,11 +32,11 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">
-                    Agregar ultrasonido
+                    Actualizar ultrasonido
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="formGuardarUltrasonidos">
+            <form id="formActualizarUltrasonidos">
                 <div class="modal-body">
                     <div class="row g-3">
                         <div class="col-12">
@@ -46,7 +44,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
                         </div>
                         <div class="col-xl-6 col-12">
                             <label for="uts_fecha" class="form-label">Fecha</label>
-                            <input type="hidden" name="uts_pte_id" id="uts_pte_id">
+                            <input type="hidden" name="uts_id" id="uts_id">
                             <input type="date" class="form-control" name="uts_fecha" id="uts_fecha" placeholder="" required />
                         </div>
                         <div class="col-xl-6 col-12">
@@ -67,7 +65,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Cerrar
                     </button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
                 </div>
             </form>
         </div>
@@ -77,18 +75,18 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
 
 <script>
     $(document).ready(function() {
-        listarPacientes();
+        listarUltrasonidos();
     })
 
-    function listarPacientes() {
-        datatable_pacientes = $('#datatable_pacientes').DataTable({
+    function listarUltrasonidos() {
+        datatable_ultrasonidos = $('#datatable_ultrasonidos').DataTable({
             // dom: 'Bfrtip',
             responsive: true,
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],
             'ajax': {
-                'url': '<?= HTTP_HOST ?>' + 'api/v1/pacientes/list',
+                'url': '<?= HTTP_HOST ?>' + 'api/v1/ultrasonidos/list',
                 'method': 'POST', //usamos el metodo POST
                 'data': {
                     tenantid: '<?= $_SESSION['usr']['tenantid'] ?>',
@@ -100,22 +98,16 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
             'ordering': false,
             order: false,
             'columns': [{
-                    'data': 'pte_nombres'
+                    'data': 'uts_pte_id'
                 },
                 {
-                    'data': 'pte_fecha_nacimiento'
+                    'data': 'uts_fecha'
                 },
                 {
-                    'data': 'pte_sexo'
+                    'data': 'uts_motivo'
                 },
                 {
-                    'data': 'pte_curp'
-                },
-                {
-                    'data': 'pte_fecha_registro'
-                },
-                {
-                    'data': 'pte_usuario_registro'
+                    'data': 'uts_conclusion'
                 },
                 {
                     'data': 'acciones'
@@ -123,30 +115,30 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
             ],
             'initComplete': function(settings, json) {
                 // Esta función se llama después de que se han cargado y dibujado los datos iniciales
-                $('#datatable_pacientes tbody tr').addClass('btn-reveal-trigger');
+                $('#datatable_ultrasonidos tbody tr').addClass('btn-reveal-trigger');
             },
             'drawCallback': function(settings) {
                 // Esta función se llama cada vez que se redibuja la tabla
-                $('#datatable_pacientes tbody tr').addClass('btn-reveal-trigger');
+                $('#datatable_ultrasonidos tbody tr').addClass('btn-reveal-trigger');
             }
         });
     }
 
-    $(document).on('click', '.btnEliminarPaciente', function() {
-        var pte_id = $(this).attr('pte_id');
+    $(document).on('click', '.btnEliminarUltrasonido', function() {
+        var uts_id = $(this).attr('uts_id');
         swal({
-            title: '¿Esta seguro de eliminar este paciente?',
+            title: '¿Esta seguro de eliminar este ultrasonido agendado?',
             text: 'Esta accion no es reversible',
             icon: 'warning',
-            buttons: ['No', 'Si, eliminar paciente'],
+            buttons: ['No', 'Si, eliminar'],
             dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
                 var datos = new FormData();
-                datos.append('pte_id', pte_id);
+                datos.append('uts_id', uts_id);
                 $.ajax({
                     type: 'POST',
-                    url: '<?= HTTP_HOST ?>' + 'api/v1/pacientes/delete',
+                    url: '<?= HTTP_HOST ?>' + 'api/v1/ultrasonidos/delete',
                     data: datos,
                     dataType: 'json',
                     processData: false,
@@ -170,20 +162,37 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
         });
     });
 
-    $(document).on('click', '.btnAgregarUltrasonido', function() {
-        var pte_id = $(this).attr('pte_id');
+    $(document).on('click', '.btnEditarUltrasonido', function() {
+        var uts_id = $(this).attr('uts_id');
         var pte_nombre = $(this).attr('pte_nombre');
-        $("#paciente").text(pte_nombre);
-        $("#uts_pte_id").val(pte_id);
-        $("#mdlAgregarUltrasonido").modal('show');
+        $.ajax({
+            type: 'GET',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/ultrasonidos/get?uts_id=' + uts_id,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                $("#paciente").text(pte_nombre);
+                $("#uts_id").val(res.uts_id);
+                var parts_fecha = res.uts_fecha.split(' ');
+                var uts_fecha = parts_fecha[0];
+                var uts_hora = parts_fecha[1];
+                $("#uts_fecha").val(uts_fecha);
+                $("#uts_hora").val(uts_hora);
+                $("#uts_motivo").val(res.uts_motivo);
+                $("#uts_conclusion").val(res.uts_conclusion);
+                $("#mdlAgregarUltrasonido").modal('show');
+
+            }
+        });
     });
 
-    $('#formGuardarUltrasonidos').on('submit', function(e) {
+    $('#formActualizarUltrasonidos').on('submit', function(e) {
         e.preventDefault();
         var datos = new FormData(this)
         $.ajax({
             type: 'POST',
-            url: '<?= HTTP_HOST ?>' + 'api/v1/ultrasonidos/create',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/ultrasonidos/update',
             data: datos,
             dataType: 'json',
             processData: false,
@@ -196,9 +205,9 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
                         type: 'success',
                         icon: 'success'
                     }).then(function() {
-                        location.href = '<?= HTTP_HOST ?>' + 'ultrasonidos/list';
+                        location.reload();
                     });
-                }else{
+                } else {
                     swal('Oops', res.mensaje, 'error');
                 }
             }

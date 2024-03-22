@@ -10,7 +10,7 @@ class SuscripcionesController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
 
-        $data['scs_nombre'] = strtoupper($data['scs_nombre']);
+        $data['scs_nombre'] = mb_strtoupper($data['scs_nombre']);
         $data['scs_clave'] = crypt($data['scs_clave'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
         $data['tenantid'] = uniqid();
 
@@ -96,7 +96,7 @@ class SuscripcionesController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
 
-        $data['scs_nombre'] = strtoupper($data['scs_nombre']);
+        $data['scs_nombre'] = mb_strtoupper($data['scs_nombre']);
 
         $res = SuscripcionesModelo::mdlActualizarSuscripciones($data);
         if ($res) {

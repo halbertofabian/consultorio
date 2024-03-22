@@ -10,11 +10,11 @@ class PacientesController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
 
-        $data['pte_nombres'] = trim(strtoupper($data['pte_nombres']));
-        $data['pte_ap_paterno'] = trim(strtoupper($data['pte_ap_paterno']));
-        $data['pte_ap_materno'] = trim(strtoupper($data['pte_ap_materno']));
-        $data['pte_rfc'] = trim(strtoupper($data['pte_rfc']));
-        $data['pte_curp'] = trim(strtoupper($data['pte_curp']));
+        $data['pte_nombres'] = trim(mb_strtoupper($data['pte_nombres']));
+        $data['pte_ap_paterno'] = trim(mb_strtoupper($data['pte_ap_paterno']));
+        $data['pte_ap_materno'] = trim(mb_strtoupper($data['pte_ap_materno']));
+        $data['pte_rfc'] = trim(mb_strtoupper($data['pte_rfc']));
+        $data['pte_curp'] = trim(mb_strtoupper($data['pte_curp']));
         $data['pte_fecha_registro'] = FECHA;
         $data['pte_usuario_registro'] = $_SESSION['usr']['usr_id'];
         $data['tenantid'] = $_SESSION['usr']['tenantid'];
@@ -42,11 +42,11 @@ class PacientesController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
 
-        $data['pte_nombres'] = trim(strtoupper($data['pte_nombres']));
-        $data['pte_ap_paterno'] = trim(strtoupper($data['pte_ap_paterno']));
-        $data['pte_ap_materno'] = trim(strtoupper($data['pte_ap_materno']));
-        $data['pte_rfc'] = trim(strtoupper($data['pte_rfc']));
-        $data['pte_curp'] = trim(strtoupper($data['pte_curp']));
+        $data['pte_nombres'] = trim(mb_strtoupper($data['pte_nombres']));
+        $data['pte_ap_paterno'] = trim(mb_strtoupper($data['pte_ap_paterno']));
+        $data['pte_ap_materno'] = trim(mb_strtoupper($data['pte_ap_materno']));
+        $data['pte_rfc'] = trim(mb_strtoupper($data['pte_rfc']));
+        $data['pte_curp'] = trim(mb_strtoupper($data['pte_curp']));
         $data['pte_usuario_registro'] = $_SESSION['usr']['usr_id'];
 
         $res = PacientesModelo::mdlActualizarPacientes($data);
@@ -89,6 +89,7 @@ class PacientesController
                         <div class="py-2">
                             ' . $consulta . '
                             <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
+                            <a class="dropdown-item btnAgregarUltrasonido" pte_id="' . $pte['pte_id'] . '" pte_nombre="' . ComponentesControlador::obtenerNombrePaciente($pte['pte_id']) . '" href="javascript:void(0)">Agregar ultrasonido</a>
                             <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
                             <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
                         </div>

@@ -41,7 +41,7 @@ class UsuariosController
             $url_file = "";
         }
 
-        $data['usr_nombre'] = strtoupper($data['usr_nombre']);
+        $data['usr_nombre'] = mb_strtoupper($data['usr_nombre']);
         $data['usr_clave'] = crypt($data['usr_clave1'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
         $data['usr_foto'] = $url_file;
         $data['usr_fecha_registro'] = FECHA;
@@ -103,7 +103,7 @@ class UsuariosController
             $url_file = $usr_res['usr_foto'];
         }
 
-        $data['usr_nombre'] = strtoupper($data['usr_nombre']);
+        $data['usr_nombre'] = mb_strtoupper($data['usr_nombre']);
         $data['usr_clave'] = ($data['usr_clave1'] !== "") ? crypt($data['usr_clave1'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$') : $usr_res['usr_clave'];
         $data['usr_foto'] = $url_file;
         // $data['usr_fecha_registro'] = FECHA;

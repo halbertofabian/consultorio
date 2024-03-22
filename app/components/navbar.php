@@ -117,6 +117,26 @@ function showOptionMenu($tipo, $ruta)
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link dropdown-indicator" href="#ultrasonidos" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="ultrasonidos">
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-file-medical-alt"></span></span><span class="nav-link-text ps-1">Ultrasonidos</span>
+                        </div>
+                    </a>
+                    <ul class="nav collapse <?= showOptionMenu(0, 'ultrasonidos') ?> " id="ultrasonidos">
+                        <!-- <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'ultrasonidos/create') ?> " href="<?= HTTP_HOST . 'ultrasonidos/create' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Nuevo paciente</span>
+                                </div>
+                            </a>
+                        </li> -->
+                        <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'ultrasonidos/list') ?>  " href="<?= HTTP_HOST . 'ultrasonidos/list' ?>">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Listar</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link dropdown-indicator" href="#consultorios" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="consultorios">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-stethoscope"></span></span><span class="nav-link-text ps-1">Consultorios</span>
                         </div>
