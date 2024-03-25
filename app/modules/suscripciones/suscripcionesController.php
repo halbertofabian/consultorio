@@ -23,6 +23,8 @@ class SuscripcionesController
                 'usr_perfil' => 'Doctor',
                 'usr_foto' => '',
                 'usr_fecha_registro' => FECHA,
+                'usr_ctr_id' => NULL,
+                'usr_turno' => "",
                 'tenantid' => $data['tenantid'],
             );
             $res2 = UsuariosModelo::mdlGuardarUsuarios($datos);
