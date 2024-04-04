@@ -62,7 +62,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
                             <label for="pte_estado_nacimiento" class="form-label"><?= OBL ?> Estado de nacimiento</label>
-                            <select class="form-select generar-curp" name="pte_estado_nacimiento" id="pte_estado_nacimiento" required>
+                            <select class="form-select generar-curp selectpicker" name="pte_estado_nacimiento" id="pte_estado_nacimiento" required>
                                 <option value="">-Seleccionar-</option>
                                 <?php
                                 $estados = ComponentesControlador::getEstados();
@@ -108,7 +108,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_colonia">Colonia / Asentamiento</label>
-                            <select class="form-control select2" name="pte_colonia" id="pte_colonia" required>
+                            <select class="form-control selectpicker" name="pte_colonia" id="pte_colonia" required>
                                 <option value="">Selecciona tu Colonia</option>
                             </select>
                         </div>
@@ -214,7 +214,8 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
             success: function(res) {
                 console.log(res);
 
-                $("#pte_curp").val(res)
+                $("#pte_rfc").val(res.rfc);
+                $("#pte_curp").val(res.curp);
             }
         });
     });

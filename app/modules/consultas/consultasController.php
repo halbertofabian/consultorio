@@ -67,7 +67,7 @@ class ConsultasController
     {
         $data = $request->getParsedBody();
 
-        $consultas = ConsultasModelo::mdlMostrarConsultas($data['tenantid'], $data['cta_ctr_id']);
+        $consultas = ConsultasModelo::mdlMostrarConsultas($data['tenantid'], $data['cta_usr_id'], $data['cta_ctr_id']);
         $array = array();
         foreach ($consultas as $key => $cta) {
             // $consulta = $_SESSION['usr']['usr_perfil'] === 'Doctor' ? '<a class="dropdown-item" href="' . HTTP_HOST . 'consultas/create/' . base64_encode($pte['pte_id']) . '">Agregar a consulta</a>' : "";

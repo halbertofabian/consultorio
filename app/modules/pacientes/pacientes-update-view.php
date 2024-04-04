@@ -288,8 +288,8 @@ $pte_id = $rutas[2];
             contentType: false,
             success: function(res) {
                 console.log(res);
-
-                $("#pte_curp").val(res)
+                $("#pte_rfc").val(res.rfc);
+                $("#pte_curp").val(res.curp);
             }
         });
     });

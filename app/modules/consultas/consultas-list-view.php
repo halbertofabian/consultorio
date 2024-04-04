@@ -7,18 +7,16 @@ ComponentesControlador::getBreadCrumb('consultas', 'Consultas', 'Lista de consul
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Lista</h4>
-                <div class="table-responsive scrollbar">
-                    <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_consultas">
-                        <thead class="bg-200">
-                            <tr>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">EDAD</th>
-                                <th scope="col">FECHA CONSULTA</th>
-                                <th scope="col">ACCIONES</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+                <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_consultas">
+                    <thead class="bg-200">
+                        <tr>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">EDAD</th>
+                            <th scope="col">FECHA CONSULTA</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
@@ -82,6 +80,7 @@ ComponentesControlador::getBreadCrumb('consultas', 'Consultas', 'Lista de consul
                 'method': 'POST', //usamos el metodo POST
                 'data': {
                     cta_ctr_id: '<?= $_SESSION['scl']['ctr_id'] ?>',
+                    cta_usr_id: '<?= $_SESSION['usr']['usr_id'] ?>',
                     tenantid: '<?= $_SESSION['usr']['tenantid'] ?>',
                     // cra_status: cra_status
                 }, //enviamos opcion 4 para que haga un SELECT

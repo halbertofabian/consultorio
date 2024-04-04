@@ -159,6 +159,40 @@ class ComponentesControlador
         return $curp;
     }
 
+    public static function generarRFC($nombre, $fecha_nacimiento)
+    {
+        $nombre_limpio = ComponentesControlador::quitarAcentos($nombre);
+        $nombreCompleto = mb_strtoupper($nombre_limpio, 'UTF-8');
+
+        $apellidos = explode(" ", $nombreCompleto);
+        $primerApellido = $apellidos[0];
+        $segundoApellido = $apellidos[1];
+        $primerNombre = $apellidos[2];
+
+        // Encontrar primera letra del primer apellido seguido de la primera vocal
+        $primerVocal = "";
+        for ($i = 1; $i < strlen($primerApellido); $i++) { // Empezar desde la segunda letra del apellido
+            if (in_array($primerApellido[$i], ["A", "E", "I", "O", "U"]) && $primerApellido[$i] !== $primerApellido[0]) {
+                $primerVocal = $primerApellido[$i];
+                break;
+            }
+        }
+
+        // Encontrar primera letra del apellido materno
+        $primeraLetraApellidoMaterno = $segundoApellido[0];
+
+        // Encontrar primera letra del primer nombre
+        $primeraLetraPrimerNombre = $primerNombre[0];
+
+        // Imprimir resultado
+
+        $fecha = $fecha_nacimiento;
+        $nuevaFecha = date("ymd", strtotime($fecha));
+
+        $rfc = $primerApellido[0] . $primerVocal . $primeraLetraApellidoMaterno . $primeraLetraPrimerNombre . $nuevaFecha;
+        return $rfc;
+    }
+
     public static function quitarAcentos($cadena)
     {
         $acentos = array(

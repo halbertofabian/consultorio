@@ -7,19 +7,17 @@ ComponentesControlador::getBreadCrumb('consultorios', 'Consultorios', 'Lista de 
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Lista</h4>
-                <div class="table-responsive scrollbar">
-                    <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_consultorios">
-                        <thead class="bg-200">
-                            <tr>
-                                <th scope="col">LOGO</th>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">TELEFONO FIJO</th>
-                                <th scope="col">TELEFONO CELULAR</th>
-                                <th scope="col">ACCIONES</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+                <table class="table table-bordered fs-10 mb-0 w-100" id="datatable_consultorios">
+                    <thead class="bg-200">
+                        <tr>
+                            <th scope="col">LOGO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">TELEFONO FIJO</th>
+                            <th scope="col">TELEFONO CELULAR</th>
+                            <th scope="col">ACCIONES</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>

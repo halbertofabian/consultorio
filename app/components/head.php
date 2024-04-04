@@ -38,9 +38,12 @@
     <link href="<?= HTTP_HOST ?>app/assets/css/toastr.min.css" rel="stylesheet">
     <link href="<?= HTTP_HOST ?>app/vendors/fullcalendar/main.min.css" rel="stylesheet">
     <link href="<?= HTTP_HOST ?>app/vendors/flatpickr/flatpickr.min.css" rel="stylesheet">
+    <link href="<?= HTTP_HOST ?>app/vendors/select2/select2.min.css" rel="stylesheet">
+    <link href="<?= HTTP_HOST ?>app/vendors/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css" rel="stylesheet">
 
 
     <link href="<?= HTTP_HOST ?>app/vendors/datatables.net-bs5/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="<?= HTTP_HOST ?>app/vendors/datatables.net-responsive/dataTablesResponsive.min.css" rel="stylesheet">
 
     <script src="<?= HTTP_HOST ?>app/vendors/jquery/jquery.min.js"></script>
     <script src="<?= HTTP_HOST ?>app/assets/js/toastr.min.js"></script>

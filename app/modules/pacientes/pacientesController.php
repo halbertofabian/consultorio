@@ -128,9 +128,15 @@ class PacientesController
         $estado = $data['estado'];
 
         $curp_generada = ComponentesControlador::generarCURP($nombre, $fecha_nacimiento, $sexo, $estado);
+        $rfc_generada = ComponentesControlador::generarRFC($nombre, $fecha_nacimiento);
+
+
 
         // Se devuelve la CURP directamente como JSON
-        $response->getBody()->write(json_encode($curp_generada));
+        $response->getBody()->write(json_encode(array(
+            'curp' => $curp_generada,
+            'rfc' => $rfc_generada,
+        )));
 
         return $response->withHeader('Content-Type', 'application/json');
     }

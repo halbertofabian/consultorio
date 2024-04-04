@@ -55,15 +55,16 @@ class ConsultasModelo
 
 
 
-    public static function mdlMostrarConsultas($tenantid, $cta_ctr_id)
+    public static function mdlMostrarConsultas($tenantid, $cta_usr_id, $cta_ctr_id)
     {
         try {
             //code...
-            $sql = "SELECT cta.*, pte.pte_nombres, pte.pte_ap_paterno, pte.pte_ap_materno, pte.pte_edad FROM tbl_consultas_cta cta JOIN tbl_pacientes_pte pte ON cta.cta_pte_id = pte.pte_id WHERE cta.tenantid = ? AND cta.cta_ctr_id = ? AND cta.cta_estado_borrado = 1 ORDER BY cta.cta_id DESC";
+            $sql = "SELECT cta.*, pte.pte_nombres, pte.pte_ap_paterno, pte.pte_ap_materno, pte.pte_edad FROM tbl_consultas_cta cta JOIN tbl_pacientes_pte pte ON cta.cta_pte_id = pte.pte_id WHERE cta.tenantid = ? AND cta.cta_usr_id = ? AND cta.cta_ctr_id = ? AND cta.cta_estado_borrado = 1 ORDER BY cta.cta_id DESC";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
             $pps->bindValue(1, $tenantid);
-            $pps->bindValue(2, $cta_ctr_id);
+            $pps->bindValue(2, $cta_usr_id);
+            $pps->bindValue(3, $cta_ctr_id);
             $pps->execute();
             return $pps->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $th) {
