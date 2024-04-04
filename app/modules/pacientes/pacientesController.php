@@ -89,7 +89,7 @@ class PacientesController
                         <div class="py-2">
                             ' . $consulta . '
                             <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
-                            <a class="dropdown-item btnAgregarUltrasonido" pte_id="' . $pte['pte_id'] . '" pte_nombre="' . ComponentesControlador::obtenerNombrePaciente($pte['pte_id']) . '" href="javascript:void(0)">Agregar ultrasonido</a>
+                            <a class="dropdown-item" href="' . HTTP_HOST . 'ultrasonidos/create/' . base64_encode($pte['pte_id']) . '">Agregar ultrasonido</a>
                             <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
                             <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
                         </div>

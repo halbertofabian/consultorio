@@ -27,53 +27,6 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
 </div>
 
 
-<!-- Modal Body -->
-<div class="modal fade" id="mdlAgregarUltrasonido" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content modal-dialog-scrollable">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Agregar ultrasonido
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="formGuardarUltrasonidos">
-                <div class="modal-body">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <h6>Paciente: <span id="paciente"></span></h6>
-                        </div>
-                        <div class="col-xl-6 col-12">
-                            <label for="uts_fecha" class="form-label"><?= OBL ?> Fecha</label>
-                            <input type="hidden" name="uts_pte_id" id="uts_pte_id">
-                            <input type="date" class="form-control" name="uts_fecha" id="uts_fecha" placeholder="" required />
-                        </div>
-                        <div class="col-xl-6 col-12">
-                            <label for="uts_hora" class="form-label"><?= OBL ?> Hora</label>
-                            <input type="time" class="form-control" name="uts_hora" id="uts_hora" placeholder="" required />
-                        </div>
-                        <div class="col-12">
-                            <label for="uts_motivo" class="form-label"><?= OBL ?> Motivo</label>
-                            <textarea class="form-control tinymce text-uppercase" name="uts_motivo" id="uts_motivo" rows="3" required></textarea>
-                        </div>
-                        <div class="col-12">
-                            <label for="uts_conclusion" class="form-label">Conclusión</label>
-                            <textarea class="form-control tinymce text-uppercase" name="uts_conclusion" id="uts_conclusion" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cerrar
-                    </button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
 <script>
     $(document).ready(function() {
         listarPacientes();
@@ -167,41 +120,6 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
                     }
                 });
             } else {}
-        });
-    });
-
-    $(document).on('click', '.btnAgregarUltrasonido', function() {
-        var pte_id = $(this).attr('pte_id');
-        var pte_nombre = $(this).attr('pte_nombre');
-        $("#paciente").text(pte_nombre);
-        $("#uts_pte_id").val(pte_id);
-        $("#mdlAgregarUltrasonido").modal('show');
-    });
-
-    $('#formGuardarUltrasonidos').on('submit', function(e) {
-        e.preventDefault();
-        var datos = new FormData(this)
-        $.ajax({
-            type: 'POST',
-            url: '<?= HTTP_HOST ?>' + 'api/v1/ultrasonidos/create',
-            data: datos,
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            success: function(res) {
-                if (res.status) {
-                    swal({
-                        title: '¡Bien!',
-                        text: res.mensaje,
-                        type: 'success',
-                        icon: 'success'
-                    }).then(function() {
-                        location.href = '<?= HTTP_HOST ?>' + 'ultrasonidos/list';
-                    });
-                } else {
-                    swal('Oops', res.mensaje, 'error');
-                }
-            }
         });
     });
 </script>
