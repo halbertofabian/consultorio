@@ -115,7 +115,7 @@ class UltrasonidosController
                     <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs-10"></span></button>
                     <div class="dropdown-menu dropdown-menu-end border py-0">
                         <div class="py-2">
-                            <a class="dropdown-item btnEditarUltrasonido" uts_id="' . base64_encode($uts['uts_id']) . '" pte_nombre="' . ComponentesControlador::obtenerNombrePaciente($uts['uts_pte_id']) . '" href="javascript:void(0);">Editar</a>
+                            <a class="dropdown-item" href="' . HTTP_HOST . 'ultrasonidos/update/' . base64_encode($uts['uts_id']) . '">Editar</a>
                             <a class="dropdown-item text-danger btnEliminarUltrasonido" uts_id="' . $uts['uts_id'] . '" href="javascript:void(0);">Eliminar</a>
                         </div>
                     </div>
@@ -136,6 +136,8 @@ class UltrasonidosController
         $uts_id = base64_decode($queryParams['uts_id']) ?? null;
 
         $uts = UltrasonidosModelo::mdlMostrarUltrasonidosById($uts_id);
+
+        $uts['pte_nombre'] = ComponentesControlador::obtenerNombrePaciente($uts['uts_pte_id']);
 
         // // Se convierte la lista de usuarios a formato JSON y se envía como respuesta
         $response->getBody()->write(json_encode($uts, true));
