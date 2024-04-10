@@ -12,12 +12,12 @@ $usr_id = $rutas[2];
                     <div class="col-12">
                         <form id="formActualizarUsuario" class="row g-3">
                             <div class="col-md-6 col-12">
-                                <label for="usr_nombre" class="form-label">Nombre</label>
+                                <label for="usr_nombre" class="form-label"><?= OBL ?> Nombre</label>
                                 <input type="hidden" name="usr_id" id="usr_id">
                                 <input type="text" class="form-control text-uppercase" name="usr_nombre" id="usr_nombre" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Correo</label>
+                                <label for="" class="form-label"><?= OBL ?> Correo</label>
                                 <input type="email" class="form-control" name="usr_correo" id="usr_correo" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
@@ -29,7 +29,7 @@ $usr_id = $rutas[2];
                                 <input type="password" class="form-control" name="usr_clave2" id="" placeholder="" />
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Perfil</label>
+                                <label for="" class="form-label"><?= OBL ?> Perfil</label>
                                 <select class="form-select" name="usr_perfil" id="usr_perfil" required>
                                     <option value="">-Seleccionar-</option>
                                     <option value="Doctor">Doctor</option>
@@ -47,7 +47,7 @@ $usr_id = $rutas[2];
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="usr_ctr_id" class="form-label">Consultorio</label>
-                                <select class="form-select" name="usr_ctr_id" id="usr_ctr_id" required>
+                                <select class="form-select" name="usr_ctr_id" id="usr_ctr_id">
                                     <option value="">-Seleccionar-</option>
                                     <?php
                                     $consultorios = ConsultoriosModelo::mdlMostrarConsultorios($_SESSION['usr']['tenantid']);
@@ -58,7 +58,7 @@ $usr_id = $rutas[2];
                                 </select>
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="usr_turno" class="form-label">Turno</label>
+                                <label for="usr_turno" class="form-label"><?= OBL ?> Turno</label>
                                 <select class="form-select" name="usr_turno" id="usr_turno" required>
                                     <option value="">-Seleccionar-</option>
                                     <option value="Matutino">Matutino</option>

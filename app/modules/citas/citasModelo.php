@@ -57,15 +57,14 @@ class CitasModelo
 
 
 
-    public static function mdlMostrarCitas($cts_usr_id, $tenantid)
+    public static function mdlMostrarCitas($tenantid)
     {
         try {
             //code...
-            $sql = "SELECT * FROM tbl_citas_cts WHERE cts_usr_id = ? AND tenantid = ? AND cts_estado IN ('Pendiente', 'Asistió') ORDER BY cts_id DESC";
+            $sql = "SELECT * FROM tbl_citas_cts WHERE tenantid = ? AND cts_estado IN ('Pendiente', 'Asistió') ORDER BY cts_id DESC";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-            $pps->bindValue(1, $cts_usr_id);
-            $pps->bindValue(2, $tenantid);
+            $pps->bindValue(1, $tenantid);
             $pps->execute();
             return $pps->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $th) {

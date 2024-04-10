@@ -45,6 +45,7 @@ class UsuariosController
         $data['usr_clave'] = crypt($data['usr_clave1'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
         $data['usr_foto'] = $url_file;
         $data['usr_fecha_registro'] = FECHA;
+        $data['usr_ctr_id'] = $data['usr_ctr_id'] == "" ? NULL : $data['usr_ctr_id'];
         $data['tenantid'] = $_SESSION['usr']['tenantid'];
 
         $res = UsuariosModelo::mdlGuardarUsuarios($data);
@@ -106,6 +107,7 @@ class UsuariosController
         $data['usr_nombre'] = mb_strtoupper($data['usr_nombre']);
         $data['usr_clave'] = ($data['usr_clave1'] !== "") ? crypt($data['usr_clave1'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$') : $usr_res['usr_clave'];
         $data['usr_foto'] = $url_file;
+        $data['usr_ctr_id'] = $data['usr_ctr_id'] == "" ? NULL : $data['usr_ctr_id'];
         // $data['usr_fecha_registro'] = FECHA;
         // $data['tenantid'] = "";
 

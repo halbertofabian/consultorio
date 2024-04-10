@@ -23,7 +23,9 @@
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                     <a class="dropdown-item fw-bold text-warning" href="<?= HTTP_HOST ?>usuarios/update/<?= base64_encode($_SESSION['usr']['usr_id']) ?>"><span><?= $_SESSION['usr']['usr_perfil'] ?></span></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?= HTTP_HOST ?>consultorios/update/<?= base64_encode($_SESSION['usr']['usr_ctr_id']) ?>">Ajustes</a>
+                    <?php if ($_SESSION['usr']['usr_perfil'] == 'Doctor' && $_SESSION['usr']['usr_ctr_id'] !== NULL) : ?>
+                        <a class="dropdown-item" href="<?= HTTP_HOST ?>consultorios/update/<?= base64_encode($_SESSION['usr']['usr_ctr_id']) ?>">Ajustes</a>
+                    <?php endif; ?>
                     <a class="dropdown-item" href="<?= HTTP_HOST ?>login/salir">Cerrar sesión</a>
                 </div>
             </div>

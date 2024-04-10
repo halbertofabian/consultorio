@@ -73,8 +73,18 @@ class PacientesController
         $pacientes = PacientesModelo::mdlMostrarPacientes($data['tenantid']);
         $array = array();
         foreach ($pacientes as $key => $pte) {
-            $consulta = $_SESSION['usr']['usr_perfil'] === 'Doctor' ? '<a class="dropdown-item" href="' . HTTP_HOST . 'consultas/create/' . base64_encode($pte['pte_id']) . '">Agregar a consulta</a>' : "";
-
+            $acciones = "";
+            if ($_SESSION['usr']['usr_perfil'] == 'Doctor') {
+                $acciones .= '
+                <a class="dropdown-item" href="' . HTTP_HOST . 'consultas/create/' . base64_encode($pte['pte_id']) . '">Agregar a consulta</a>
+                <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
+                <a class="dropdown-item" href="' . HTTP_HOST . 'ultrasonidos/create/' . base64_encode($pte['pte_id']) . '">Agregar ultrasonido</a>
+                <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
+                <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
+                ';
+            } else if ($_SESSION['usr']['usr_perfil'] == 'Secretaria') {
+                $acciones .= '<a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>';
+            }
             array_push($array, array(
                 'pte_nombres' => $pte['pte_nombres'] . ' ' . $pte['pte_ap_paterno'] . ' ' . $pte['pte_ap_materno'],
                 'pte_fecha_nacimiento' => $pte['pte_fecha_nacimiento'],
@@ -87,11 +97,7 @@ class PacientesController
                     <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs-10"></span></button>
                     <div class="dropdown-menu dropdown-menu-end border py-0">
                         <div class="py-2">
-                            ' . $consulta . '
-                            <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
-                            <a class="dropdown-item" href="' . HTTP_HOST . 'ultrasonidos/create/' . base64_encode($pte['pte_id']) . '">Agregar ultrasonido</a>
-                            <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
-                            <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
+                            ' . $acciones . '
                         </div>
                     </div>
                 </div>',

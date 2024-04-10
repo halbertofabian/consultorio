@@ -11,23 +11,23 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                     <div class="col-12">
                         <form id="formAgregarUsuario" class="row g-3">
                             <div class="col-md-6 col-12">
-                                <label for="usr_nombre" class="form-label">Nombre</label>
+                                <label for="usr_nombre" class="form-label"><?= OBL ?> Nombre</label>
                                 <input type="text" class="form-control text-uppercase" name="usr_nombre" id="" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Correo</label>
+                                <label for="" class="form-label"><?= OBL ?> Correo</label>
                                 <input type="email" class="form-control" name="usr_correo" id="" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Contraseña</label>
+                                <label for="" class="form-label"><?= OBL ?> Contraseña</label>
                                 <input type="password" class="form-control" name="usr_clave1" id="" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Confirmar contraseña</label>
+                                <label for="" class="form-label"><?= OBL ?> Confirmar contraseña</label>
                                 <input type="password" class="form-control" name="usr_clave2" id="" placeholder="" required />
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Perfil</label>
+                                <label for="" class="form-label"><?= OBL ?> Perfil</label>
                                 <select class="form-select" name="usr_perfil" id="" required>
                                     <option value="">-Seleccionar-</option>
                                     <option value="Doctor">Doctor</option>
@@ -45,7 +45,7 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                             </div>
                             <div class="col-md-6 col-12">
                                 <label for="" class="form-label">Consultorio</label>
-                                <select class="form-select" name="usr_ctr_id" id="" required>
+                                <select class="form-select" name="usr_ctr_id" id="">
                                     <option value="">-Seleccionar-</option>
                                     <?php
                                     $consultorios = ConsultoriosModelo::mdlMostrarConsultorios($_SESSION['usr']['tenantid']);
@@ -56,7 +56,7 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Nuevo usuario');
                                 </select>
                             </div>
                             <div class="col-md-6 col-12">
-                                <label for="" class="form-label">Turno</label>
+                                <label for="" class="form-label"><?= OBL ?> Turno</label>
                                 <select class="form-select" name="usr_turno" id="" required>
                                     <option value="">-Seleccionar-</option>
                                     <option value="Matutino">Matutino</option>

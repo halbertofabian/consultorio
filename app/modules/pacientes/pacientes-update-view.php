@@ -312,7 +312,7 @@ $pte_id = $rutas[2];
                         type: 'success',
                         icon: 'success'
                     }).then(function() {
-                        window.location.href = '<?= HTTP_HOST ?>' + 'pacientes/list';;
+                        window.location.href = '<?= HTTP_HOST ?>' + 'pacientes/list';
                     });
                 } else {
                     swal('Oops', res.mensaje, 'error');
