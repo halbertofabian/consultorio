@@ -94,9 +94,11 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
                     <button type="button" class="btn btn-light btn-sm btn-attr btnReagendarConsulta statusPendiente">
                         <i class="fa fa-calendar-alt"></i> Reagendar
                     </button>
-                    <button type="button" class="btn btn-primary btn-sm btn-attr btnAgregarConsulta statusPendiente">
-                        <i class="fa fa-notes-medical"></i> Consulta
-                    </button>
+                    <?php if ($_SESSION['usr']['usr_perfil'] == 'Doctor') : ?>
+                        <button type="button" class="btn btn-primary btn-sm btn-attr btnAgregarConsulta statusPendiente">
+                            <i class="fa fa-notes-medical"></i> Consulta
+                        </button>
+                    <?php endif; ?>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
                         Cerrar
                     </button>
