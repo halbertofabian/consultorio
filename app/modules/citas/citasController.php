@@ -27,7 +27,7 @@ class CitasController
             return $response->withHeader('Content-Type', 'application/json');
         }
 
-        $citas = CitasModelo::mdlMostrarCitasByFechas($data['cts_fecha_inicio'], $data['cts_fecha_fin'], $_SESSION['usr']['tenantid']);
+        $citas = CitasModelo::mdlMostrarCitasByFechas($data['cts_fecha_inicio'], $data['cts_fecha_fin'], $data['cts_ctr_id'], $data['cts_usr_id'], $_SESSION['usr']['tenantid']);
         if ($citas) {
             $response->getBody()->write(json_encode(array(
                 'status' => false,
@@ -73,7 +73,7 @@ class CitasController
             return $response->withHeader('Content-Type', 'application/json');
         }
 
-        $citas = CitasModelo::mdlMostrarCitasByFechas($data['cts_fecha_inicio'], $data['cts_fecha_fin'], $_SESSION['usr']['tenantid']);
+        $citas = CitasModelo::mdlMostrarCitasByFechas($data['cts_fecha_inicio'], $data['cts_fecha_fin'], $data['cts_ctr_id'], $data['cts_usr_id'], $_SESSION['usr']['tenantid']);
         if ($citas) {
             $response->getBody()->write(json_encode(array(
                 'status' => false,

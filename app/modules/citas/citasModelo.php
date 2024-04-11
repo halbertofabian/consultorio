@@ -93,20 +93,20 @@ class CitasModelo
         }
     }
 
-    public static function mdlMostrarCitasByFechas($cts_fecha_inicio, $cts_fecha_fin, $tenantid)
+    public static function mdlMostrarCitasByFechas($cts_fecha_inicio, $cts_fecha_fin, $cts_ctr_id, $cts_usr_id, $tenantid)
     {
         try {
             //code...
             $sql = "SELECT * FROM tbl_citas_cts 
             WHERE 
                 (cts_fecha_inicio < '$cts_fecha_fin' AND cts_fecha_fin > '$cts_fecha_inicio')
-                AND cts_estado = 'Pendiente' AND tenantid = ?
+                AND cts_estado = 'Pendiente' AND cts_ctr_id = ? AND cts_usr_id = ? AND tenantid = ?
             ";
-    
-    
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
-            $pps->bindValue(1, $tenantid);
+            $pps->bindValue(1, $cts_ctr_id);
+            $pps->bindValue(2, $cts_usr_id);
+            $pps->bindValue(3, $tenantid);
             $pps->execute();
             return $pps->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $th) {
