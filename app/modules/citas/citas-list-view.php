@@ -121,7 +121,8 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
 
     function listarCitas(tipo) {
         var datos = new FormData()
-        // datos.append('cts_usr_id', '<?= $_SESSION['usr']['usr_id'] ?>');
+        datos.append('cts_usr_id', '<?= $_SESSION['usr']['usr_id'] ?>');
+        datos.append('usr_perfil', '<?= $_SESSION['usr']['usr_perfil'] ?>');
         datos.append('tenantid', '<?= $_SESSION['usr']['tenantid'] ?>');
         $.ajax({
             type: 'POST',

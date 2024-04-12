@@ -103,7 +103,7 @@ class CitasController
     {
         $data = $request->getParsedBody();
 
-        $citas = CitasModelo::mdlMostrarCitas($data['tenantid']);
+        $citas = CitasModelo::mdlMostrarCitas($data['usr_perfil'], $data['cts_usr_id'], $data['tenantid']);
         $array = array();
         foreach ($citas as $key => $cts) {
             array_push($array, array(

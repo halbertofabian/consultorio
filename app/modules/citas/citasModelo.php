@@ -57,16 +57,26 @@ class CitasModelo
 
 
 
-    public static function mdlMostrarCitas($tenantid)
+    public static function mdlMostrarCitas($usr_perfil, $cts_usr_id, $tenantid)
     {
         try {
             //code...
-            $sql = "SELECT * FROM tbl_citas_cts WHERE tenantid = ? AND cts_estado IN ('Pendiente', 'Asistió') ORDER BY cts_id DESC";
-            $con = Conexion::conectar();
-            $pps = $con->prepare($sql);
-            $pps->bindValue(1, $tenantid);
-            $pps->execute();
-            return $pps->fetchAll(PDO::FETCH_ASSOC);
+            if ($usr_perfil == 'Secretaria') {
+                $sql = "SELECT * FROM tbl_citas_cts WHERE tenantid = ? AND cts_estado IN ('Pendiente', 'Asistió') ORDER BY cts_id DESC";
+                $con = Conexion::conectar();
+                $pps = $con->prepare($sql);
+                $pps->bindValue(1, $tenantid);
+                $pps->execute();
+                return $pps->fetchAll(PDO::FETCH_ASSOC);
+            } else if ($usr_perfil == 'Doctor') {
+                $sql = "SELECT * FROM tbl_citas_cts WHERE cts_usr_id = ? AND tenantid = ? AND cts_estado IN ('Pendiente', 'Asistió') ORDER BY cts_id DESC";
+                $con = Conexion::conectar();
+                $pps = $con->prepare($sql);
+                $pps->bindValue(1, $cts_usr_id);
+                $pps->bindValue(2, $tenantid);
+                $pps->execute();
+                return $pps->fetchAll(PDO::FETCH_ASSOC);
+            }
         } catch (PDOException $th) {
             //throw $th;
         } finally {
