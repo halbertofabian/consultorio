@@ -36,7 +36,7 @@ function showOptionMenu($tipo, $ruta)
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
         <div class="navbar-vertical-content scrollbar">
             <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
-                <?php if ($_SESSION['usr']['usr_perfil'] == 'Super administrador') : ?>
+                <?php if ($_SESSION['usr']['usr_perfil'] == 'Super Administrador') : ?>
                     <li class="nav-item">
                         <a class="nav-link dropdown-indicator" href="#suscripciones" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="suscripciones">
                             <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fa fa-filter"></span></span><span class="nav-link-text ps-1">Suscripciones</span>
