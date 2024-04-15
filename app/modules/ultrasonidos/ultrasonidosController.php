@@ -10,8 +10,8 @@ class UltrasonidosController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
         $data['uts_fecha'] = $data['uts_fecha'] . ' ' . $data['uts_hora'];
-        $data['uts_motivo'] = mb_strtoupper($data['uts_motivo']);
-        $data['uts_conclusion'] = mb_strtoupper($data['uts_conclusion']);
+        $data['uts_motivo'] = $data['uts_motivo'];
+        $data['uts_conclusion'] = $data['uts_conclusion'];
         $data['tenantid'] = $_SESSION['usr']['tenantid'];
 
         $fechaActual = FECHA;
@@ -56,8 +56,8 @@ class UltrasonidosController
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
         $data['uts_fecha'] = $data['uts_fecha'] . ' ' . $data['uts_hora'];
-        $data['uts_motivo'] = mb_strtoupper($data['uts_motivo']);
-        $data['uts_conclusion'] = mb_strtoupper($data['uts_conclusion']);
+        $data['uts_motivo'] = $data['uts_motivo'];
+        $data['uts_conclusion'] = $data['uts_conclusion'];
 
         $fechaActual = FECHA;
 

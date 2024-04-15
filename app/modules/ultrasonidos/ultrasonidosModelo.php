@@ -17,6 +17,7 @@ class UltrasonidosModelo
             $pps->bindValue(5, $uts['tenantid']);
             $pps->execute();
             return $pps->rowCount() > 0;
+            // return $pps->errorInfo();
         } catch (PDOException $th) {
             //throw $th;
         } finally {
