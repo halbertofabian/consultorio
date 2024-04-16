@@ -32,7 +32,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
                             <label for="pte_edad" class="form-label">Edad</label>
-                            <input type="text" class="form-control" name="pte_edad" id="pte_edad" placeholder="" required/>
+                            <input type="text" class="form-control" name="pte_edad" id="pte_edad" placeholder=""/>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
                             <label for="" class="form-label">Sexo</label><br>

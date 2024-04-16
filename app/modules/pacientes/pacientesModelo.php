@@ -44,6 +44,7 @@ class PacientesModelo
             $pps->bindValue(28, $pte['tenantid']);
             $pps->execute();
             return $con->lastInsertId();
+            // return $pps->errorInfo();
         } catch (PDOException $th) {
             //throw $th;
         } finally {

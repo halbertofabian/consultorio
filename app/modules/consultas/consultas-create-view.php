@@ -19,42 +19,42 @@ $pte_id = $rutas[2];
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_nombres" class="form-label"><?= OBL ?> Nombre(s)</label>
                             <input type="hidden" name="pte_id" id="pte_id">
-                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_nombres" id="pte_nombres" placeholder="" required required />
+                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_nombres" id="pte_nombres" placeholder="" />
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_ap_paterno" class="form-label"><?= OBL ?> Apellido paterno</label>
-                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_paterno" id="pte_ap_paterno" placeholder="" required required />
+                            <label for="pte_ap_paterno" class="form-label">Apellido paterno</label>
+                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_paterno" id="pte_ap_paterno" placeholder="" />
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_ap_materno" class="form-label"><?= OBL ?> Apellido materno</label>
-                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_materno" id="pte_ap_materno" placeholder="" required />
+                            <label for="pte_ap_materno" class="form-label">Apellido materno</label>
+                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_materno" id="pte_ap_materno" placeholder="" />
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_fecha_nacimiento" class="form-label"><?= OBL ?> Fecha de nacimiento</label>
-                            <input type="date" class="form-control generar-curp" name="pte_fecha_nacimiento" id="pte_fecha_nacimiento" placeholder="" required />
+                            <label for="pte_fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control generar-curp" name="pte_fecha_nacimiento" id="pte_fecha_nacimiento" placeholder="" />
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_edad" class="form-label"><?= OBL ?> Edad</label>
-                            <input type="text" class="form-control" name="pte_edad" id="pte_edad" placeholder="" required />
+                            <label for="pte_edad" class="form-label">Edad</label>
+                            <input type="text" class="form-control" name="pte_edad" id="pte_edad" placeholder="" />
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="" class="form-label"><?= OBL ?> Sexo</label><br>
+                            <label for="" class="form-label">Sexo</label><br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pte_sexo" id="masculino" value="Masculino" required>
+                                <input class="form-check-input" type="radio" name="pte_sexo" id="masculino" value="Masculino">
                                 <label class="form-check-label" for="masculino">Masculino</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pte_sexo" id="femenino" value="Femenino" required>
+                                <input class="form-check-input" type="radio" name="pte_sexo" id="femenino" value="Femenino">
                                 <label class="form-check-label" for="femenino">Femenino</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="pte_sexo" id="otro" value="Otro" required>
+                                <input class="form-check-input" type="radio" name="pte_sexo" id="otro" value="Otro">
                                 <label class="form-check-label" for="otro">Otro</label>
                             </div>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_pais_nacimiento" class="form-label"><?= OBL ?> País de nacimiento</label>
-                            <select class="form-select" name="pte_pais_nacimiento" id="pte_pais_nacimiento" required>
+                            <label for="pte_pais_nacimiento" class="form-label">País de nacimiento</label>
+                            <select class="form-select" name="pte_pais_nacimiento" id="pte_pais_nacimiento">
                                 <option value="">-Seleccionar-</option>
                                 <?php
                                 $paises = ComponentesControlador::getPaises();
@@ -64,8 +64,8 @@ $pte_id = $rutas[2];
                             </select>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_estado_nacimiento" class="form-label"><?= OBL ?> Estado de nacimiento</label>
-                            <select class="form-select generar-curp" name="pte_estado_nacimiento" id="pte_estado_nacimiento" required>
+                            <label for="pte_estado_nacimiento" class="form-label">Estado de nacimiento</label>
+                            <select class="form-select generar-curp" name="pte_estado_nacimiento" id="pte_estado_nacimiento">
                                 <option value="">-Seleccionar-</option>
                                 <?php
                                 $estados = ComponentesControlador::getEstados();
@@ -75,8 +75,8 @@ $pte_id = $rutas[2];
                             </select>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_nacionalidad" class="form-label"><?= OBL ?> Nacionalidad</label>
-                            <select class="form-select" name="pte_nacionalidad" id="pte_nacionalidad" required>
+                            <label for="pte_nacionalidad" class="form-label">Nacionalidad</label>
+                            <select class="form-select" name="pte_nacionalidad" id="pte_nacionalidad">
                                 <option value="">-Seleccionar-</option>
                                 <?php
                                 $nacionalidades = ComponentesControlador::getNacionalidad();
@@ -86,42 +86,42 @@ $pte_id = $rutas[2];
                             </select>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_rfc" class="form-label"><?= OBL ?> RFC</label>
-                            <input type="text" class="form-control text-uppercase" name="pte_rfc" id="pte_rfc" placeholder="" required />
+                            <label for="pte_rfc" class="form-label">RFC</label>
+                            <input type="text" class="form-control text-uppercase" name="pte_rfc" id="pte_rfc" placeholder="" />
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
-                            <label for="pte_curp" class="form-label"><?= OBL ?> CURP</label>
-                            <input type="text" class="form-control text-uppercase" name="pte_curp" id="pte_curp" placeholder="" required />
+                            <label for="pte_curp" class="form-label">CURP</label>
+                            <input type="text" class="form-control text-uppercase" name="pte_curp" id="pte_curp" placeholder="" />
                         </div>
                     </div>
                     <hr>
                     <div class="row g-3">
                         <div class="col-xl-12 col-md-6 col-12">
                             <label for="pte_codigo_postal">Código postal</label>
-                            <input type="text" name="pte_codigo_postal" id="pte_codigo_postal" class="form-control w-lg-50" placeholder="" aria-describedby="helpId" required>
+                            <input type="text" name="pte_codigo_postal" id="pte_codigo_postal" class="form-control w-lg-50" placeholder="" aria-describedby="helpId">
                             <small id="helpId" class="text-muted"> <a class="float-right" target="_blank" href="https://www.correosdemexico.gob.mx/SSLServicios/ConsultaCP/Descarga.aspx">No sé mi código</a> </small>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_estado">Estado</label>
-                            <input type="text" name="pte_estado" id="pte_estado" class="form-control" placeholder="" required readonly>
+                            <input type="text" name="pte_estado" id="pte_estado" class="form-control" placeholder="" readonly>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_delegacion_municipio">Delegación / Municipio </label>
-                            <input type="text" name="pte_delegacion_municipio" id="pte_delegacion_municipio" class="form-control" placeholder="" required readonly>
+                            <input type="text" name="pte_delegacion_municipio" id="pte_delegacion_municipio" class="form-control" placeholder="" readonly>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_colonia">Colonia / Asentamiento</label>
-                            <select class="form-control select2" name="pte_colonia" id="pte_colonia" required>
+                            <select class="form-control select2" name="pte_colonia" id="pte_colonia">
                                 <option value="">Selecciona tu Colonia</option>
                             </select>
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_calle">Calle </label>
-                            <input type="text" name="pte_calle" id="pte_calle" class="form-control" placeholder="" required>
+                            <input type="text" name="pte_calle" id="pte_calle" class="form-control" placeholder="">
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_no_exterior">Nº exterior </label>
-                            <input type="text" name="pte_no_exterior" id="pte_no_exterior" class="form-control" placeholder="" required>
+                            <input type="text" name="pte_no_exterior" id="pte_no_exterior" class="form-control" placeholder="">
                         </div>
                         <div class="col-xl-6 col-md-6 col-12">
                             <label for="pte_no_interior">Nº interior / Depto </label>

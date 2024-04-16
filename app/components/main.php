@@ -17,6 +17,7 @@
                 'consultas' => 'app/modules/consultas/consultas.php',
                 'citas' => 'app/modules/citas/citas.php',
                 'ultrasonidos' => 'app/modules/ultrasonidos/ultrasonidos.php',
+                'historial' => 'app/modules/historial/historial.php',
                 'login' => 'app/modules/login/login.php',
                 // Agrega más rutas y archivos según sea necesario
             ];

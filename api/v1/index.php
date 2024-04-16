@@ -13,6 +13,7 @@ require_once(__DIR__ . '/../../app/modules/pacientes/pacientesController.php');
 require_once(__DIR__ . '/../../app/modules/consultas/consultasController.php');
 require_once(__DIR__ . '/../../app/modules/citas/citasController.php');
 require_once(__DIR__ . '/../../app/modules/ultrasonidos/ultrasonidosController.php');
+require_once(__DIR__ . '/../../app/modules/historial/historialController.php');
 
 require_once(__DIR__ . '/../../app/modules/usuarios/usuariosModelo.php');
 require_once(__DIR__ . '/../../app/modules/suscripciones/suscripcionesModelo.php');
@@ -22,6 +23,7 @@ require_once(__DIR__ . '/../../app/modules/pacientes/pacientesModelo.php');
 require_once(__DIR__ . '/../../app/modules/consultas/consultasModelo.php');
 require_once(__DIR__ . '/../../app/modules/citas/citasModelo.php');
 require_once(__DIR__ . '/../../app/modules/ultrasonidos/ultrasonidosModelo.php');
+require_once(__DIR__ . '/../../app/modules/historial/historialModelo.php');
 
 
 
@@ -43,6 +45,7 @@ require __DIR__ . '/pacientes.php';
 require __DIR__ . '/consultas.php';
 require __DIR__ . '/citas.php';
 require __DIR__ . '/ultrasonidos.php';
+require __DIR__ . '/historial.php';
 
 // Ejecutar la aplicación
 $app->run();

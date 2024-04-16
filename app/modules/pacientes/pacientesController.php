@@ -13,6 +13,7 @@ class PacientesController
         $data['pte_nombres'] = trim(mb_strtoupper($data['pte_nombres']));
         $data['pte_ap_paterno'] = trim(mb_strtoupper($data['pte_ap_paterno']));
         $data['pte_ap_materno'] = trim(mb_strtoupper($data['pte_ap_materno']));
+        $data['pte_sexo'] = isset($data['pte_sexo']) ? $data['pte_sexo'] : "";
         $data['pte_rfc'] = trim(mb_strtoupper($data['pte_rfc']));
         $data['pte_curp'] = trim(mb_strtoupper($data['pte_curp']));
         $data['pte_fecha_registro'] = FECHA;
@@ -45,6 +46,7 @@ class PacientesController
         $data['pte_nombres'] = trim(mb_strtoupper($data['pte_nombres']));
         $data['pte_ap_paterno'] = trim(mb_strtoupper($data['pte_ap_paterno']));
         $data['pte_ap_materno'] = trim(mb_strtoupper($data['pte_ap_materno']));
+        $data['pte_sexo'] = isset($data['pte_sexo']) ? $data['pte_sexo'] : "";
         $data['pte_rfc'] = trim(mb_strtoupper($data['pte_rfc']));
         $data['pte_curp'] = trim(mb_strtoupper($data['pte_curp']));
         $data['pte_usuario_registro'] = $_SESSION['usr']['usr_id'];
@@ -79,7 +81,7 @@ class PacientesController
                 <a class="dropdown-item" href="' . HTTP_HOST . 'consultas/create/' . base64_encode($pte['pte_id']) . '">Agregar a consulta</a>
                 <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
                 <a class="dropdown-item" href="' . HTTP_HOST . 'ultrasonidos/create/' . base64_encode($pte['pte_id']) . '">Agregar ultrasonido</a>
-                <a class="dropdown-item" href="' . HTTP_HOST . 'historial/create/' . base64_encode($pte['pte_id']) . '">Historial</a>
+                <a class="dropdown-item" href="' . HTTP_HOST . 'historial/create/' . base64_encode($pte['pte_id']) . '">Historia clínica</a>
                 <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
                 <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
                 ';
