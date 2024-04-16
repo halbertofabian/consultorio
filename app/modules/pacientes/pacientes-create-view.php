@@ -19,19 +19,19 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Nuevo paciente'
                             <input type="text" class="form-control text-uppercase generar-curp" name="pte_nombres" id="pte_nombres" placeholder="" required/>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
-                            <label for="pte_ap_paterno" class="form-label"><?= OBL ?> <?= OBL ?>Apellido paterno</label>
-                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_paterno" id="pte_ap_paterno" placeholder="" required/>
+                            <label for="pte_ap_paterno" class="form-label">Apellido paterno</label>
+                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_paterno" id="pte_ap_paterno" placeholder=""/>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
-                            <label for="pte_ap_materno" class="form-label"><?= OBL ?> Apellido materno</label>
-                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_materno" id="pte_ap_materno" placeholder="" required/>
+                            <label for="pte_ap_materno" class="form-label">Apellido materno</label>
+                            <input type="text" class="form-control text-uppercase generar-curp" name="pte_ap_materno" id="pte_ap_materno" placeholder=""/>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
-                            <label for="pte_fecha_nacimiento" class="form-label"><?= OBL ?> Fecha de nacimiento</label>
-                            <input type="date" class="form-control generar-curp" name="pte_fecha_nacimiento" id="pte_fecha_nacimiento" placeholder="" required/>
+                            <label for="pte_fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control generar-curp" name="pte_fecha_nacimiento" id="pte_fecha_nacimiento" placeholder=""/>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
-                            <label for="pte_edad" class="form-label"><?= OBL ?> Edad</label>
+                            <label for="pte_edad" class="form-label">Edad</label>
                             <input type="text" class="form-control" name="pte_edad" id="pte_edad" placeholder="" required/>
                         </div>
                         <div class="col-xl-4 col-md-6 col-12">
