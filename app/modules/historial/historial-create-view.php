@@ -19,7 +19,7 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                     </div>
                     <div class="col-md-6 col-12 btnPdfHistorial d-none">
                         <button type="button" class="btn btn-dark float-end btnMostrarPdfHistorial">
-                           <i class="fa fa-file-pdf"></i> PDF
+                            <i class="fa fa-file-pdf"></i> PDF
                         </button>
                     </div>
                 </div>
@@ -436,11 +436,43 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_medicamentos_actuales" class="form-label">Medicamentos Actuales</label>
+                        <input type="hidden" name="pte_medicamentos" id="pte_medicamentos">
                         <select class="form-select" name="pte_medicamentos_actuales" id="pte_medicamentos_actuales">
                             <option value="">-Seleccionar-</option>
                             <option value="S">Si</option>
                             <option value="N">No</option>
                         </select>
+                    </div>
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th class="text-center" colspan="8">
+                                            MEDICAMENTOS <br>
+                                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="modal" data-bs-target="#mdlAgregarMedicamentos">
+                                                Agregar
+                                            </button>
+
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Nombre comercial</th>
+                                        <th scope="col">Principio activo</th>
+                                        <th scope="col">Presentación(mg,UI)</th>
+                                        <th scope="col">Dosis(mg)</th>
+                                        <th scope="col">Vía</th>
+                                        <th scope="col">Frecuencia</th>
+                                        <th scope="col">Fecha, última administración</th>
+                                        <th scope="col">Hora de última administración</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_medicamentos">
+
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                     <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
                     <div class="col-12">
@@ -550,6 +582,67 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
         </div>
     </div>
 </div>
+
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal fade" id="mdlAgregarMedicamentos" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">
+                    Agregar medicamento
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregarMedicamento" class="row g-3">
+                    <div class="col-12">
+                        <label for="" class="form-label">Nombre comercial</label>
+                        <input type="text" class="form-control" name="nombre_comercial" id="" required />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Principio activo</label>
+                        <input type="text" class="form-control" name="principio_activo" id="" />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Presentación(mg,UI)</label>
+                        <input type="text" class="form-control" name="presentacion" id="" />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Dosis(mg)</label>
+                        <input type="text" class="form-control" name="dosis" id="" />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Via</label>
+                        <input type="text" class="form-control" name="via" id="" />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Frecuencia</label>
+                        <input type="text" class="form-control" name="frecuencia" id="" />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Fecha última administración</label>
+                        <input type="date" class="form-control" name="fecha_administracion" id="" />
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="" class="form-label">Hora última administración</label>
+                        <input type="time" class="form-control" name="hora_administracion" id="" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     $(document).ready(function() {
@@ -675,6 +768,8 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                     $("#btnGuardarHistorial").text('Actualizar');
                     $(".btnPdfHistorial").removeClass('d-none');
 
+                    mostrarMedicamentos();
+
                 }
             }
         });
@@ -706,4 +801,60 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
             }
         });
     });
+
+    $('#formAgregarMedicamento').on('submit', function(e) {
+        e.preventDefault();
+        var datos = $(this).serializeArray();
+        var pte_medicamentos = $("#pte_medicamentos").val();
+        var nuevoMedicamento = {
+            'nombre_comercial': '',
+            'principio_activo': '',
+            'presentacion': '',
+            'dosis': '',
+            'via': '',
+            'frecuencia': '',
+            'fecha_administracion': '',
+            'hora_administracion': ''
+        };
+
+        // Asignar los valores correspondientes al nuevo medicamento
+        datos.forEach(function(item) {
+            nuevoMedicamento[item.name] = item.value;
+        });
+
+        var array_medicamentos = [];
+        if (pte_medicamentos !== "") {
+            array_medicamentos = JSON.parse(pte_medicamentos);
+        }
+        array_medicamentos.push(nuevoMedicamento);
+        $("#pte_medicamentos").val(JSON.stringify(array_medicamentos));
+        $('#formAgregarMedicamento')[0].reset();
+        $("#mdlAgregarMedicamentos").modal('hide');
+
+        mostrarMedicamentos();
+    });
+
+    function mostrarMedicamentos(){
+        var tbody_medicamentos = "";
+        var pte_medicamentos = $("#pte_medicamentos").val();
+        if(pte_medicamentos !== ""){
+            var datos = JSON.parse(pte_medicamentos);
+            datos.forEach(md => {
+                tbody_medicamentos += `
+                    <tr>
+                        <td>${md.nombre_comercial}</td>
+                        <td>${md.principio_activo}</td>
+                        <td>${md.presentacion}</td>
+                        <td>${md.dosis}</td>
+                        <td>${md.via}</td>
+                        <td>${md.frecuencia}</td>
+                        <td>${md.fecha_administracion}</td>
+                        <td>${md.hora_administracion}</td>
+                    </tr>
+                `;
+            });
+
+            $("#tbody_medicamentos").html(tbody_medicamentos);
+        }
+    }
 </script>

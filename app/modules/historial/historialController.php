@@ -88,7 +88,7 @@ class HistorialController
             'pte_piel_anexos' => $data['pte_piel_anexos'],
             'pte_neurologico' => $data['pte_neurologico'],
             'pte_medicamentos_actuales' => $data['pte_medicamentos_actuales'],
-            'pte_medicamentos' => "",
+            'pte_medicamentos' => $data['pte_medicamentos'],
         ), true);
 
         $data['hcl_ficha_clinica'] = json_encode(array(
