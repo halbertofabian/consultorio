@@ -22,7 +22,7 @@ class CitasController
         if ($data['cts_fecha_inicio'] < $fechaActual || $data['cts_fecha_fin'] < $fechaActual) {
             $response->getBody()->write(json_encode(array(
                 'status' => false,
-                'mensaje' => 'La fecha debe ser mayor o igual a la fecha actual',
+                'mensaje' => 'La fecha debe ser mayor o igual a la fecha y hora actual',
             )));
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -64,22 +64,25 @@ class CitasController
         $data['cts_usuario_registro'] = $_SESSION['usr']['usr_id'];
 
         $fechaActual = FECHA;
+        $cts = CitasModelo::mdlMostrarCitasById($data['cts_id']);
 
-        if ($data['cts_fecha_inicio'] < $fechaActual || $data['cts_fecha_fin'] < $fechaActual) {
-            $response->getBody()->write(json_encode(array(
-                'status' => false,
-                'mensaje' => 'La fecha debe ser mayor o igual a la fecha actual',
-            )));
-            return $response->withHeader('Content-Type', 'application/json');
-        }
+        if ($cts['cts_fecha_inicio'] !== $data['cts_fecha_inicio'] && $cts['cts_fecha_fin'] !== $data['cts_fecha_fin']) {
+            if ($data['cts_fecha_inicio'] < $fechaActual || $data['cts_fecha_fin'] < $fechaActual) {
+                $response->getBody()->write(json_encode(array(
+                    'status' => false,
+                    'mensaje' => 'La fecha debe ser mayor o igual a la fecha y hora actual',
+                )));
+                return $response->withHeader('Content-Type', 'application/json');
+            }
 
-        $citas = CitasModelo::mdlMostrarCitasByFechas($data['cts_fecha_inicio'], $data['cts_fecha_fin'], $data['cts_ctr_id'], $data['cts_usr_id'], $_SESSION['usr']['tenantid']);
-        if ($citas) {
-            $response->getBody()->write(json_encode(array(
-                'status' => false,
-                'mensaje' => 'Ya existe una cita programada para esta fecha y hora',
-            )));
-            return $response->withHeader('Content-Type', 'application/json');
+            $citas = CitasModelo::mdlMostrarCitasByFechas($data['cts_fecha_inicio'], $data['cts_fecha_fin'], $data['cts_ctr_id'], $data['cts_usr_id'], $_SESSION['usr']['tenantid']);
+            if ($citas) {
+                $response->getBody()->write(json_encode(array(
+                    'status' => false,
+                    'mensaje' => 'Ya existe una cita programada para esta fecha y hora',
+                )));
+                return $response->withHeader('Content-Type', 'application/json');
+            }
         }
 
         $res = CitasModelo::mdlActualizarCitas($data);
