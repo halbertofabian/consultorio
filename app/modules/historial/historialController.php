@@ -116,7 +116,12 @@ class HistorialController
             'pte_terapeutica_inicial' => $data['pte_terapeutica_inicial'],
         ), true);
 
-        $data['hcl_observaciones'] = $data['pte_comentarios_finales'];
+        $data['hcl_observaciones'] = json_encode(array(
+            'pte_comentarios_finales' => $data['pte_comentarios_finales'],
+            'pte_condicion' => $data['pte_condicion'],
+            'pte_pronostico' => $data['pte_pronostico'],
+        ), true);
+        
         $data['tenantid'] = $_SESSION['usr']['tenantid'];
 
         if ($data['hcl_id'] == "") {

@@ -91,4 +91,22 @@ class HistorialModelo{
             $con = null;
         }
     }
+
+    public static function mdlMostrarHistorialById($hcl_id)
+    {
+        try {
+            //code...
+            $sql = "SELECT * FROM tbl_historial_clinico_hcl WHERE hcl_id = ? AND hcl_estado_borrado = 1";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $hcl_id);
+            $pps->execute();
+            return $pps->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $th) {
+            //throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
 }

@@ -306,20 +306,63 @@ class ComponentesControlador
     public static function obtenerNombrePaciente($pte_id)
     {
         $pte = PacientesModelo::mdlMostrarPacientesById($pte_id);
-        if($pte){
+        if ($pte) {
             return $pte['pte_nombres'] . ' ' . $pte['pte_ap_paterno'] . ' ' . $pte['pte_ap_materno'];
-        }else{
+        } else {
             return "";
         }
     }
     public static function obtenerNombreConsultorio($ctr_id)
     {
         $ctr = ConsultoriosModelo::mdlMostrarConsultoriosById($ctr_id);
-        if($ctr){
+        if ($ctr) {
             return $ctr['ctr_nombre'];
-        }else{
+        } else {
             return "";
         }
     }
+
+    public static function obtenerNombreUsuario($usr_id)
+    {
+        $usr = UsuariosModelo::mdlMostrarUsuariosById($usr_id);
+        if ($usr) {
+            return $usr['usr_nombre'];
+        } else {
+            return "";
+        }
+    }
+
+    public static function reducir_resolucion_imagen($ruta_imagen_original, $factor_reduccion) {
+        // Cargar la imagen original
+        $imagen = imagecreatefrompng($ruta_imagen_original);
     
+        // Obtener las dimensiones originales de la imagen
+        $ancho_original = imagesx($imagen);
+        $alto_original = imagesy($imagen);
+    
+        // Calcular el nuevo tamaño deseado
+        $nuevo_ancho = $ancho_original * $factor_reduccion;
+        $nuevo_alto = $alto_original * $factor_reduccion;
+    
+        // Crear una nueva imagen transparente con el nuevo tamaño
+        $nueva_imagen = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
+        $transparency = imagecolorallocatealpha($nueva_imagen, 0, 0, 0, 127);
+        imagefill($nueva_imagen, 0, 0, $transparency);
+        imagesavealpha($nueva_imagen, true);
+    
+        // Copiar la imagen original a la nueva imagen
+        imagecopyresampled($nueva_imagen, $imagen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho_original, $alto_original);
+    
+        // Guardar la nueva imagen en un archivo temporal
+        $imagen_reducida = tempnam(sys_get_temp_dir(), 'logo_');
+        imagepng($nueva_imagen, $imagen_reducida);
+    
+        // Liberar la memoria de las imágenes
+        imagedestroy($imagen);
+        imagedestroy($nueva_imagen);
+    
+        // Devolver la ruta de la imagen reducida
+        return $imagen_reducida;
+    }
+
 }

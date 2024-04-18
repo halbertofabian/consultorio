@@ -114,16 +114,16 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_indigena" class="form-label">¿Pertenece a algun pueblo indígena?</label>
                         <select class="form-select" name="pte_indigena" id="pte_indigena">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_lengua_indigena" class="form-label">¿Habla lengua indígena?</label>
                         <select class="form-select" name="pte_lengua_indigena" id="pte_lengua_indigena">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -170,8 +170,8 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_tabaquismo" class="form-label">Tabaquismo</label>
                         <select class="form-select" name="pte_tabaquismo" id="pte_tabaquismo">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -186,16 +186,16 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_tabaquismo_ant" class="form-label">Exfumador</label>
                         <select class="form-select" name="pte_tabaquismo_ant" id="pte_tabaquismo_ant">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_tabaquismo_pasivo" class="form-label">Fumador pasivo</label>
                         <select class="form-select" name="pte_tabaquismo_pasivo" id="pte_tabaquismo_pasivo">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4"></div>
@@ -203,8 +203,8 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_alcoholismo" class="form-label">Alcohol</label>
                         <select class="form-select" name="pte_alcoholismo" id="pte_alcoholismo">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -219,8 +219,8 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_alcoholismo_ant" class="form-label">Ex - alcohólico y/o Ocasional</label>
                         <select class="form-select" name="pte_alcoholismo_ant" id="pte_alcoholismo_ant">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -246,16 +246,16 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_servicios_basicos" class="form-label">Vivienda con Servicios Básicos</label>
                         <select class="form-select" name="pte_servicios_basicos" id="pte_servicios_basicos">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_farmacodependencia" class="form-label">Farmacodependencia</label>
                         <select class="form-select" name="pte_farmacodependencia" id="pte_farmacodependencia">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -276,8 +276,8 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_ciclos_regulares" class="form-label">Ciclos Regulares</label>
                         <select class="form-select" name="pte_ciclos_regulares" id="pte_ciclos_regulares">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -292,32 +292,32 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <label for="pte_polimenorrea" class="form-label">Polimenorrea</label>
                         <select class="form-select" name="pte_polimenorrea" id="pte_polimenorrea">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_hipermenorrea" class="form-label">Hipermenorrea</label>
                         <select class="form-select" name="pte_hipermenorrea" id="pte_hipermenorrea">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_dismenorrea" class="form-label">Dismenorrea</label>
                         <select class="form-select" name="pte_dismenorrea" id="pte_dismenorrea">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
                         <label for="pte_incapacitante" class="form-label">Incapacitante</label>
                         <select class="form-select" name="pte_incapacitante" id="pte_incapacitante">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-12">
@@ -439,8 +439,8 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                         <input type="hidden" name="pte_medicamentos" id="pte_medicamentos">
                         <select class="form-select" name="pte_medicamentos_actuales" id="pte_medicamentos_actuales">
                             <option value="">-Seleccionar-</option>
-                            <option value="S">Si</option>
-                            <option value="N">No</option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                     <div class="col-12">
@@ -571,6 +571,14 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                     </div>
                     <div class="col-md-12 col-12">
                         <textarea class="form-control" name="pte_comentarios_finales" id="pte_comentarios_finales" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="pte_condicion" class="form-label">Condición:</label>
+                        <textarea class="form-control" name="pte_condicion" id="pte_condicion" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="pte_pronostico" class="form-label">Pronóstico:</label>
+                        <textarea class="form-control" name="pte_pronostico" id="pte_pronostico" rows="3"></textarea>
                     </div>
                     <div class="col-md-12 col-12">
                         <button type="submit" class="btn btn-primary float-end" id="btnGuardarHistorial">
@@ -705,6 +713,7 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                     $("#pte_ciclos_regulares").val(hcl_ant_ginecoobstétricos.pte_ciclos_regulares);
                     $("#pte_ritmo").val(hcl_ant_ginecoobstétricos.pte_ritmo);
                     $("#pte_ultima_menstruacion").val(hcl_ant_ginecoobstétricos.pte_ultima_menstruacion);
+                    $("#pte_polimenorrea").val(hcl_ant_ginecoobstétricos.pte_polimenorrea);
                     $("#pte_hipermenorrea").val(hcl_ant_ginecoobstétricos.pte_hipermenorrea);
                     $("#pte_dismenorrea").val(hcl_ant_ginecoobstétricos.pte_dismenorrea);
                     $("#pte_incapacitante").val(hcl_ant_ginecoobstétricos.pte_incapacitante);
@@ -762,8 +771,10 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
                     $("#pte_plan_estudio").val(hcl_ait.pte_plan_estudio);
                     $("#pte_terapeutica_inicial").val(hcl_ait.pte_terapeutica_inicial);
 
-                    $("#pte_comentarios_finales").val(res.hcl_observaciones);
-
+                    var hcl_observaciones = JSON.parse(res.hcl_observaciones);
+                    $("#pte_comentarios_finales").val(hcl_observaciones.pte_comentarios_finales);
+                    $("#pte_condicion").val(hcl_observaciones.pte_condicion);
+                    $("#pte_pronostico").val(hcl_observaciones.pte_pronostico);
 
                     $("#btnGuardarHistorial").text('Actualizar');
                     $(".btnPdfHistorial").removeClass('d-none');
@@ -834,10 +845,10 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
         mostrarMedicamentos();
     });
 
-    function mostrarMedicamentos(){
+    function mostrarMedicamentos() {
         var tbody_medicamentos = "";
         var pte_medicamentos = $("#pte_medicamentos").val();
-        if(pte_medicamentos !== ""){
+        if (pte_medicamentos !== "") {
             var datos = JSON.parse(pte_medicamentos);
             datos.forEach(md => {
                 tbody_medicamentos += `
@@ -857,4 +868,9 @@ $pte = PacientesModelo::mdlMostrarPacientesById(base64_decode($pte_id));
             $("#tbody_medicamentos").html(tbody_medicamentos);
         }
     }
+
+    $(document).on('click', '.btnMostrarPdfHistorial', function() {
+        var hcl_id = $("#hcl_id").val();
+        window.open('<?= HTTP_HOST ?>' + `app/report/reporte-historial-medico.php?hcl_id=${hcl_id}`, '_blank');
+    });
 </script>
