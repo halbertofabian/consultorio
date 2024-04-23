@@ -34,6 +34,21 @@ use Slim\Factory\AppFactory;
 $app = AppFactory::create();
 $app->setBasePath("/" . FOLDER . "api/v1"); // /myapp/api es la carpeta api (http://domain/myapp/api)
 
+// Middleware para manejar CORS
+$app->options('/{routes:.+}', function (Request $request, Response $response, $args) {
+    return $response;
+});
+
+$app->add(function (Request $request, $handler) {
+    $response = $handler->handle($request);
+    return $response
+        ->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+        ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
+        ->withHeader('Access-Control-Allow-Credentials', 'true');
+});
+
+
 // Middleware de manejo de errores
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 

@@ -9,10 +9,16 @@ class SuscripcionesController
     {
         // Aquí puedes acceder a los datos de la solicitud
         $data = $request->getParsedBody();
+        $elemento = explode("+", $data['scs_pais']);
 
+        $data['scs_whatsapp'] = $elemento[1] . $data['scs_telefono'];
         $data['scs_nombre'] = mb_strtoupper($data['scs_nombre']);
         $data['scs_clave'] = crypt($data['scs_clave'], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
         $data['tenantid'] = uniqid();
+        $data['scs_fecha_inicio'] =  date('Y-m-d');
+        $data['scs_fecha_fin'] =  date('Y-m-d', strtotime('+1 months', time()));
+        $data['scs_tipo_cliente'] =  'CLIENTE';
+        $data['scs_pais'] =  $elemento[0];
 
         $res = SuscripcionesModelo::mdlGuardarSuscripciones($data);
         if ($res) {
