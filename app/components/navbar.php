@@ -15,7 +15,7 @@ function showOptionMenu($tipo, $ruta)
         container.classList.add('container-fluid');
     }
 </script>
-<nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
+<nav class="navbar navbar-light navbar-vertical navbar-expand-xl" id="step1">
     <script>
         var navbarStyle = localStorage.getItem("navbarStyle");
         if (navbarStyle && navbarStyle !== 'transparent') {

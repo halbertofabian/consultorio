@@ -36,7 +36,8 @@
                 include_once $routes['home'];
             }
             ?>
-            <?php include_once 'app/components/footer.php'; ?>
+            <?php 
+            include_once 'app/components/footer.php'; ?>
         </div>
     </div>
 </main>

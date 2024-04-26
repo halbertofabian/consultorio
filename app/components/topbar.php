@@ -13,13 +13,14 @@
                 <label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to dark theme"><span class="fas fa-moon fs-0"></span></label>
             </div>
         </li>
-        <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-xl">
+        <li class="nav-item dropdown">
+            <a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-xl" id="step2">
                     <img class="rounded-circle" src="<?= $_SESSION['usr']['usr_foto'] !== "" ? $_SESSION['usr']['usr_foto'] : HTTP_HOST . 'app/assets/img/team/3-thumb.png' ?>" alt="" />
 
                 </div>
             </a>
-            <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
+            <div class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser" id="step3">
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                     <a class="dropdown-item fw-bold text-warning" href="<?= HTTP_HOST ?>usuarios/update/<?= base64_encode($_SESSION['usr']['usr_id']) ?>"><span><?= $_SESSION['usr']['usr_perfil'] ?></span></a>
                     <div class="dropdown-divider"></div>

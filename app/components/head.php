@@ -36,6 +36,7 @@
     <link href="<?= HTTP_HOST ?>app/assets/css/user-rtl.min.css" rel="stylesheet" id="user-style-rtl">
     <link href="<?= HTTP_HOST ?>app/assets/css/user.min.css" rel="stylesheet" id="user-style-default">
     <link href="<?= HTTP_HOST ?>app/assets/css/toastr.min.css" rel="stylesheet">
+    <link href="<?= HTTP_HOST ?>app/assets/css/intro.css" rel="stylesheet">
     <link href="<?= HTTP_HOST ?>app/vendors/fullcalendar/main.min.css" rel="stylesheet">
     <link href="<?= HTTP_HOST ?>app/vendors/flatpickr/flatpickr.min.css" rel="stylesheet">
     <link href="<?= HTTP_HOST ?>app/vendors/select2/select2.min.css" rel="stylesheet">
