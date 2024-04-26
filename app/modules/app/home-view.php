@@ -15,12 +15,12 @@
                 {
                     element: document.querySelector('#step1'),
                     intro: "En el lado izquierdo, encontrarás un menú que contiene los diferentes módulos disponibles.",
-                    position: 'bottom'
+                    position: 'right'
                 },
                 {
                     element: document.querySelector('#step2'),
                     intro: "En la esquina superior derecha, encontrarás la imagen o foto del usuario logueado. Al hacer clic en esta imagen, se abrirá un menú de opciones.",
-                    position: 'top'
+                    position: 'left'
                 },
                 {
                     element: document.querySelector('#step3'),
