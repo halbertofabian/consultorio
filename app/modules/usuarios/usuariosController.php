@@ -46,6 +46,7 @@ class UsuariosController
         $data['usr_foto'] = $url_file;
         $data['usr_fecha_registro'] = FECHA;
         $data['usr_ctr_id'] = $data['usr_ctr_id'] == "" ? NULL : $data['usr_ctr_id'];
+        $data['usr_tokenAut'] = NULL;
         $data['tenantid'] = $_SESSION['usr']['tenantid'];
 
         $res = UsuariosModelo::mdlGuardarUsuarios($data);

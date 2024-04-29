@@ -7,7 +7,7 @@ class UsuariosModelo
     {
         try {
             //code...
-            $sql = "INSERT INTO tbl_usuarios_usr (usr_nombre, usr_correo, usr_clave, usr_perfil, usr_foto, usr_fecha_registro, usr_ctr_id, usr_turno, tenantid) VALUES(?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO tbl_usuarios_usr (usr_nombre, usr_correo, usr_clave, usr_perfil, usr_foto, usr_fecha_registro, usr_ctr_id, usr_turno, usr_tokenAut, tenantid) VALUES(?,?,?,?,?,?,?,?,?,?)";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
             $pps->bindValue(1, $usr['usr_nombre']);
@@ -18,7 +18,8 @@ class UsuariosModelo
             $pps->bindValue(6, $usr['usr_fecha_registro']);
             $pps->bindValue(7, $usr['usr_ctr_id']);
             $pps->bindValue(8, $usr['usr_turno']);
-            $pps->bindValue(9, $usr['tenantid']);
+            $pps->bindValue(9, $usr['usr_tokenAut']);
+            $pps->bindValue(10, $usr['tenantid']);
             $pps->execute();
             return $pps->rowCount() > 0;
             // return $pps->errorInfo();
