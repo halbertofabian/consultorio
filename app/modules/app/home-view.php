@@ -3,7 +3,9 @@
 <script>
     $(document).ready(function() {
         // localStorage.removeItem('intro1');
-        startIntro();
+        if ('<?= $_SESSION['scs']['scs_intro'] ?>' == 0) {
+            startIntro();
+        }
     });
 
     function startIntro() {
@@ -41,10 +43,8 @@
             exitOnClose: false
         });
 
-        // Verificar si la guía ya se completó previamente
-        if (localStorage.getItem('intro1') !== 'true') {
-            intro.start();
-        }
+        intro.start();
+
         intro.onbeforechange(function() {
             var currentStep = intro._currentStep;
             if (currentStep == 2) { // El índice numérico del primer paso es 0
@@ -54,8 +54,34 @@
         });
         intro.onbeforeexit(function() {
             $('#step2').click();
-            localStorage.setItem('intro1', 'true');
+            terminarIntro();
+            // localStorage.setItem('intro1', 'true');
             // return confirm("¿Esta seguro de temrinar con la intro?");
+        });
+    }
+
+    function terminarIntro() {
+        var datos = new FormData()
+        datos.append('scs_id', '<?= $_SESSION['scs']['scs_id'] ?>');
+        $.ajax({
+            type: 'POST',
+            url: '<?= HTTP_HOST ?>' + 'api/v1/suscripciones/update/intro',
+            data: datos,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                if (res.status) {
+                    swal({
+                        title: '¡Bien!',
+                        text: res.mensaje,
+                        type: 'success',
+                        icon: 'success'
+                    }).then(function() {
+                        location.reload();
+                    });
+                }
+            }
         });
     }
 </script>

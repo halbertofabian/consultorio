@@ -127,6 +127,24 @@ class UsuariosModelo
             $con = null;
         }
     }
+    public static function mdlMostrarUsuarioByTokenAut($tokenAut)
+    {
+        try {
+            //code...
+            $sql = "SELECT * FROM tbl_usuarios_usr WHERE usr_tokenAut = ? AND usr_estado_borrado = 1";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $tokenAut);
+            $pps->execute();
+            return $pps->fetch(PDO::FETCH_ASSOC);
+            // return $pps->errorInfo();
+        } catch (PDOException $th) {
+            throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
 
     public static function mdlEliminarUsuarios($usr_id)
     {
@@ -157,6 +175,24 @@ class UsuariosModelo
             $pps->bindValue(2, $tenantid);
             $pps->execute();
             return $pps->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $th) {
+            //throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+
+    public static function mdlActualizarTokenAut($usr_id)
+    {
+        try {
+            //code...
+            $sql = "UPDATE tbl_usuarios_usr SET usr_tokenAut = NULL WHERE usr_id = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $usr_id);
+            $pps->execute();
+            return $pps->rowCount() > 0;
         } catch (PDOException $th) {
             //throw $th;
         } finally {

@@ -85,4 +85,39 @@ class SuscripcionesModelo
             $con = null;
         }
     }
+    public static function mdlMostrarSuscriptoresByTenantId($tenantid)
+    {
+        try {
+            //code...
+            $sql = "SELECT * FROM tbl_suscripciones_scs WHERE tenantid = ? AND scs_estado_borrado = 1";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $tenantid);
+            $pps->execute();
+            return $pps->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $th) {
+            //throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+
+    public static function mdlActualizarIntro($scs_id)
+    {
+        try {
+            //code...
+            $sql = "UPDATE tbl_suscripciones_scs SET scs_intro = 1 WHERE scs_id = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $scs_id);
+            $pps->execute();
+            return $pps->rowCount() > 0;
+        } catch (PDOException $th) {
+            //throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
 }

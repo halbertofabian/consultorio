@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
-<?php include_once 'app/components/head.php'; ?>
+<?php 
+include_once 'app/components/head.php'; 
+
+if (isset($_GET['tokenAut']) && $_GET['tokenAut']) {
+    $usr = UsuariosModelo::mdlMostrarUsuarioByTokenAut($_GET['tokenAut']);
+    if($usr){
+        LoginController::ctrIngresoUsuarioNuevo($usr);
+        die();
+    }else{
+        echo '<script>
+
+            window.location = "' . HTTP_HOST . '";
+
+        </script>';
+    }
+}
+?>
 
 <body>
 
