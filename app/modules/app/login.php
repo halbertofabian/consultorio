@@ -4,7 +4,12 @@
             <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                 <div class="card">
                     <div class="card-body p-4 p-sm-5">
-                        <a class="d-flex flex-center" href="<?= HTTP_HOST ?>"><img class="me-2" src="<?= HTTP_HOST ?>app/assets/img/consultorio_logo.png" alt="" width="150" /></a>
+                        <a class="d-flex flex-center m-4" href="<?= HTTP_HOST ?>">
+                            <img class="me-2" src="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg" alt="" width="50" />
+                        </a>
+                        <a class="d-flex flex-center m-4" href="<?= HTTP_HOST ?>">
+                            <img class="me-2" src="<?= HTTP_HOST ?>app/assets/img/logo_horizontal_gestional.svg" alt="" width="250" />
+                        </a>
                         <div class="row flex-between-center mb-2">
                             <div class="col-auto">
                                 <h5>Iniciar sesión</h5>
