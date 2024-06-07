@@ -1,4 +1,3 @@
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +7,16 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>app | Dashboard &amp; Web App Template</title>
+    <title>GestionalMedic</title>
 
 
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="<?= HTTP_HOST ?>app/assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= HTTP_HOST ?>app/assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= HTTP_HOST ?>app/assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?= HTTP_HOST ?>app/assets/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg">
     <link rel="manifest" href="<?= HTTP_HOST ?>app/assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="<?= HTTP_HOST ?>app/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
@@ -49,7 +48,22 @@
     <script src="<?= HTTP_HOST ?>app/vendors/jquery/jquery.min.js"></script>
     <script src="<?= HTTP_HOST ?>app/assets/js/toastr.min.js"></script>
 
+    <script>
+        // var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+        // if (!isRTL) {
+        var linkRTL = document.getElementById('style-rtl');
+        var userLinkRTL = document.getElementById('user-style-rtl');
+        linkRTL.setAttribute('disabled', true);
+        userLinkRTL.setAttribute('disabled', true);
+        // }
 
+        var navbarStyle = localStorage.getItem('navbarStyle');
+        if (navbarStyle !== 'vibrant') {
+            localStorage.setItem('navbarStyle', 'vibrant');
+        }
+    </script>
+
+    <!-- 
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -64,5 +78,5 @@
             linkRTL.setAttribute('disabled', true);
             userLinkRTL.setAttribute('disabled', true);
         }
-    </script>
+    </script> -->
 </head>

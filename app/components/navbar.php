@@ -8,13 +8,18 @@ function showOptionMenu($tipo, $ruta)
 }
 ?>
 <script>
+    var container = document.querySelector('[data-layout]');
+    container.classList.remove('container');
+    container.classList.add('container-fluid');
+</script>
+<!-- <script>
     var isFluid = JSON.parse(localStorage.getItem('isFluid'));
     if (isFluid) {
         var container = document.querySelector('[data-layout]');
         container.classList.remove('container');
         container.classList.add('container-fluid');
     }
-</script>
+</script> -->
 <nav class="navbar navbar-light navbar-vertical navbar-expand-xl" id="step1">
     <script>
         var navbarStyle = localStorage.getItem("navbarStyle");

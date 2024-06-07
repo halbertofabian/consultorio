@@ -1,4 +1,4 @@
-<h5>Bienvenido (@)</h5>
+<h5>Bienvenid@ <?= $_SESSION['usr']['usr_nombre'] ?></h5>
 
 <script>
     $(document).ready(function() {

@@ -8,6 +8,7 @@
             $routes = [
                 'home' => 'app/modules/app/home-view.php',
                 '404' => 'app/modules/app/404-view.php',
+                'renovacion' => 'app/modules/app/renovacion-view.php',
 
                 
                 'usuarios' => 'app/modules/usuarios/usuarios.php',
