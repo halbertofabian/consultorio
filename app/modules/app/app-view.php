@@ -25,8 +25,10 @@ if (isset($_GET['tokenAut']) && $_GET['tokenAut']) {
     <!-- ===============================================-->
     <?php
     if (isset($_SESSION['scs'])) {
+        ComponentesControlador::verificarFechaVencimientoSuscripcion($_SESSION['scs']['scs_id']);
         $scs = SuscripcionesModelo::mdlMostrarSuscriptoresById($_SESSION['scs']['scs_id']);
-        if ($scs['scs_estado'] == 0) {
+        // if($scs['scs_estado'] == 1){}
+        if ($scs['scs_estado'] == 0 && $_SESSION['usr']['usr_perfil'] != 'Super Administrador') {
             include_once 'app/modules/app/renovacion-view.php';
             die();
         }

@@ -48,6 +48,12 @@ function showOptionMenu($tipo, $ruta)
                             </div>
                         </a>
                         <ul class="nav collapse <?= showOptionMenu(0, 'suscripciones') ?> " id="suscripciones">
+                            <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'suscripciones/activar-cuenta') ?> " href="<?= HTTP_HOST . 'suscripciones/activar-cuenta' ?>">
+                                    <div class="d-flex align-items-center">
+                                        <span class="nav-link-text ps-1">Activar cuenta</span>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="nav-item"><a class="nav-link <?= showOptionMenu(1, 'suscripciones/create') ?> " href="<?= HTTP_HOST . 'suscripciones/create' ?>">
                                     <div class="d-flex align-items-center">
                                         <span class="nav-link-text ps-1">Crear suscriptor</span>

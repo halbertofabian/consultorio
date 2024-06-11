@@ -8,6 +8,8 @@ if (!isset($rutas[1])) {
     include_once 'app/modules/suscripciones/suscripciones-create-view.php';
 } else if (isset($rutas[1]) && $rutas[1] == 'update') {
     include_once 'app/modules/suscripciones/suscripciones-update-view.php';
+} else if (isset($rutas[1]) && $rutas[1] == 'activar-cuenta') {
+    include_once 'app/modules/suscripciones/suscripciones-activar-cuenta-view.php';
 } else {
     echo 'Error 404';
 }

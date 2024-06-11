@@ -120,4 +120,40 @@ class SuscripcionesModelo
             $con = null;
         }
     }
+    public static function mdlActualizarEstadoSuscripcion($scs_id)
+    {
+        try {
+            //code...
+            $sql = "UPDATE tbl_suscripciones_scs SET scs_estado = 0 WHERE scs_id = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $scs_id);
+            $pps->execute();
+            return $pps->rowCount() > 0;
+        } catch (PDOException $th) {
+            //throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
+    public static function mdlActivarCuenta($scs)
+    {
+        try {
+            //code...
+            $sql = "UPDATE tbl_suscripciones_scs SET scs_fecha_inicio = ?, scs_fecha_fin = ?, scs_estado = 1, scs_tipo_cliente = 'CLIENTE' WHERE scs_id = ?";
+            $con = Conexion::conectar();
+            $pps = $con->prepare($sql);
+            $pps->bindValue(1, $scs['scs_fecha_inicio']);
+            $pps->bindValue(2, $scs['scs_fecha_fin']);
+            $pps->bindValue(3, $scs['scs_id']);
+            $pps->execute();
+            return $pps->rowCount() > 0;
+        } catch (PDOException $th) {
+            //throw $th;
+        } finally {
+            $pps = null;
+            $con = null;
+        }
+    }
 }

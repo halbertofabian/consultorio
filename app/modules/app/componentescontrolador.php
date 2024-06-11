@@ -332,37 +332,55 @@ class ComponentesControlador
         }
     }
 
-    public static function reducir_resolucion_imagen($ruta_imagen_original, $factor_reduccion) {
+    public static function reducir_resolucion_imagen($ruta_imagen_original, $factor_reduccion)
+    {
         // Cargar la imagen original
         $imagen = imagecreatefrompng($ruta_imagen_original);
-    
+
         // Obtener las dimensiones originales de la imagen
         $ancho_original = imagesx($imagen);
         $alto_original = imagesy($imagen);
-    
+
         // Calcular el nuevo tamaño deseado
         $nuevo_ancho = $ancho_original * $factor_reduccion;
         $nuevo_alto = $alto_original * $factor_reduccion;
-    
+
         // Crear una nueva imagen transparente con el nuevo tamaño
         $nueva_imagen = imagecreatetruecolor($nuevo_ancho, $nuevo_alto);
         $transparency = imagecolorallocatealpha($nueva_imagen, 0, 0, 0, 127);
         imagefill($nueva_imagen, 0, 0, $transparency);
         imagesavealpha($nueva_imagen, true);
-    
+
         // Copiar la imagen original a la nueva imagen
         imagecopyresampled($nueva_imagen, $imagen, 0, 0, 0, 0, $nuevo_ancho, $nuevo_alto, $ancho_original, $alto_original);
-    
+
         // Guardar la nueva imagen en un archivo temporal
         $imagen_reducida = tempnam(sys_get_temp_dir(), 'logo_');
         imagepng($nueva_imagen, $imagen_reducida);
-    
+
         // Liberar la memoria de las imágenes
         imagedestroy($imagen);
         imagedestroy($nueva_imagen);
-    
+
         // Devolver la ruta de la imagen reducida
         return $imagen_reducida;
     }
 
+
+    public static function verificarFechaVencimientoSuscripcion($scs_id)
+    {
+        $scs = SuscripcionesModelo::mdlMostrarSuscriptoresById($scs_id);
+        // Convertir la fecha de vencimiento a un objeto DateTime
+        if ($scs['scs_fecha_fin']) {
+            $scs_fecha_fin = new DateTime($scs['scs_fecha_fin']);
+
+            // Obtener la fecha actual
+            $fechaActual = new DateTime();
+
+            // Comparar la fecha de vencimiento con la fecha actual
+            if ($scs_fecha_fin <= $fechaActual) {
+                SuscripcionesModelo::mdlActualizarEstadoSuscripcion($scs['scs_id']);
+            }
+        }
+    }
 }

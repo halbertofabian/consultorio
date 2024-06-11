@@ -19,7 +19,7 @@
                 <a class="btn btn-primary mb-3" href="<?= HTTP_HOST ?>app/e-commerce/billing.html">Comprar</a>
                 <hr class="border-bottom-0 m-0" />
                 <div class="text-center px-sm-4 py-4">
-                    <h5 class="fw-medium fs-9">¡No dejes pasar esta oportunidad para mejorar la eficiencia y la atención a tus pacientes con nuestra plataforma!.</h5>
+                    <h5 class="fw-medium fs-9">¡No dejes pasar esta oportunidad para mejorar la eficiencia y la atención a tus pacientes con nuestra plataforma!</h5>
                 </div>
             </div>
         </div>

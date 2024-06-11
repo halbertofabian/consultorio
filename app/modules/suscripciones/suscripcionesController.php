@@ -145,4 +145,30 @@ class SuscripcionesController
 
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+    public function activar(Request $request, Response $response, $args)
+    {
+        // Aquí puedes acceder a los datos de la solicitud
+        $data = $request->getParsedBody();
+
+        $res = SuscripcionesModelo::mdlActivarCuenta($data);
+        if ($res) {
+            $scs = SuscripcionesModelo::mdlMostrarSuscriptoresById($data['scs_id']);
+            $_SESSION['scs'] = $scs;
+            $response->getBody()->write(json_encode(array(
+                'status' => true,
+                'mensaje' => 'Excelente, cuenta activada',
+            )));
+        } else {
+            $response->getBody()->write(json_encode(array(
+                'status' => false,
+                'mensaje' => 'Tienes los ultimos datos actualizados',
+            )));
+        }
+
+
+        return $response->withHeader('Content-Type', 'application/json');
+
+    }
+    
 }
