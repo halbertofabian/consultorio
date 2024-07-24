@@ -82,6 +82,7 @@ class PacientesController
                 <a class="dropdown-item" href="' . HTTP_HOST . 'citas/create/' . base64_encode($pte['pte_id']) . '">Agendar cita</a>
                 <a class="dropdown-item" href="' . HTTP_HOST . 'ultrasonidos/create/' . base64_encode($pte['pte_id']) . '">Agregar ultrasonido</a>
                 <a class="dropdown-item" href="' . HTTP_HOST . 'historial/create/' . base64_encode($pte['pte_id']) . '">Historia clínica</a>
+                <a class="dropdown-item" href="' . HTTP_HOST . 'historial/create-perinatal/' . base64_encode($pte['pte_id']) . '">Historia clínica perinatal</a>
                 <a class="dropdown-item" href="' . HTTP_HOST . 'pacientes/update/' . base64_encode($pte['pte_id']) . '">Editar</a>
                 <a class="dropdown-item text-danger btnEliminarPaciente" pte_id="' . $pte['pte_id'] . '" href="javascript:void(0);">Eliminar</a>
                 ';

@@ -145,6 +145,102 @@ class HistorialController
 
         return $response->withHeader('Content-Type', 'application/json');
     }
+    public function createPerinetal(Request $request, Response $response, $args)
+    {
+        // Aquí puedes acceder a los datos de la solicitud
+        $data = $request->getParsedBody();
+
+        $data['hclp_ant_heredofamiliares'] = json_encode(array(
+            'pte_hemotipo' => $data['pte_hemotipo'],
+            'pte_cgdm' => $data['pte_cgdm'],
+            'pte_consanguineos' => $data['pte_consanguineos'],
+            'pte_ant_geneticos' => $data['pte_ant_geneticos'],
+            'pte_fam_preclampsia' => $data['pte_fam_preclampsia'],
+        ), true);
+
+        $data['hclp_ant_pareja'] = json_encode(array(
+            'pte_nombre' => $data['pte_nombre'],
+            'pte_edad' => $data['pte_edad'],
+            'pte_app' => $data['pte_app'],
+            'pte_ant_geneticos_defectos' => $data['pte_ant_geneticos_defectos'],
+            'pte_ant_pareja_comentarios' => $data['pte_ant_pareja_comentarios'],
+        ), true);
+
+        $data['hclp_ant_pers_no_patologicos'] = json_encode(array(
+            'pte_toxicomanias' => $data['pte_toxicomanias'],
+            'pte_farmacos' => $data['pte_farmacos'],
+            'pte_ocupacion' => $data['pte_ocupacion'],
+            'pte_exposiciones' => $data['pte_exposiciones'],
+            'pte_ant_no_patologicos_comentarios' => $data['pte_ant_no_patologicos_comentarios'],
+        ), true);
+
+        $data['hclp_ant_pers_patologicos'] = json_encode(array(
+            'pte_cronico_degenerativo' => $data['pte_cronico_degenerativo'],
+            'pte_cirugias' => $data['pte_cirugias'],
+            'pte_ant_sx_down' => $data['pte_ant_sx_down'],
+            'pte_ant_patologicos_comentarios' => $data['pte_ant_patologicos_comentarios'],
+        ), true);
+
+        $data['hclp_ant_gineco_obstetricos'] = json_encode(array(
+            'pte_g' => $data['pte_g'],
+            'pte_p' => $data['pte_p'],
+            'pte_c' => $data['pte_c'],
+            'pte_a' => $data['pte_a'],
+            'pte_e' => $data['pte_e'],
+            'pte_m' => $data['pte_m'],
+            'pte_fum' => $data['pte_fum'],
+            'pte_sdg' => $data['pte_sdg'],
+            'pte_fpp' => $data['pte_fpp'],
+
+            'pte_año' => $data['pte_año'],
+            'pte_resolucion' => $data['pte_resolucion'],
+            'pte_sdg2' => $data['pte_sdg2'],
+            'pte_sexo' => $data['pte_sexo'],
+            'pte_peso' => $data['pte_peso'],
+            'pte_sano' => $data['pte_sano'],
+            'pte_complicacion' => $data['pte_complicacion'],
+            'pte_observacion' => $data['pte_observacion'],
+        ), true);
+
+        $data['hclp_pedecimiento_actual'] = $data['pte_padecimiento_actual'];
+
+        $data['hclp_embarazo_actual'] = json_encode(array(
+            'pte_logrado' => $data['pte_logrado'],
+            'pte_embarazo' => $data['pte_embarazo'],
+            'pte_ta' => $data['pte_ta'],
+            'pte_peso2' => $data['pte_peso2'],
+            'pte_talla' => $data['pte_talla'],
+            'pte_imc' => $data['pte_imc'],
+            'pte_raza' => $data['pte_raza'],
+            'pte_donacion_ovulos' => $data['pte_donacion_ovulos'],
+            'pte_fecha_nacimiento_donador' => $data['pte_fecha_nacimiento_donador'],
+            'pte_edad_donador' => $data['pte_edad_donador'],
+        ), true);
+
+        
+        $data['tenantid'] = $_SESSION['usr']['tenantid'];
+
+        if ($data['hclp_id'] == "") {
+            $res = HistorialModelo::mdlGuardarHistorialPerinatal($data);
+        } else {
+            $res = HistorialModelo::mdlActualizarHistorialPerinatal($data);
+        }
+        if ($res) {
+            $response->getBody()->write(json_encode(array(
+                'status' => true,
+                'mensaje' => 'La historia clínica perinatal se guardo correctamente',
+                'hcl_id' => $res
+            )));
+        } else {
+            $response->getBody()->write(json_encode(array(
+                'status' => false,
+                'mensaje' => 'Hubo un error',
+            )));
+        }
+
+
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 
     public function get(Request $request, Response $response, $args)
     {
@@ -153,6 +249,19 @@ class HistorialController
         $hcl_pte_id = base64_decode($queryParams['hcl_pte_id']) ?? null;
 
         $hcl = HistorialModelo::mdlMostrarHistorialByPaciente($hcl_pte_id);
+
+        // // Se convierte la lista de usuarios a formato JSON y se envía como respuesta
+        $response->getBody()->write(json_encode($hcl, true));
+
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+    public function getPerinetal(Request $request, Response $response, $args)
+    {
+        $queryParams = $request->getQueryParams();
+
+        $hclp_pte_id = base64_decode($queryParams['hclp_pte_id']) ?? null;
+
+        $hcl = HistorialModelo::mdlMostrarHistorialPerinetalByPaciente($hclp_pte_id);
 
         // // Se convierte la lista de usuarios a formato JSON y se envía como respuesta
         $response->getBody()->write(json_encode($hcl, true));
