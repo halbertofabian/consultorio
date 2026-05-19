@@ -69,9 +69,24 @@ function estadoBadgeSecretaria($estado)
         --dbs-ink: #0f172a;
         --dbs-soft: #64748b;
         --dbs-line: #e2e8f0;
+        --dbs-panel-bg: #ffffff;
+        --dbs-header-bg: linear-gradient(90deg, #f8fafc 0%, #ecfeff 100%);
+        --dbs-chip-bg: #f1f5f9;
         --dbs-bg-1: #eff6ff;
         --dbs-bg-2: #fff7ed;
         --dbs-bg-3: #ecfeff;
+    }
+
+    .dark .dbs-wrap {
+        --dbs-ink: #e2e8f0;
+        --dbs-soft: #94a3b8;
+        --dbs-line: #334155;
+        --dbs-panel-bg: #0f1c2e;
+        --dbs-header-bg: linear-gradient(90deg, #162338 0%, #1a2c45 100%);
+        --dbs-chip-bg: #1e293b;
+        --dbs-bg-1: #10233f;
+        --dbs-bg-2: #332217;
+        --dbs-bg-3: #0f2d2a;
     }
 
     .dbs-card-kpi {
@@ -96,6 +111,9 @@ function estadoBadgeSecretaria($estado)
     .dbs-card-kpi.bg-1 { background: linear-gradient(135deg, var(--dbs-bg-1) 0%, #ffffff 70%); }
     .dbs-card-kpi.bg-2 { background: linear-gradient(135deg, var(--dbs-bg-2) 0%, #ffffff 70%); }
     .dbs-card-kpi.bg-3 { background: linear-gradient(135deg, var(--dbs-bg-3) 0%, #ffffff 70%); }
+    .dark .dbs-card-kpi.bg-1,
+    .dark .dbs-card-kpi.bg-2,
+    .dark .dbs-card-kpi.bg-3 { background: linear-gradient(135deg, var(--dbs-bg-1) 0%, var(--dbs-panel-bg) 70%); }
 
     .dbs-kpi-title {
         font-size: .78rem;
@@ -139,11 +157,12 @@ function estadoBadgeSecretaria($estado)
         border: 1px solid var(--dbs-line);
         border-radius: 16px;
         box-shadow: 0 8px 24px rgba(15, 23, 42, .08);
+        background: var(--dbs-panel-bg);
     }
 
     .dbs-panel .card-header {
         border-bottom: 1px solid var(--dbs-line);
-        background: linear-gradient(90deg, #f8fafc 0%, #ecfeff 100%);
+        background: var(--dbs-header-bg);
     }
 
     .dbs-panel-title {
@@ -155,7 +174,7 @@ function estadoBadgeSecretaria($estado)
     .dbs-mini-tag {
         font-size: .72rem;
         color: var(--dbs-soft);
-        background: #f1f5f9;
+        background: var(--dbs-chip-bg);
         border-radius: 999px;
         padding: .25rem .65rem;
     }
@@ -182,7 +201,7 @@ function estadoBadgeSecretaria($estado)
         padding: .75rem;
         text-decoration: none;
         color: var(--dbs-ink);
-        background: #fff;
+        background: var(--dbs-panel-bg);
         transition: .2s ease;
     }
 

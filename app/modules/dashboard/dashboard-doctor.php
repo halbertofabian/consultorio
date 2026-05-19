@@ -72,9 +72,24 @@ function estadoBadgeDoctor($estado)
         --db-ink: #0f172a;
         --db-soft: #64748b;
         --db-line: #e2e8f0;
+        --db-panel-bg: #ffffff;
+        --db-header-bg: linear-gradient(90deg, #f8fafc 0%, #eef2ff 100%);
+        --db-chip-bg: #f1f5f9;
         --db-bg-1: #eff6ff;
         --db-bg-2: #fff7ed;
         --db-bg-3: #ecfeff;
+    }
+
+    .dark .db-wrap {
+        --db-ink: #e2e8f0;
+        --db-soft: #94a3b8;
+        --db-line: #334155;
+        --db-panel-bg: #0f1c2e;
+        --db-header-bg: linear-gradient(90deg, #162338 0%, #1a2c45 100%);
+        --db-chip-bg: #1e293b;
+        --db-bg-1: #10233f;
+        --db-bg-2: #332217;
+        --db-bg-3: #0f2d2a;
     }
 
     .db-card-kpi {
@@ -99,6 +114,9 @@ function estadoBadgeDoctor($estado)
     .db-card-kpi.bg-1 { background: linear-gradient(135deg, var(--db-bg-1) 0%, #ffffff 70%); }
     .db-card-kpi.bg-2 { background: linear-gradient(135deg, var(--db-bg-2) 0%, #ffffff 70%); }
     .db-card-kpi.bg-3 { background: linear-gradient(135deg, var(--db-bg-3) 0%, #ffffff 70%); }
+    .dark .db-card-kpi.bg-1,
+    .dark .db-card-kpi.bg-2,
+    .dark .db-card-kpi.bg-3 { background: linear-gradient(135deg, var(--db-bg-1) 0%, var(--db-panel-bg) 70%); }
 
     .db-kpi-title {
         font-size: .75rem;
@@ -142,11 +160,12 @@ function estadoBadgeDoctor($estado)
         border: 1px solid var(--db-line);
         border-radius: 16px;
         box-shadow: 0 8px 24px rgba(15, 23, 42, .08);
+        background: var(--db-panel-bg);
     }
 
     .db-panel .card-header {
         border-bottom: 1px solid var(--db-line);
-        background: linear-gradient(90deg, #f8fafc 0%, #eef2ff 100%);
+        background: var(--db-header-bg);
     }
 
     .db-panel-title {
@@ -158,7 +177,7 @@ function estadoBadgeDoctor($estado)
     .db-mini-tag {
         font-size: .72rem;
         color: var(--db-soft);
-        background: #f1f5f9;
+        background: var(--db-chip-bg);
         border-radius: 999px;
         padding: .25rem .65rem;
     }
@@ -175,6 +194,7 @@ function estadoBadgeDoctor($estado)
 
     .db-table tbody td {
         vertical-align: middle;
+        color: var(--db-ink);
     }
 
     .db-quick-grid {
@@ -189,7 +209,7 @@ function estadoBadgeDoctor($estado)
         padding: .75rem;
         text-decoration: none;
         color: var(--db-ink);
-        background: #fff;
+        background: var(--db-panel-bg);
         transition: .2s ease;
     }
 
