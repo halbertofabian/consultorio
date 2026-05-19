@@ -31,7 +31,9 @@ ComponentesControlador::getBreadCrumb('consultorios', 'Consultorios', 'Lista de 
     function listarConsultorios() {
         datatable_consultorios = $('#datatable_consultorios').DataTable({
             // dom: 'Bfrtip',
+            processing: true,
             responsive: true,
+            language: language(),
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],

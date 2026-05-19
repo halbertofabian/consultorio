@@ -31,7 +31,9 @@ ComponentesControlador::getBreadCrumb('ultrasonidos', 'Ultrasonidos', 'Lista de 
     function listarUltrasonidos() {
         datatable_ultrasonidos = $('#datatable_ultrasonidos').DataTable({
             // dom: 'Bfrtip',
+            processing: true,
             responsive: true,
+            language: language(),
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],

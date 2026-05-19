@@ -31,7 +31,9 @@ ComponentesControlador::getBreadCrumb('usuarios', 'Usuarios', 'Lista de usuarios
     function listarUsuarios() {
         datatable_usuarios = $('#datatable_usuarios').DataTable({
             // dom: 'Bfrtip',
+            processing: true,
             responsive: true,
+            language: language(),
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],

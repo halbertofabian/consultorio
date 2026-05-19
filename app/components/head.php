@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg">
     <link rel="shortcut icon" type="image/x-icon" href="<?= HTTP_HOST ?>app/assets/img/isotipo_gestional_medic.svg">
-    <link rel="manifest" href="<?= HTTP_HOST ?>app/assets/img/favicons/manifest.json">
+    <!-- <link rel="manifest" href="<?= HTTP_HOST ?>app/assets/img/favicons/manifest.json"> -->
     <meta name="msapplication-TileImage" content="<?= HTTP_HOST ?>app/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
     <script src="<?= HTTP_HOST ?>app/assets/js/config.js"></script>

@@ -18,7 +18,7 @@
                         <form class="row g-3" method="POST">
                             <div class="col-12">
                                 <label for="usr_correo" class="form-label">Correo</label>
-                                <input type="email" class="form-control" name="usr_correo" id="usr_correo" placeholder="Correo electronico" required />
+                                <input type="email" class="form-control" name="usr_correo" id="usr_correo" placeholder="Correo electronico" required autofocus />
                             </div>
                             <div class="col-12">
                                 <label for="usr_clave" class="form-label">Contraseña</label>

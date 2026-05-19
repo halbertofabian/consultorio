@@ -28,7 +28,7 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
         </div>
     </div>
     <div class="card-body p-3 scrollbar">
-        <div class="calendar-outline" id="appCalendar"></div>
+        <div class="calendar-outline" id="appCalendarCitas"></div>
     </div>
 </div>
 
@@ -134,7 +134,7 @@ ComponentesControlador::getBreadCrumb('citas', 'Citas', 'Lista de citas');
             success: function(res) {
                 console.log(res)
                 var citas = res;
-                var calendarEl = document.getElementById('appCalendar');
+                var calendarEl = document.getElementById('appCalendarCitas');
 
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: tipo,

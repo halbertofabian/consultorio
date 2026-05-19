@@ -20,6 +20,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
                             <th scope="col">ACCIONES</th>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
@@ -35,7 +36,9 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
     function listarPacientes() {
         datatable_pacientes = $('#datatable_pacientes').DataTable({
             // dom: 'Bfrtip',
+            processing: true,
             responsive: true,
+            language: language(),
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],
@@ -83,6 +86,7 @@ ComponentesControlador::getBreadCrumb('pacientes', 'Pacientes', 'Lista de pacien
             }
             
         });
+
     }
 
     $(document).on('click', '.btnEliminarPaciente', function() {

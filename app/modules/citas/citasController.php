@@ -11,6 +11,7 @@ class CitasController
         $data = $request->getParsedBody();
 
         $data['cts_fecha'] = FECHA;
+        $data['cts_estado'] = 'Pendiente';
         $data['cts_fecha_inicio'] = $data['cts_fecha_inicio'] . ' ' . $data['cts_hora_inicio'];
         $data['cts_fecha_fin'] = $data['cts_fecha_fin'] . ' ' . $data['cts_hora_fin'];
         $data['cts_descripcion'] = $data['cts_descripcion'];

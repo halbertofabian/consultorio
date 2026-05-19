@@ -1,5 +1,14 @@
 <h5>Bienvenid@ <?= $_SESSION['usr']['usr_nombre'] ?></h5>
 
+<?php
+$perfilHome = $_SESSION['usr']['usr_perfil'] ?? '';
+if ($perfilHome == 'Doctor') {
+    include_once 'app/modules/dashboard/dashboard-doctor.php';
+} else if ($perfilHome == 'Secretaria') {
+    include_once 'app/modules/dashboard/dashboard-secretaria.php';
+}
+?>
+
 <script>
     $(document).ready(function() {
         // localStorage.removeItem('intro1');

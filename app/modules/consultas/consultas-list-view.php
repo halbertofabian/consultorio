@@ -71,7 +71,9 @@ ComponentesControlador::getBreadCrumb('consultas', 'Consultas', 'Lista de consul
     function listarConsultas() {
         datatable_consultas = $('#datatable_consultas').DataTable({
             // dom: 'Bfrtip',
+            processing: true,
             responsive: true,
+            language: language(),
             // buttons: [
             //     'copy', 'csv', 'excel', 'pdf', 'print'
             // ],

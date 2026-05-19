@@ -8,7 +8,7 @@ class CitasModelo
         try {
             //code...
             $sql = "INSERT INTO tbl_citas_cts (cts_pte_id, cts_ctr_id, cts_usr_id, cts_fecha,
-            cts_fecha_inicio, cts_fecha_fin, cts_usuario_registro, cts_descripcion, tenantid) VALUES(?,?,?,?,?,?,?,?,?)";
+            cts_fecha_inicio, cts_fecha_fin, cts_estado, cts_usuario_registro, cts_descripcion, tenantid) VALUES(?,?,?,?,?,?,?,?,?,?)";
             $con = Conexion::conectar();
             $pps = $con->prepare($sql);
             $pps->bindValue(1, $cts['cts_pte_id']);
@@ -17,9 +17,10 @@ class CitasModelo
             $pps->bindValue(4, $cts['cts_fecha']);
             $pps->bindValue(5, $cts['cts_fecha_inicio']);
             $pps->bindValue(6, $cts['cts_fecha_fin']);
-            $pps->bindValue(7, $cts['cts_usuario_registro']);
-            $pps->bindValue(8, $cts['cts_descripcion']);
-            $pps->bindValue(9, $cts['tenantid']);
+            $pps->bindValue(7, $cts['cts_estado']);
+            $pps->bindValue(8, $cts['cts_usuario_registro']);
+            $pps->bindValue(9, $cts['cts_descripcion']);
+            $pps->bindValue(10, $cts['tenantid']);
             $pps->execute();
             return $pps->rowCount() > 0;
         } catch (PDOException $th) {
