@@ -170,6 +170,9 @@ function estadoBadgeSecretaria($estado)
         font-weight: 700;
         color: #0f172a;
     }
+    .dark .dbs-panel-title {
+        color: #ffffff;
+    }
 
     .dbs-mini-tag {
         font-size: .72rem;

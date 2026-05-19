@@ -173,6 +173,9 @@ function estadoBadgeDoctor($estado)
         font-weight: 700;
         color: #0f172a;
     }
+    .dark .db-panel-title {
+        color: #ffffff;
+    }
 
     .db-mini-tag {
         font-size: .72rem;
